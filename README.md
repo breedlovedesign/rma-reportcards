@@ -25,7 +25,7 @@ To run the application:
 -----------------------
 
     prompt$ cd path_to/rma-reportcards
-		prompt$ ruby main.rb
+    prompt$ ruby main.rb
 
 Follow the directions to see the site in your web-browser
 		
