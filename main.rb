@@ -96,7 +96,7 @@ post "/students/update/:mongo_id" do
   redirect to("/students/edit/:mongo_id")
 end
 
-post "/students/update/delete_nickname/:mongo_id"
+post "/students/update/delete_nickname/:mongo_id" do
   p = params[:form_data_1]
   Student.where(:id => :mongo_id).unset(:nickname)
 end
