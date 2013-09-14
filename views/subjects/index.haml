@@ -1,0 +1,9 @@
+%form{:action => "/subjects/new", :method => "POST"}
+	%input{:placeholder => "subject id", :type => "text", :name => "subject[subject_id]"}
+	%input{:placeholder => "subject name", :type => "text", :name => "subject[name]"}
+	%input.button{:type => "submit", :value => "New Subject", :title => "New Subject", :class => "button"}
+%h2 subjects
+%ul.subjects
+	%li{:class => "list_row"} DATABASE ID ........................... NAME
+	- @subjects.each do |s|
+		= haml :"subjects/subject", :locals => {:subject => s }

@@ -1,0 +1,6 @@
+%li{:class => "list_row"}
+	= subject.subject_id.ljust(40, ".") + subject.name.ljust(28, ".")
+	%a{ :class => "edit_link", :href => "/subjects/edit/#{subject.id}" } EDIT
+	%form{ :class => "delete", :action => "/subjects/delete/#{subject.id}", :method => "POST" }
+		%input{ :type => "hidden", :name => "_method", :value => "DELETE" }
+		%input{ :class => "delete", :type => "submit", :value => "×", :title => "Delete Subject" }

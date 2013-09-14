@@ -1,0 +1,7 @@
+%h2 Edit info for: #{@subject.subject_id}
+%p ID: #{@subject.subject_id}
+%p Name: #{@subject.name}
+%form{:action => "/subjects/update/#{@subject.id}", :method => "POST"}
+	%input{:placeholder => "subject id", :type => "text", :name => "form_data_2[subject_id]"}
+	%input{:placeholder => "subject name", :type => "text", :name => "form_data_2[name]"}
+	%input.button{:type => "submit", :value => "Update Subject", :title => "Update Subject", :class => "button"}

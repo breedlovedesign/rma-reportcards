@@ -1,7 +1,12 @@
 %h2 Edit info for: #{@student.student_id}
 %p Name: #{@student.name}
-%p Nickname: #{@student.nickname}
-%form{:action => "/students/update/#{@student.id}", :method => "POST"}
-	%input{:placeholder => "student name", :type => "text", :name => "form_data_2[name]"}
-	%input{:placeholder => "nickname", :type => "text", :name => "form_data_2[nickname]"}
-	%input.button{:type => "submit", :value => "Update Student", :title => "Update Student", :class => "button"}
+%div{:class => "container_width"}
+	%form{:action => "/students/delete_nickname/#{@student.id}", :method => "POST"}
+		%input{ :type => "hidden", :name => "_method", :value => "POST" }
+		%input{ :class => "delete", :type => "submit", :value => "Delete Nickname", :title => "Delete Nickname" }
+		%p Nickname: #{@student.nickname}
+%div{:class => "container_clear"}
+	%form{:action => "/students/update/#{@student.id}", :method => "POST"}
+		%input{:placeholder => "student name", :type => "text", :name => "form_data_2[name]"}
+		%input{:placeholder => "nickname", :type => "text", :name => "form_data_2[nickname]"}
+		%input.button{:type => "submit", :value => "Update Student", :title => "Update Student", :class => "button"}
