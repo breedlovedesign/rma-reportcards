@@ -1,0 +1,8 @@
+%h2 Students
+%ul.students
+	- @students.each do |s|
+		= haml :"/listing_student", :locals => {:student => s }
+%h2 Teachers
+%ul.teachers
+	- @teachers.each do |t|
+		= haml :"/listing_teacher", :locals => {:teacher => t }
