@@ -7,6 +7,14 @@ require "sinatra/flash"
 require "sinatra/form_helpers"
 require "sinatra/simple-navigation"
 
+# not using just yet
+# require 'test/unit'
+# require 'rack/test'
+# 
+# class Test::Unit::TestCase
+#   include Rack::Test::Methods
+# end
+
 configure do
   Mongoid.configure do |config|
     config.sessions = {:default => {:hosts => ["localhost:27017"], :database => "rma"}}
@@ -29,8 +37,8 @@ class Student
   field :name
   field :nickname
   field :dob
-  #field :eal?
-  #field :sss?
+  field :eal_sss_status
+  field :dob, type: Date
 end
 
 class Subject
@@ -75,7 +83,7 @@ end
 
 post "/students/new" do 
   p = params[:student]
-  Student.where(name: p["name"], student_id: p["student_id"]).create 
+  Student.where(:name => p["name"], :student_id => p["student_id"], :eal_sss_status => "None").create 
   redirect to('/students')
 end
 
@@ -94,6 +102,7 @@ post "/students/update/:mongo_id" do
   pants = Student.find(params[:mongo_id])
   pants.update_attributes!(:nickname => form["nickname"]) unless form["nickname"] == ""
   pants.update_attributes!(:name => form["name"]) unless form["name"] == ""
+  pants.update_attributes!(:eal_sss_status => form["eal_sss_status"]) unless form["eal_sss_status"] == nil
   redirect to("/students/edit/#{params[:mongo_id]}")
 end
 
@@ -102,6 +111,13 @@ post "/students/delete_nickname/:mongo_id" do
   redirect to("/students/edit/#{params[:mongo_id]}")
 end
 
+post "/students/dob/:mongo_id" do 
+  form = params[:form_data_3]
+  pants = Student.find(params[:mongo_id])
+  pants.update_attributes!(:dob => form["dob"]) unless form["dob"] == ""
+  redirect to("/students/edit/#{params[:mongo_id]}")
+end
+#form_data_3[dob]
 
 ###################### Subjects################
 
@@ -133,6 +149,8 @@ post "/subjects/update/:mongo_id" do
   pants.update_attributes!(:name => form["name"]) unless form["name"] == ""
   redirect to("/subjects/edit/#{params[:mongo_id]}")
 end
+
+
 
 # UNUSED ROUTE
 # get "/students/skill-tracking/:id" do

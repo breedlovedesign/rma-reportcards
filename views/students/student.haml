@@ -1,5 +1,5 @@
 %li{:class => "list_row"}
-	= student.student_id.ljust(40, ".") + student.name.ljust(28, ".")
+	= student.student_id.ljust(32, ".") + student.name.ljust(28, ".") + student.eal_sss_status.rjust(4, ".")
 	%a{ :class => "edit_link", :href => "/students/edit/#{student.id}" } EDIT
 	%form{ :class => "delete", :action => "/students/delete/#{student.id}", :method => "POST" }
 		%input{ :type => "hidden", :name => "_method", :value => "DELETE" }
