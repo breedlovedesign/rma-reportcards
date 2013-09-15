@@ -4,6 +4,6 @@
 	%input.button{:type => "submit", :value => "New Student", :title => "New Student", :class => "button"}
 %h2 Students
 %ul.students
-	%li{:class => "list_row"} DATABASE ID ........................... NAME
+	%li{:class => "list_row"} DATABASE ID...........................NAME................EAL/SSS
 	- @students.each do |s|
 		= haml :"students/student", :locals => {:student => s }
