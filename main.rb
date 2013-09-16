@@ -22,13 +22,12 @@ configure do
 end
 #SimpleNavigation::config_file_paths << "/Users/localadmin/development/rma/simplenav.config"
 
-
+SUBJECTS = [:language_arts, :math, :social_studies, :science, :art, :ict, :music, :thai, :pe, :work_study, :citizenship]
 
 class Teacher
   include Mongoid::Document
   field :teacher_id
   field :name
-  belongs_to :subject
 end
 
 class Student
@@ -39,6 +38,35 @@ class Student
   field :dob
   field :eal_sss_status
   field :dob, type: Date
+end
+
+class School_Year
+  include Mongoid::Document
+  field :language_arts_teacher
+  field :math_teacher
+  field :social_studies_teacher
+  field :science_teacher
+  field :art_teacher
+  field :ict_teacher
+  field :music_teacher
+  field :thai_teacher
+  field :pe_teacher
+  field :work_study_teacher
+  field :citizenship_teacher
+
+  field :language_arts_level
+  field :math_level
+  field :social_studies_level
+  field :science_level
+  field :art_level
+  field :ict_level
+  field :music_level
+  field :thai_level
+  field :pe_level
+  field :work_study_level
+  field :citizenship_level
+
+  belongs_to :student
 end
 
 class Subject
@@ -117,9 +145,8 @@ post "/students/dob/:mongo_id" do
   pants.update_attributes!(:dob => form["dob"]) unless form["dob"] == ""
   redirect to("/students/edit/#{params[:mongo_id]}")
 end
-#form_data_3[dob]
 
-###################### Subjects################
+###################### Subjects ######################
 
 get "/subjects" do
   @subjects = Subject.all
@@ -149,4 +176,43 @@ post "/subjects/update/:mongo_id" do
   pants.update_attributes!(:name => form["name"]) unless form["name"] == ""
   redirect to("/subjects/edit/#{params[:mongo_id]}")
 end
+
+###################### Grading Period ######################
+
+get "/grading_period" do
+  @grading_period = GradingPeriod.all
+
+  haml :"grading_period/index"
+end
+
+
+###################### drop down exp #######################
+
+get "/drop_down" do 
+  @subjects = Subject.all
+  @students = Student.all
+  @teachers = Teacher.all
+  @subs     = Student::SUBJECTS
+  haml :"drop_down_exp/index"
+end
+
+# todo: add preselected values corrosponding to the data in question
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
