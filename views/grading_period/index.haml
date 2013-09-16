@@ -1,0 +1,9 @@
+%form{:action => "/students/new", :method => "POST"}
+	%input{:placeholder => "student id", :type => "text", :name => "student[student_id]"}
+	%input{:placeholder => "student name", :type => "text", :name => "student[name]"}
+	%input.button{:type => "submit", :value => "New Student", :title => "New Student", :class => "button"}
+%h2 Students
+%ul.students
+	%li{:class => "list_row"} DATABASE ID...........................NAME................EAL/SSS
+	- @students.each do |s|
+		= haml :"students/student", :locals => {:student => s }
