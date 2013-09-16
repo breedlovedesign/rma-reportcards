@@ -117,9 +117,8 @@ post "/students/dob/:mongo_id" do
   pants.update_attributes!(:dob => form["dob"]) unless form["dob"] == ""
   redirect to("/students/edit/#{params[:mongo_id]}")
 end
-#form_data_3[dob]
 
-###################### Subjects################
+###################### Subjects ######################
 
 get "/subjects" do
   @subjects = Subject.all
@@ -149,4 +148,33 @@ post "/subjects/update/:mongo_id" do
   pants.update_attributes!(:name => form["name"]) unless form["name"] == ""
   redirect to("/subjects/edit/#{params[:mongo_id]}")
 end
+
+###################### Grading Period ######################
+
+get "/grading_period" do
+  @grading_period = GradingPeriod.all
+
+  haml :"grading_period/index"
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
