@@ -1,5 +1,5 @@
 %p hello
 %select
-	- @subjects.each do |s|
-		%option{:value => s.subject_id}
-			#{s.name}
+	- @teachers.each do |t|
+		%option{:value => t.teacher_id}
+			#{t.name}
