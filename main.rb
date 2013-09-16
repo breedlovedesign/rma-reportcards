@@ -158,7 +158,14 @@ get "/grading_period" do
 end
 
 
+###################### drop down exp #######################
 
+get "/drop_down" do 
+  @subjects = Subject.all
+  @students = Student.all
+  
+  haml :"drop_down_exp/index"
+end
 
 
 
