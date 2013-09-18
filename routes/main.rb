@@ -1,7 +1,7 @@
 # encoding: utf-8
 class RmaReports < Sinatra::Application
 	get "/" do
-		@title = "Welcome to RmaReports"				
+		@title = "Get your report on!"				
     @students = Student.all
     @teachers = Teacher.all
     haml :index

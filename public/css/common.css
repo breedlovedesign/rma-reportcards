@@ -1,6 +1,42 @@
 body {
 	font-family: Helvetica, Arial, sans-serif;
+	background-color: #00b2e9;
 }
+
+body section {
+	background-color: #fff;
+	margin-right:40px;
+	margin-left:40px;
+}
+
+body section article {
+		padding: 40px;
+		padding-top: 20px;
+}
+
+body {margin:0px;}
+
+header {padding-top:50px;}
+
+h2.top {
+	margin-left:30px;
+	margin-bottom:70px;
+	color: white;
+}
+
+footer {
+	background-color: #aae6e8;
+	margin: 40px -40px -61px -40px;
+	padding: 50px;
+}
+
+.top {
+	/* add some darkness to the top */
+	background-color: #00b2e9;
+	margin:0px;
+}
+
+
 .list_row {
 	padding: 10px;
 	width: 700px;
@@ -16,8 +52,8 @@ body {
 	padding: 10px 20px ;
 	margin-top: 50px;
 	background-color: #00b2e9;
-	border: 2px solid #222;
-	color: #000;
+	border: 2px solid #00b2e9;
+	color: #fff;
 	font-size: 11pt;
 	font-family: sans-serif;
 	border-radius: 3px;
@@ -57,7 +93,7 @@ li:hover form input {
 
 .nav ul {
 	color: #000;
-	border-bottom: 2px solid #222;
+	border-bottom: 2px solid #00b2e9;
 	margin: 12px 0px 0px 0px;
 	padding: 0px;
 	z-index: 1;
@@ -75,7 +111,7 @@ li:hover form input {
 	color: #000;
 	background: #aae6e8;
 	font: bold 11pt ;
-	border: 2px solid #222;
+	border: 2px solid #00b2e9;
 	padding: 10px 20px 0px 20px;
 	margin: 0;
 	text-decoration: none;
@@ -87,8 +123,8 @@ li:hover form input {
 }
 
 .nav a:hover {
-	color: #fff;
-	background: #00b2e9;
+	color: black;
+	background: #fff;
 }
 
 .nav a:visited {

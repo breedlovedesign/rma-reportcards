@@ -1,8 +1,8 @@
-%h2 Students
+%h3 Students
 %ul.students
 	- @students.each do |s|
 		= partial( :"/listing_student", {:student => s } )
-%h2 Teachers
+%h3 Teachers
 %ul.teachers
 	- @teachers.each do |t|
 		= partial( :"/listing_teacher", {:teacher => t } )

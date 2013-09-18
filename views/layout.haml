@@ -15,11 +15,12 @@
 	- settings.js_files.each do |js|
 		%script(type="text/javascript" src="/js/#{js}")
 %section
+	%header.top
+		%h2.top= @title.upcase
+		%div.nav
+			=render_navigation
 	%article
-		%header
-			%h2= @title
-			%div.nav
-				=render_navigation
-			= yield
+		= yield
 		%footer
 			%h4 Link to Markdown ref, Link to documentation. (Incomplete)
+%h2
