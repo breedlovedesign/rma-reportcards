@@ -19,13 +19,21 @@ __To get this up and running on your system you will need__
     * sinatra-flash
     * sinatra-formhelpers
     * sinatra-simple-navigation
-
+    * shotgun
 
 To run the application:
 -----------------------
 
     prompt$ cd path_to/rma-reportcards
-    prompt$ ruby main.rb
+    prompt$ rackup config.ru
+
+
+To run the application in development mode:
+-------------------------------------------
+
+    prompt$ cd path_to/rma-reportcards
+    prompt$ shotgun
+
 
 Follow the directions to see the site in your web-browser
 		
