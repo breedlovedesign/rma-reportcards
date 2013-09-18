@@ -16,7 +16,7 @@
 		%script(type="text/javascript" src="/js/#{js}")
 %section
 	%header.top
-		%h2.top= @title.upcase
+		%h2.top= @title.upcase unless @title.nil?
 		%div.nav
 			=render_navigation
 	%article
