@@ -1,6 +1,6 @@
 %li{:class => "list_row"}
-	= teacher.teacher_id.ljust(40, ".") + teacher.name
+	= teacher.name
 	
 	%form{ :class => "delete", :action => "/teachers/delete/#{teacher.id}", :method => "POST" }
 		%input{ :type => "hidden", :name => "_method", :value => "DELETE", }
-		%input{ :class => "delete", :type => "submit", :value => "×", :title => "Delete Teacher" }
+		%input{ :class => "delete", :type => "submit", :value => "Delete Teacher", :title => "Delete Teacher" }

@@ -1,0 +1,6 @@
+%h2 Edit info for: #{@this_grading_period.gpname}
+%form{:action => "/grading_period/update/#{@this_grading_period.id}", :method => "POST"}
+	%input{:placeholder => "ex: 2013-2014", :type => "text", :name => "gp_edit_form[school_year]"}
+	%input{:placeholder => "ex: Quarter 1", :type => "text", :name => "gp_edit_form[period_name]"}
+	%input{:placeholder => "dd/mm/yyyy",    :type => "text", :name => "gp_edit_form[signing_date]"}
+	%input.button{:type => "submit", :value => "Update Grading Period", :title => "Update Grading Period", :class => "button"}

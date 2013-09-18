@@ -9,13 +9,13 @@ body {
 	list-style-type: none;
 }
 .list_row:hover {
-	background-color: #efefef;
+	background-color: #aae6e8;
 }
 
 .button {
 	padding: 10px 20px ;
 	margin-top: 50px;
-	background-color: #94d320;
+	background-color: #00b2e9;
 	border: 2px solid #222;
 	color: #000;
 	font-size: 11pt;
@@ -23,7 +23,7 @@ body {
 	border-radius: 3px;
 }
 .button:hover, .edit_link:hover {
-	background-color: #94d320;
+	background-color: #00b2e9;
 }
 
 .delete {
@@ -73,7 +73,7 @@ li:hover form input {
 
 .nav a, a.selected, .edit_link {
 	color: #000;
-	background: #efefef;
+	background: #aae6e8;
 	font: bold 11pt ;
 	border: 2px solid #222;
 	padding: 10px 20px 0px 20px;
@@ -88,7 +88,7 @@ li:hover form input {
 
 .nav a:hover {
 	color: #fff;
-	background: #93d31f;
+	background: #00b2e9;
 }
 
 .nav a:visited {

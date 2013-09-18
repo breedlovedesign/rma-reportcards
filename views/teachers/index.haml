@@ -1,9 +1,8 @@
 %form{:action => "/teachers/new", :method => "POST"}
-	%input{:placeholder => "teacher id", :type => "text", :name => "teacher[teacher_id]"}
 	%input{:placeholder => "teacher name", :type => "text", :name => "teacher[name]"}
 	%input.button{:type => "submit", :value => "New Teacher", :title => "New Teacher", :class => "button"}
 %h2 Teachers
 %ul.teachers
-	%li{:class => "list_row"} DATABASE ID ........................... NAME
+	%li{:class => "list_row"} NAME
 	- @teachers.each do |t|
-		= haml :"teachers/teacher", :locals => {:teacher => t }
+		= partial( :"teachers/teacher", {:teacher => t } )

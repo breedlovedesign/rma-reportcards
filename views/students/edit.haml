@@ -1,4 +1,4 @@
-%h2 Edit info for: #{@student.student_id}
+%h2 Edit info for: #{@student.name}
 %p Name: #{@student.name}
 %div{:class => "container_width"}
 	%form{:action => "/students/delete_nickname/#{@student.id}", :method => "POST"}
@@ -10,14 +10,6 @@
 		%input{:placeholder => "student name", :type => "text", :name => "form_data_2[name]"}
 		%input{:placeholder => "nickname", :type => "text", :name => "form_data_2[nickname]"}
 		%input.button{:type => "submit", :value => "Update Student", :title => "Update Student", :class => "button"}
-		%br
-		%p Special Support Services / English as an Additional Language Status
-		%input{ :label => "None", :type => "radio", :name => "form_data_2[eal_sss_status]", :checked => false,  :value => "None" }
-			None &nbsp;&nbsp;&nbsp;
-		%input{ :label => "EAL",  :type => "radio", :name => "form_data_2[eal_sss_status]", :checked => false, :value => "EAL" }
-			EAL &nbsp;&nbsp;&nbsp;
-		%input{ :label => "SSS",  :type => "radio", :name => "form_data_2[eal_sss_status]", :checked => false, :value => "SSS" }
-			SSS
 	%hr
 	%p Birthdate: #{@student.dob.strftime("%B %e, %Y") unless @student.dob == nil}
 	%form{:action => "/students/dob/#{@student.id}", :method => "POST"}

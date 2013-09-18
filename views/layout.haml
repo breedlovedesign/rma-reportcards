@@ -1,13 +1,23 @@
 !!!
-%title= "RMA Report Card Facillitoio"
+%link(rel="icon" type="image/png" href="/favicon.png")
+%title= @title
 %meta{ :charset => "utf-8" }
 %meta{ :content => "", :name => "description" }
 %meta{ :content => "", :name => "author" }
-%link{ :href => "/css/style.css", :rel => "stylesheet" } 
+- if settings.css_files == :blob
+	%link(type="text/css" rel="stylesheet" href="/blob.css?modified=#{File.mtime('public/blob.css').to_i}" )
+- else
+	- settings.css_files.each do |css|
+		%link(type="text/css" rel="stylesheet" href="/css/#{css}" )
+- if settings.js_files == :blob
+	%script(type="text/javascript" src="/blob.js?modified=#{File.mtime('public/blob.js').to_i}")
+- else
+	- settings.js_files.each do |js|
+		%script(type="text/javascript" src="/js/#{js}")
 %section
 	%article
 		%header
-			%h2 Header stuff.
+			%h2= @title
 			%div.nav
 				=render_navigation
 			= yield

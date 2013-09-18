@@ -1,0 +1,6 @@
+%li{:class => "list_row"}
+	= gp.gpname
+	%a{ :class => "edit_link", :href => "/grading_period/edit/#{gp.id}" } EDIT
+	%form{ :class => "delete", :action => "/grading_periods/delete/#{gp.id}", :method => "POST" }
+		%input{ :type => "hidden", :name => "_method", :value => "DELETE" }
+		%input{ :class => "delete", :type => "submit", :value => "Delete Grading Period", :title => "Delete Grading Period" }
