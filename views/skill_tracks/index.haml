@@ -1,2 +1,18 @@
-%h1 works
-%p now, we need to add stuff
+%form{:action => "/skill_track/new", :method => "POST"}
+	%p select a student
+	%select{:name => "grap[kid_id]"}
+		- @students.each do |s|
+			%option{:value => "#{s.id}"}
+				#{s.name}
+	%p select a grading period
+	%select{:name => "grap[quarter_id]"}
+		- @grading_periods.each do |g|
+			%option{:value => "#{g.id}"}
+				#{g.name}
+	%p select the above student's homeroom teacher
+	%select{:name => "grap[teacher_id]"}
+		- @teachers.each do |t|
+			%option{:value => "#{t.id}"}
+				#{t.name}		
+	%br				
+	%input.button{:type => "submit", :value => "Select Student", :title => "Select Student", :class => "button"}

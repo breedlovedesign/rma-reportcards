@@ -1,5 +1,5 @@
 class Teacher
   include Mongoid::Document
   field :name
-  belongs_to :skill_tracking
+  has_many :skill_tracks
 end
