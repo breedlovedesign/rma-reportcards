@@ -1,3 +1,4 @@
+# encoding: utf-8
 get "/grading_periods" do
    @title = "Grading Periods"
    @gperiods = GradingPeriod.all

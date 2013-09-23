@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Report
   include Mongoid::Document
   # field :school_year   #2011-2012

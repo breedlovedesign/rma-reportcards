@@ -1,3 +1,4 @@
+# encoding: utf-8
 get "/teachers" do
   @title = "Teachers"	
   @teachers = Teacher.all

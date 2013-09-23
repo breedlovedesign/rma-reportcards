@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SkillTrack
   include Mongoid::Document
 
@@ -28,11 +29,11 @@ class SkillTrack
   field :student_level
   
   field :eal_sss_status
-  field :thai_native?
+  field :thai_native
   
   belongs_to :student
   belongs_to :grading_period
-  belongs_to :teacher #field :classroom_teacher
+  belongs_to :teacher # homeroom teacher, aka classroom teacher
 end
 
 

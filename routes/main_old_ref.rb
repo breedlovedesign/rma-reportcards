@@ -1,4 +1,4 @@
-
+# encoding: utf-8
 require "sinatra"
 require "bundler/setup"
 require "haml"

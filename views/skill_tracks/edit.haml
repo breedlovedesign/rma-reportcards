@@ -1,124 +1,126 @@
-%h1 Enter Skill Tracking Information for #{@kid.name}
-%form{:action => "/skill_tracks/update", :method => "POST"}
-%div.float
-	%p Homeroom Teacher
-	%select{:name => "form_data[homeroom_teacher]"}
-		%option{:value => ""}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}
-	%p Student Grade Level
-	%select{:name => "form_data[student_level]"}
-		- @student_levels.each do |l|
-			%option{:value => "#{l}"}
-				#{l}
-	%p EAL / SSS Status
-	%select{:name => "form_data[eal_sss_status]"}
-		- @eal_sss_status.each do |s|
-			%option{:value => "#{s}"}
-				#{s}
-	%hr
-	%p Language Arts, Social Studies, Science
-	%select{:name => "form_data[language_arts_teacher]"}
-		%option{:value => ""}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}
-	%select{:name => "form_data[language_arts_level]"}
-		%option{:value => ""}
-		- @levels.each do |l|
-			%option{:value => "#{l}"}
-				#{l}
+-# coding: utf-8
+%h1 Enter Skill Tracking Information for #{@kid.name} for #{@this_track.grading_period.name}
+%form{:action => "/skill_tracks/update/#{@this_track.id}", :method => "POST"}
+	%div.float
+		%p Homeroom Teacher
+		%select{:name => "form_data[homeroom_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				%option{:value => "#{t.id}"}
+					#{t.name}
+		%p Student Grade Level
+		%select{:name => "form_data[student_level]"}
+			- @student_levels.each do |l|
+				%option{:value => "#{l}"}
+					#{l}
+		%p EAL / SSS Status
+		%select{:name => "form_data[eal_sss_status]"}
+			- @eal_sss_status.each do |s|
+				%option{:value => "#{s}"}
+					#{s}
+		%hr
+		%p Language Arts, Social Studies, Science
+		%select{:name => "form_data[language_arts_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				%option{:value => "#{t.id}"}
+					#{t.name}
+		%select{:name => "form_data[language_arts_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				%option{:value => "#{l}"}
+					#{l}
 
-	%p Math
-	%select{:name => "form_data[math_teacher]"}
-		%option{:value => ""}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}
-	%select{:name => "form_data[math_level]"}
-		%option{:value => ""}
-		- @levels.each do |l|
-			%option{:value => "#{l}"}
-				#{l}
+		%p Math
+		%select{:name => "form_data[math_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				%option{:value => "#{t.id}"}
+					#{t.name}
+		%select{:name => "form_data[math_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				%option{:value => "#{l}"}
+					#{l}
 			
-	%p Work & Study Habits / Citizenship
-	%select{:name => "form_data[work_study_teacher]"}
-		%option{:value => ""}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}
+		%p Work & Study Habits / Citizenship
+		%select{:name => "form_data[work_study_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				%option{:value => "#{t.id}"}
+					#{t.name}
 			
-	%select{:name => "form_data[work_study_level]"}
-		%option{:value => ""}
-		- @levels.each do |l|
-			%option{:value => "#{l}"}
-				#{l}
+		%select{:name => "form_data[work_study_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				%option{:value => "#{l}"}
+					#{l}
 
-%div.float
-	%p Art
-	%select{:name => "form_data[art_teacher]"}
-		%option{:value => ""}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}
-	%select{:name => "form_data[art_level]"}
-		%option{:value => ""}
-		- @levels.each do |l|
-			%option{:value => "#{l}"}
-				#{l}
+	%div.float
+		%p Art
+		%select{:name => "form_data[art_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				%option{:value => "#{t.id}"}
+					#{t.name}
+		%select{:name => "form_data[art_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				%option{:value => "#{l}"}
+					#{l}
 
-	%p Information Communication Technology
-	%select{:name => "form_data[ict_teacher]"}
-		%option{:value => ""}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}
-	%select{:name => "form_data[ict_level]"}
-		%option{:value => ""}
-		- @levels.each do |l|
-			%option{:value => "#{l}"}
-				#{l}
+		%p Information Communication Technology
+		%select{:name => "form_data[ict_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				%option{:value => "#{t.id}"}
+					#{t.name}
+		%select{:name => "form_data[ict_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				%option{:value => "#{l}"}
+					#{l}
 
-	%p Music
-	%select{:name => "form_data[music_teacher]"}
-		%option{:value => ""}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}
-	%select{:name => "form_data[music_level]"}
-		%option{:value => ""}
-		- @levels.each do |l|
-			%option{:value => "#{l}"}
-				#{l}
+		%p Music
+		%select{:name => "form_data[music_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				%option{:value => "#{t.id}"}
+					#{t.name}
+		%select{:name => "form_data[music_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				%option{:value => "#{l}"}
+					#{l}
 
-	%p Physical Education
-	%select{:name => "form_data[pe_teacher]"}
-		%option{:value => ""}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}
-	%select{:name => "form_data[pe_level]"}
-		%option{:value => ""}
-		- @levels.each do |l|
-			%option{:value => "#{l}"}
-				#{l}
+		%p Physical Education
+		%select{:name => "form_data[pe_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				%option{:value => "#{t.id}"}
+					#{t.name}
+		%select{:name => "form_data[pe_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				%option{:value => "#{l}"}
+					#{l}
 
-	%p Thai Language
-	%select{:name => "form_data[thai_teacher]"}
-		%option{:value => ""}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}
-	%select{:name => "form_data[thai_level]"}
-		%option{:value => ""}
-		- @levels.each do |l|
-			%option{:value => "#{l}"}
-				#{l}
-	%select{:name => "form_data[thai_native]"}
-		- @thai_native.each do |n|
-			%option{:value => "#{n}"}
-				#{n}
+		%p Thai Language
+		%select{:name => "form_data[thai_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				%option{:value => "#{t.id}"}
+					#{t.name}
+		%select{:name => "form_data[thai_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				%option{:value => "#{l}"}
+					#{l}
+		%p Native / Non-Native Thai Status
+		%select{:name => "form_data[thai_native]"}
+			- @thai_native.each do |n|
+				%option{:value => "#{n}"}
+					#{n}
 
-	%br				
-	%input.button{:type => "submit", :value => "Update Skill Tracking", :title => "Update Skill Tracking", :class => "button"}
+		%br				
+		%input.button{:type => "submit", :value => "Update Skill Tracking", :title => "Update Skill Tracking", :class => "button"}

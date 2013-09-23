@@ -1,3 +1,4 @@
+# encoding: utf-8
 get "/subjects" do
   @title = "Subjects"	
   @subjects = Subject.all

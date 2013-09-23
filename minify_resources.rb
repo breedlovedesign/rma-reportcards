@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+# encoding: utf-8
 module MinifyResources
 	CSS_BLOB  = 'public/blob.css'
 	CSS_DIR   = 'public/css'
