@@ -1,18 +1,18 @@
 %form{:action => "/skill_track/new", :method => "POST"}
-	%p select a student
+	%p Select a Student
 	%select{:name => "grap[kid_id]"}
 		- @students.each do |s|
 			%option{:value => "#{s.id}"}
 				#{s.name}
-	%p select a grading period
+	%p Select a Grading Period
 	%select{:name => "grap[quarter_id]"}
 		- @grading_periods.each do |g|
 			%option{:value => "#{g.id}"}
 				#{g.name}
-	%p select the above student's homeroom teacher
+	%p Select the Above Student's Homeroom Teacher
 	%select{:name => "grap[teacher_id]"}
 		- @teachers.each do |t|
 			%option{:value => "#{t.id}"}
 				#{t.name}		
 	%br				
-	%input.button{:type => "submit", :value => "Select Student", :title => "Select Student", :class => "button"}
+	%input.button{:type => "submit", :value => "Edit Skill Tracking", :title => "Edit Skill Tracking", :class => "button"}

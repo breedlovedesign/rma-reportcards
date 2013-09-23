@@ -1,3 +1,6 @@
+@levels = ["L12", "L34"]
+
+
 get "/skill_tracks" do
   @title = "Skill Tracking"
   @students = Student.all
@@ -29,8 +32,58 @@ post "/students/new" do
 end
 
 get "/skill_tracks/edit/:mongo_id" do
+  @title = "Skill Tracking"
+  @students = Student.all
+  @grading_periods = GradingPeriod.all
+  @skill_tracks = SkillTrack.all
+  @teachers = Teacher.all
+  @levels  = ["", "L12", "L34", "L56", "L78" ]
+  @student_levels  = [ "", "1", "2", "3", "4", "5", "6", "7", "8" ]
+  @eal_sss_status = ["", "EAL", "SSS"]
+  @thai_native = ["", "Native", "Non-Native"]
+  this_track = SkillTrack.find("#{params[:mongo_id]}")
+  @kid = Student.find("#{this_track.student.id}")
   haml :"skill_tracks/edit"
 end
+
+post "/skill_tracks/update/:mongo_id" do
+  form = params[:form_data]
+  this_track = SkillTrack.find(params[:mongo_id])
+  this_track.update_attributes!(:language_arts_teacher  => form["language_arts_teacher"]) unless form["language_arts_teacher"] == ""
+  this_track.update_attributes!(:language_arts_level    => form["language_arts_level"])   unless form["language_arts_level"]   == ""
+  this_track.update_attributes!(:social_studies_teacher => form["language_arts_teacher"]) unless form["language_arts_teacher"] == ""
+  this_track.update_attributes!(:social_studies_level   => form["language_arts_level"])   unless form["language_arts_level"]   == ""
+  this_track.update_attributes!(:science_teacher        => form["language_arts_teacher"]) unless form["language_arts_teacher"] == ""
+  this_track.update_attributes!(:science_level          => form["language_arts_level"])   unless form["language_arts_level"]   == ""
+
+  this_track.update_attributes!(:math_teacher           => form["math_teacher"])          unless form["math_teacher"]          == ""
+  this_track.update_attributes!(:math_level             => form["math_level"])            unless form["math_level"]            == ""
+                                                                                       
+  this_track.update_attributes!(:art_teacher            => form["art_teacher"])           unless form["art_teacher"]           == ""
+  this_track.update_attributes!(:art_level              => form["art_level"])             unless form["art_level"]             == ""
+  this_track.update_attributes!(:ict_teacher            => form["ict_teacher"])           unless form["ict_teacher"]           == ""
+  this_track.update_attributes!(:ict_level              => form["ict_level"])             unless form["ict_level"]             == ""
+  this_track.update_attributes!(:music_teacher          => form["music_teacher"])         unless form["music_teacher"]         == ""
+  this_track.update_attributes!(:music_level            => form["music_level"])           unless form["music_level"]           == ""
+  this_track.update_attributes!(:pe_teacher             => form["pe_teacher"])            unless form["pe_teacher"]            == ""
+  this_track.update_attributes!(:pe_level               => form["pe_level"])              unless form["pe_level"]              == ""
+  this_track.update_attributes!(:thai_teacher           => form["thai_teacher"])          unless form["thai_teacher"]          == ""
+  this_track.update_attributes!(:thai_level             => form["thai_level"])            unless form["thai_level"]            == ""
+  
+  this_track.update_attributes!(:work_study_teacher     => form["work_study_teacher"])    unless form["work_study_teacher"]    == ""
+  this_track.update_attributes!(:work_study_level       => form["work_study_level"])      unless form["work_study_level"]      == ""
+  this_track.update_attributes!(:citizenship_teacher    => form["work_study_teacher"])    unless form["work_study_teacher"]    == ""
+  this_track.update_attributes!(:citizenship_level      => form["work_study_level"])      unless form["work_study_level"]      == ""
+  redirect to("/skill_tracks/edit/#{params[:mongo_id]}")
+end
+post "/students/update/:mongo_id" do 
+  form = params[:form_data_2]
+  pants = Student.find(params[:mongo_id])
+  pants.update_attributes!(:nickname => form["nickname"]) unless form["nickname"] == ""
+  pants.update_attributes!(:name => form["name"]) unless form["name"] == ""
+  redirect to("/students/edit/#{params[:mongo_id]}")
+end
+
 
 get "/skill_tracks/:mongo_id" do
   @title = "Skill Tracking"
