@@ -1,8 +1,8 @@
 -# coding: utf-8
 - these_outcomes.outcomes.asc(:indexo).each do |o|
 	%li.list_row
-		#{o.texto}
-		%a{ :class => "edit_link", :href => "/outcomes/edit/#{o.id}" } EDIT
+		#{o.indexo}: #{o.texto}
+		%a{ :class => "edit_link", :href => "/outcomes/edit/#{o.outcome_set.id}/#{o.id}" } EDIT
 		%form{ :class => "delete", :action => "/outcomes/delete/#{o.outcome_set.id}/#{o.id}", :method => "POST" }
 			%input{ :type => "hidden", :name => "_method", :value => "POST" }
 			%input{ :class => "delete", :type => "submit", :value => "Delete Outcome", :title => "Delete Outcome" }
