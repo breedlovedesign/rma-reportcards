@@ -9,7 +9,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :skill_tracks,        "Skill Tracking",   "/skill_tracks"
     primary.item :outcomes,            "Outcomes",         "/outcomes" do |outcome|
       outcome.item :la,                   "Language Arts",       "/outcomes/language_arts"   
-      outcome.item :math,                 "Mathematics",         "/outcomes/mathematics"
+      outcome.item :math,                 "Mathematics",         "/outcomes/math"
       outcome.item :social_studies,       "Social Studies",      "/outcomes/social_studies"
       outcome.item :science,              "Science",             "/outcomes/science"
       outcome.item :work_study,           "Work & Study Habits", "/outcomes/work_study"

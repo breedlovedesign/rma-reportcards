@@ -5,7 +5,16 @@ li#math a, li#la a, li#social_studies a, li#science a , li#work_study a , li#cit
 
 .outcome { width: 600px; height: 25px }
 
+p.details {
+    padding-left: 40px;
+}
 
+p.details span.label {
+    float: left;
+    clear: left;
+    width: 60px;
+    margin-left: -40px;
+}
 
 body {
 	font-family: Helvetica, Arial, sans-serif;

@@ -39,8 +39,8 @@ end
 
 post "/outcomes/new" do 
   p = params[:form_data]
-  o = Outcome.where(:subject => p["subject"], :level => p["level"]).create 
-  redirect to("/outcomes/edit/#{o.id}")
+  outcome_set = OutcomeSet.where(:subject => p["subject"], :level => p["level"]).create 
+  redirect to("/outcomes/list/#{outcome_set.subject.id}")
 end
 
 get "/outcomes/edit/:mongo_id" do
@@ -71,5 +71,34 @@ get "/outcomes/list/:subject_id" do
   @outcome_sets = OutcomeSet.where(:subject => @subject.id)
   haml :"outcomes/list_by_subject"
 end
+
+get "/outcomes/:outcome_name" do
+	subject = Subject.find_by(:subject_id => params[:outcome_name] )
+	@outcome_set = OutcomeSet.find_by(:subject_id =>   subject.id)
+	redirect to("outcomes/list/#{@outcome_set.subject.id}")
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
