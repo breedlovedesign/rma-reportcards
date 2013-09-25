@@ -1,0 +1,5 @@
+-# coding: utf-8
+%h3 #{@subject.name.capitalize} Outcomes
+%ul
+	- @outcomes.each do |o|
+		= partial( :"/outcomes/outcomes.haml", {:outcome => o } )

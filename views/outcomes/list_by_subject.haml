@@ -1,0 +1,6 @@
+-# coding: utf-8
+%hr
+%h1 #{@subject.name}
+- @outcome_sets.sort_by {|obj| obj.level}.each do |o|
+	%p #{o.level} Outcomes
+	= partial( :"outcomes/outcome_list", {:these_outcomes => o } )

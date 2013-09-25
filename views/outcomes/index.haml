@@ -1,1 +1,13 @@
 -# coding: utf-8
+%form{:action => "/outcomes/new", :method => "POST"}
+	%p Select a Subject
+	%select{:name => "form_data[subject]"}
+		- @subjects.each do |s|
+			%option{:value => "#{s.id}"}
+				#{s.name}
+	%p Select a Level
+	%select{:name => "form_data[level]"}
+		- @levels.each do |l|
+			%option{:value => l}
+				#{l}
+	%input.button{:type => "submit", :value => "New Outcomes", :title => "New Outcomes", :class => "button"}

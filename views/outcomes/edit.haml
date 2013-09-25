@@ -1,0 +1,6 @@
+-# coding: utf-8
+%h1 Enter Outcomes for #{@subject.name} for #{@outcome.level}
+%form{:action => "/outcomes/update/#{@outcome.id}", :method => "POST"}
+	%p Edit Outcome
+	%input.outcome{:type => "textarea", :value => "First Outcome", :name => "form_data[first_outcome]"}
+	%input.button{:type => "submit", :value => "Update Outcomes", :title => "Update Outcomes", :class => "button"}

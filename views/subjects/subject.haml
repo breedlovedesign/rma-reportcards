@@ -1,6 +1,6 @@
 -# coding: utf-8
 %li{:class => "list_row"}
-	= subject.subject_id.ljust(28, ".") + subject.name.ljust(23, ".")
+	= subject.subject_id.ljust(18, ".") + subject.name.ljust(37, ".")
 	%a{ :class => "edit_link", :href => "/subjects/edit/#{subject.id}" } EDIT
 	%form{ :class => "delete", :action => "/subjects/delete/#{subject.id}", :method => "POST" }
 		%input{ :type => "hidden", :name => "_method", :value => "DELETE" }

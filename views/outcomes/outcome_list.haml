@@ -1,0 +1,16 @@
+-# coding: utf-8
+- these_outcomes.outcomes.asc(:indexo).each do |o|
+	%li.list_row
+		#{o.texto}
+		%a{ :class => "edit_link", :href => "/outcomes/edit/#{o.id}" } EDIT
+		%form{ :class => "delete", :action => "/outcomes/delete/#{o.outcome_set.id}/#{o.id}", :method => "POST" }
+			%input{ :type => "hidden", :name => "_method", :value => "POST" }
+			%input{ :class => "delete", :type => "submit", :value => "Delete Outcome", :title => "Delete Outcome" }
+
+%form{:action => "/outcomes/add_outcome/#{these_outcomes.id}", :method => "POST"}
+	%input{:type => "textarea", :name => "add_outcome[item]", :placeholder => "Outcome Text"}
+	%input{:type => "text", :name => "add_outcome[index]", :placeholder => "Index, ex '1'"}
+	%input.button{:type => "submit", :value => "New Outcome", :title => "New Outcome", :class => "button"}
+%br
+%hr	
+	

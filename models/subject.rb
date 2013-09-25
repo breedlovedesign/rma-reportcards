@@ -4,4 +4,5 @@ class Subject
   field :subject_id
   field :name
   belongs_to :skill_tracking
+  has_many :outcomes
 end
