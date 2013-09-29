@@ -39,7 +39,9 @@ end
 
 post "/outcomes/new" do 
   p = params[:form_data]
-  outcome_set = OutcomeSet.where(:subject => p["subject"], :level => p["level"]).create 
+  outcome_set = OutcomeSet.where(:level => p["level"]).create 
+  outcome_set.subject = Subject.find_by( :id => "#{p["subject"]}" )
+  outcome_set.save 
   redirect to("/outcomes/list/#{outcome_set.subject.id}")
 end
 

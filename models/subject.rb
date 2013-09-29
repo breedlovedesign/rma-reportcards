@@ -3,6 +3,5 @@ class Subject
   include Mongoid::Document
   field :subject_id
   field :name
-  belongs_to :skill_tracking
-  has_many :outcomes
+  has_many :outcome_sets
 end

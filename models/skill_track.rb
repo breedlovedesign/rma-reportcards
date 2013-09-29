@@ -31,6 +31,7 @@ class SkillTrack
   field :eal_sss_status
   field :thai_native
   
+  embeds_many   :outcome_sets
   belongs_to :student
   belongs_to :grading_period
   belongs_to :teacher # homeroom teacher, aka classroom teacher
