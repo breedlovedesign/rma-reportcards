@@ -26,7 +26,8 @@ post "/students/update/:mongo_id" do
   pants = Student.find(params[:mongo_id])
   pants.update_attributes!(:nickname => form["nickname"]) unless form["nickname"] == ""
   pants.update_attributes!(:name => form["name"]) unless form["name"] == ""
-  redirect to("/students/edit/#{params[:mongo_id]}")
+  #redirect to("/students/edit/#{params[:mongo_id]}")
+  redirect to("/students")
 end
 
 post "/students/delete_nickname/:mongo_id" do
