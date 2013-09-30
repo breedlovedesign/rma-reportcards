@@ -23,5 +23,13 @@
 	%article
 		= yield
 		%footer.foot
-			%h4 Link to Markdown ref, Link to documentation. (Incomplete)
+			.footer
+				:markdown
+					When working with comments, surround text to be bolded with two asterisks. Single astrerisks will produce italicized text.
+					
+					Example: \*\*This text will be bold.\*\*  Produces: **This text will be bold.**
+					
+					Example: \*This text will be italicized.\*  Produces: *This text will be italicized.*
+			%h4
+				%a{:href => "http://daringfireball.net/projects/markdown/syntax#em", :target => "blank"} Complete Markdown Reference
 %h2
