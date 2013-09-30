@@ -9,11 +9,6 @@
 	%select{:name => "grap[quarter_id]"}
 		- @grading_periods.each do |g|
 			%option{:value => "#{g.id}"}
-				#{g.name}
-	%p Select the Above Student's Homeroom Teacher
-	%select{:name => "grap[teacher_id]"}
-		- @teachers.each do |t|
-			%option{:value => "#{t.id}"}
-				#{t.name}		
+				#{g.name}	
 	%br				
 	%input.button{:type => "submit", :value => "Edit Skill Tracking", :title => "Edit Skill Tracking", :class => "button"}

@@ -1,5 +1,5 @@
 # encoding: utf-8
-@levels = ["L12", "L34"]
+@levels = ["L12", "L34", "L56", "L78"]
 
 
 get "/skill_tracks" do
@@ -24,13 +24,10 @@ post "/skill_track/new" do
   
   if old_track.nil?
     skill_track_obj = student.skill_tracks.create
-    skill_track_obj.teacher = Teacher.find("#{ form["teacher_id"] }")
     skill_track_obj.grading_period = grading_period
     skill_track_obj.save
     redirect to("/skill_tracks/edit/#{skill_track_obj.id}")
   else
-    old_track.teacher = Teacher.find("#{ form["teacher_id"] }")
-    old_track.save
     redirect to("/skill_tracks/edit/#{old_track.id}")
   end
   
@@ -50,7 +47,7 @@ get "/skill_tracks/edit/:mongo_id" do
   @teachers = Teacher.all
   @levels  = ["", "L12", "L34", "L56", "L78" ]
   @student_levels  = [ "", "1", "2", "3", "4", "5", "6", "7", "8" ]
-  @eal_sss_status = ["", "EAL", "SSS"]
+  @eal_sss_status = ["", "None", "EAL", "SSS"]
   @thai_native = ["", "Native", "Non-Native"]
   @this_track = SkillTrack.find("#{params[:mongo_id]}")
   @kid = Student.find("#{@this_track.student.id}")
