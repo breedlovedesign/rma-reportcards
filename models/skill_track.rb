@@ -35,6 +35,26 @@ class SkillTrack
   belongs_to :student
   belongs_to :grading_period
   belongs_to :teacher # homeroom teacher, aka classroom teacher
+
+  def has_teacher teacher
+    [self.language_arts_teacher, self.math_teacher, self.social_studies_teacher, self.science_teacher, self.art_teacher, self.ict_teacher, self.music_teacher, self.thai_teacher, self.pe_teacher, self.work_study_teacher, self.citizenship_teacher].include?(teacher)
+  end
+
+  def get_outcome_sets
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "language_arts"), :level => self.language_arts_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "math"), :level => self.math_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "social_studies"), :level => self.social_studies_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "science"), :level => self.science_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "art"), :level => self.art_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "ict"), :level => self.ict_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "music"), :level => self.music_level).clone )
+    if self.thai_native == "None" or self.thai_native == ""
+      self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "thai"), :level => self.thai_level).clone )
+    else
+      self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "thai"), :level => "#{self.thai_level}-Native").clone )
+    end
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "pe"), :level => self.pe_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "work_study"), :level => self.work_study_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "citizenship"), :level => self.citizenship_level).clone )
+  end
 end
-
-

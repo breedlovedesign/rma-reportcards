@@ -10,4 +10,8 @@ class Student
   	bday = "#{self.dob.strftime("%B %d, %Y")}"
   	bday
   end
+
+  def embed_outcome_sets grading_period
+  	
+  end
 end

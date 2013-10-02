@@ -15,3 +15,7 @@ delete '/teachers/delete/:id' do
   Teacher.where(id: params[:id]).destroy
   redirect to('/teachers')
 end
+
+get "/teacher/:id" do
+	@students = Student
+end
