@@ -48,7 +48,7 @@ class SkillTrack
     self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "art"), :level => self.art_level).clone )
     self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "ict"), :level => self.ict_level).clone )
     self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "music"), :level => self.music_level).clone )
-    if self.thai_native == "None" or self.thai_native == ""
+    if self.thai_native == "Non-Native" or self.thai_native == ""
       self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "thai"), :level => self.thai_level).clone )
     else
       self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "thai"), :level => "#{self.thai_level}-Native").clone )
