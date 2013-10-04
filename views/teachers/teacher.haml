@@ -1,6 +1,6 @@
 %li{:class => "list_row"}
 	= teacher.name
-	
+	%a{ :class => "edit_link", :href => "/teachers/edit/#{teacher.id}" } EDIT
 	%form{ :class => "delete", :action => "/teachers/delete/#{teacher.id}", :method => "POST" }
 		%input{ :type => "hidden", :name => "_method", :value => "DELETE", }
 		%input{ :class => "delete", :type => "submit", :value => "Delete Teacher", :title => "Delete Teacher" }

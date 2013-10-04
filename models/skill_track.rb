@@ -36,8 +36,8 @@ class SkillTrack
   belongs_to :grading_period
   belongs_to :teacher # homeroom teacher, aka classroom teacher
 
-  def has_teacher teacher
-    [self.language_arts_teacher, self.math_teacher, self.social_studies_teacher, self.science_teacher, self.art_teacher, self.ict_teacher, self.music_teacher, self.thai_teacher, self.pe_teacher, self.work_study_teacher, self.citizenship_teacher].include?(teacher)
+  def has_teacher teacher_id
+    [self.language_arts_teacher, self.math_teacher, self.social_studies_teacher, self.science_teacher, self.art_teacher, self.ict_teacher, self.music_teacher, self.thai_teacher, self.pe_teacher, self.work_study_teacher, self.citizenship_teacher].include?(teacher_id)
   end
 
   def get_outcome_sets

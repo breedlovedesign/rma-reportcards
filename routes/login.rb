@@ -1,41 +1,40 @@
-get '/login' do
-  if current_user
-    # The following line just tests to see that it's working.
-    #   If you've logged in your first user, '/' should load: "1 ... 1";
-    #   You can then remove the following line, start using view templates, etc.
-    current_user.id.to_s + " ... " + session[:user_id].to_s 
-  else
-    '<a href="/sign_up">create an account</a> or <a href="/sign_in">sign in with Twitter</a>'
-    # if you replace the above line with the following line, 
-    #   the user gets signed in automatically. Could be useful. 
-    #   Could also break user expectations.
-    # redirect '/auth/twitter'
-  end
+# encoding: utf-8
+get "/login" do
+  @title = "Login"	
+  @teachers = Teacher.all
+  haml :"login/index"
 end
 
-get '/auth/:name/callback' do
-  auth = request.env["omniauth.auth"]
-  user = User.first_or_create({ :uid => auth["uid"]}, {
-    :uid => auth["uid"],
-    :nickname => auth["info"]["nickname"], 
-    :name => auth["info"]["name"],
-    :created_at => Time.now })
-  session[:user_id] = user.id
-  redirect '/'
+post "/login/go" do 
+  p = params[:login_form]
+  if p["teacher"] == "admin" && (p["password"] == "computer2")
+  	session[:teacher_id] = "admin"
+ 	redirect to('/admin')
+  elsif p["password"] == Teacher.find_by(:id => p["teacher"]).password
+  	session[:teacher_id] = Teacher.find_by(:id => p["teacher"]).id
+  	redirect to('/teachers/students')
+  end
+  
 end
 
-# any of the following routes should work to sign the user in: 
-#   /sign_up, /signup, /sign_in, /signin, /log_in, /login
-["/sign_in/?", "/signin/?", "/log_in/?", "/login/?", "/sign_up/?", "/signup/?"].each do |path|
-  get path do
-    redirect '/auth/twitter'
-  end
+get "/teachers/students" do
+	quarter = GradingPeriod.find_by(:id => "5248ea24b924a184d600000c")
+	logged_in_teacher = Teacher.find_by(:id => session[:teacher_id])
+	@title = "#{logged_in_teacher.name}'s Students"	
+	students = Student.all
+	@students = []
+
+	students.each do |student|
+		tracks = student.skill_tracks.where(:grading_period => quarter.id)
+		tracks.each do |track|
+			if track.has_teacher(logged_in_teacher.id.to_s)
+				@students << student
+			end
+		end
+		
+	end
+
+
+  haml :"/teachers/students"
 end
 
-# either /log_out, /logout, /sign_out, or /signout will end the session and log the user out
-["/sign_out/?", "/signout/?", "/log_out/?", "/logout/?"].each do |path|
-  get path do
-    session[:user_id] = nil
-    redirect '/'
-  end
-end

@@ -1,0 +1,10 @@
+-# coding: utf-8
+%p Hello. Please select your name and login.
+%form{:action => "/login/go", :method => "POST"}
+	%select{:name => "login_form[teacher]"}
+		- @teachers.each do |t|
+			%option{:value => t.id} #{t.name}
+		%option{:value => "admin"} Administrator
+	%input{:type => "text", :name => "login_form[password]", :placeholder => "password"}
+	%br
+	%input.button{:type => "submit", :value => "Login", :title => "Login", :class => "button"}

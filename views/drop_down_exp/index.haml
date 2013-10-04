@@ -1,6 +1,0 @@
--# coding: utf-8
-%p hello
-%select
-	- @teachers.each do |t|
-		%option{:value => t.teacher_id}
-			#{t.name}

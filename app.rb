@@ -1,18 +1,11 @@
 # encoding: utf-8
 require 'sinatra'
-require 'omniauth'
-require 'omniauth-twitter'
+require 'haml'
 
 require_relative 'minify_resources'
 class RmaReports < Sinatra::Application
 	enable :sessions
 
-	use Rack::Session::Cookie
-	use OmniAuth::Strategies::Developer
-	use OmniAuth::Strategies::Twitter, 'YRbqYF5AtGpj4CPYwLFsIQ', 'PqgnFQZBoKu9mdAfEwc16k46PhwNEych2lw344Uo'
-
-
-	
 	configure :production do
 		set :haml, { :ugly=>true }
 		set :clean_trace, true
@@ -24,15 +17,12 @@ class RmaReports < Sinatra::Application
 	configure :development do
 		set :css_files, MinifyResources::CSS_FILES
 		set :js_files,  MinifyResources::JS_FILES
+		set :session_secret, 'all_your_base'
 	end
 
 	helpers do
 		include Rack::Utils
 		alias_method :h, :escape_html
-
-		def current_user
-			@current_user ||= User.get(session[:user_id]) if session[:user_id]
-		end
 	end
 end
 

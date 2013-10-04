@@ -1,1 +1,5 @@
-%p stub
+-# coding: utf-8
+%h3 Students
+%ul.students
+	- @students.each do |s|
+		= partial( :"/listing_student", {:student => s } )

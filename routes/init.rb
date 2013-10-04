@@ -4,14 +4,8 @@ require "bundler/setup"
 require "haml"
 require "mongoid"
 require "sinatra/flash"
-require "digest/sha1"
-#require "rack-flash"
-#require "sinatra-authentication"
 require "sinatra/form_helpers"
 require "sinatra/simple-navigation"
-#require 'sinatra/simple_auth'
-
-
 
 require_relative 'main'
 require_relative 'students'
