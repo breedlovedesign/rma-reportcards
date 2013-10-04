@@ -1,0 +1,11 @@
+-# coding: utf-8
+%p Hello. Please set the Current Grading Period for all teachers' activites.
+%form{:action => "/admin/go", :method => "POST"}
+	%select{:name => "admin_form[current_quarter]"}
+		- @quarters.each do |q|
+			%option{:value => q.id} #{q.name}
+	%br
+	%p Optionally enter a message the teachers will see while they are logged in.
+	%input{:type => "text", :name => "admin_form[message]", :placeholder => "message for teachers"}
+	%br
+	%input.button{:type => "submit", :value => "Submit", :title => "Submit", :class => "button"}

@@ -18,6 +18,8 @@
 %section
 	%header.top
 		%h2.top= @title.upcase unless @title.nil?
+		%p A message from the admin: #{$message}
+		%p The current grading period is: #{GradingPeriod.find($current_quarter).name}
 		%div.nav
 			=render_navigation
 	%article

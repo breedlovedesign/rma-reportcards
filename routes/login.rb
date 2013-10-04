@@ -10,6 +10,8 @@ post "/login/go" do
   if p["teacher"] == "admin" && (p["password"] == "computer2")
   	session[:teacher_id] = "admin"
  	redirect to('/admin')
+  elsif p["teacher"] == "admin" && (p["password"] != "computer2")
+  	redirect to('/login')
   elsif p["password"] == Teacher.find_by(:id => p["teacher"]).password
   	session[:teacher_id] = Teacher.find_by(:id => p["teacher"]).id
   	redirect to('/teachers/students')
