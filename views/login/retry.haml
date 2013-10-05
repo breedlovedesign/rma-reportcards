@@ -20,7 +20,7 @@
 						%ul
 							%li
 								.usernames
-									%select{:name => "login_form[teacher]"}
+									%select.usernames{:name => "login_form[teacher]"}
 										%option{:value => "fail"} ** Select Your Username **
 										- @teachers.each do |t|
 											-if session[:teacher_id] == t.id
@@ -31,9 +31,11 @@
 											%option{:value => "admin", :selected => 'selected'} Administrator
 										-else
 											%option{:value => "admin"} Administrator
+								%p.reminder ⬆ make sure you select the correct username		
 							%br
 							%li
 								%input{:placeholder => "Password", :type => "password", :name => "login_form[password]"}
+								%p.reminder ⬆ make sure you got your password right
 							%br
 							%li
 								%input.button{:type => "submit", :value => "Login", :title => "Login", :class => "button"}

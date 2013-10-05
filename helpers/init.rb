@@ -4,3 +4,6 @@ RmaReports.helpers PartialPartials
 
 require_relative 'nicebytes'
 RmaReports.helpers NiceBytes
+
+require_relative 'authorize'
+RmaReports.helpers Authorize

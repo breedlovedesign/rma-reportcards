@@ -3,6 +3,9 @@
 %p Name: #{@teacher.name}
 %div{:class => "container_width"}
 	%form{:action => "/teachers/update/#{@teacher.id}", :method => "POST"}
+		%p Teacher name
 		%input{:placeholder => "#{@teacher.name}", :type => "text", :name => "form_data_2[name]"}
+		%p Set password
 		%input{:placeholder => "#{@teacher.password}", :type => "text", :name => "form_data_2[password]"}
+		%br
 		%input.button{:type => "submit", :value => "Update teacher", :title => "Update teacher", :class => "button"}

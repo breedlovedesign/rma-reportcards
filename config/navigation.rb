@@ -20,5 +20,6 @@ SimpleNavigation::Configuration.run do |navigation|
       outcome.item :pe,                   "PE",                 "/outcomes/pe"
       outcome.item :thai,                 "Thai",                 "/outcomes/thai"
     end
+    primary.item :logout,              "Logout",            "/logout"  
   end
 end 

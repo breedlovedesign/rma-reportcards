@@ -1,9 +1,9 @@
 # encoding: utf-8
 class RmaReports < Sinatra::Application
 	get "/" do
-		@title = "Get your report on!"				
-    @students = Student.all
-    @teachers = Teacher.all
-    haml :index
+		@title = "Progress so far…"
+		@students = Student.all
+		@teachers = Teacher.all
+		haml :index, :layout => false
 	end
 end

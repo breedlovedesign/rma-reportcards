@@ -5,21 +5,13 @@
 %meta{ :charset => "utf-8" }
 %meta{ :content => "", :name => "description" }
 %meta{ :content => "", :name => "author" }
-- if settings.css_files == :blob
-	%link(type="text/css" rel="stylesheet" href="/blob.css?modified=#{File.mtime('public/blob.css').to_i}" )
-- else
-	- settings.css_files.each do |css|
-		%link(type="text/css" rel="stylesheet" href="/css/#{css}" )
-- if settings.js_files == :blob
-	%script(type="text/javascript" src="/blob.js?modified=#{File.mtime('public/blob.js').to_i}")
-- else
-	- settings.js_files.each do |js|
-		%script(type="text/javascript" src="/js/#{js}")
+%link(type="text/css" rel="stylesheet" href="/css/common.css" )
 %section
 	%header.top
 		%h2.top= @title.upcase unless @title.nil?
 		%p A message from the admin: #{$message}
-		%p The current grading period is: #{GradingPeriod.find($current_quarter).name}
+		%p The current grading period is: #{GradingPeriod.find($current_quarter).gpname unless $current_quarter.nil?}
+		%p= if session[:teacher_id].nil? then "You are not logged in." else "You are logged in  as " + (session[:teacher_id] == "admin" ? "Administrator" : Teacher.find_by(:id => session[:teacher_id]).name) end
 		%div.nav
 			=render_navigation
 	%article

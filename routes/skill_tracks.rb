@@ -3,6 +3,7 @@
 
 
 get "/skill_tracks" do
+	admin?
   @title = "Skill Tracking"
   @students = Student.all
   @grading_periods = GradingPeriod.all
@@ -15,6 +16,7 @@ get "/skill_tracks" do
 end
 
 post "/skill_track/new" do
+	admin?
   form = params[:grap]
   # look at all skill tracks, list those that belong to this student
   # of those, are any already for this quarter? If no, make new. If yes edit
@@ -33,13 +35,15 @@ post "/skill_track/new" do
   
 end
 
-post "/students/new" do 
+post "/students/new" do
+	admin?
   p = params[:student]
   Student.where( :name => p["name"], :nickname => p["nickname"] ).create 
   redirect to('/students')
 end
 
 get "/skill_tracks/edit/:mongo_id" do
+	admin?
   @title = "Skill Tracking"
   @students = Student.all
   @grading_periods = GradingPeriod.all
@@ -55,6 +59,7 @@ get "/skill_tracks/edit/:mongo_id" do
 end
 
 post "/skill_tracks/update/:mongo_id" do
+	admin?
   form = params[:form_data]
   this_track = SkillTrack.find(params[:mongo_id])
   this_track.teacher = Teacher.find("#{ form["homeroom_teacher"] }")                      unless form["homeroom_teacher"]      == ""
@@ -91,7 +96,8 @@ post "/skill_tracks/update/:mongo_id" do
   this_track.save
   redirect to("/skill_tracks/edit/#{params[:mongo_id]}")
 end
-post "/students/update/:mongo_id" do 
+post "/students/update/:mongo_id" do
+	admin?
   form = params[:form_data_2]
   pants = Student.find(params[:mongo_id])
   pants.update_attributes!(:nickname => form["nickname"]) unless form["nickname"] == ""
@@ -101,6 +107,7 @@ end
 
 
 get "/skill_tracks/:mongo_id" do
+	admin?
   @title = "Skill Tracking"
   @skill_tracks = SkillTrack.all
   haml :"skill_tracks/index"
