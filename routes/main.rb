@@ -4,6 +4,6 @@ class RmaReports < Sinatra::Application
 		@title = "Progress so far…"
 		@students = Student.all
 		@teachers = Teacher.all
-		haml :index, :layout => false
+		haml :index, :layout => :nobody_layout
 	end
 end
