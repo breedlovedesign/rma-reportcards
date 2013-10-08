@@ -11,5 +11,5 @@ post "/admin/go" do
 	p = params[:admin_form]
 	$message = p["message"] unless p["message"] == ""
 	$current_quarter = p["current_quarter"]
-	redirect to('/')
+	redirect to('/admin')
 end

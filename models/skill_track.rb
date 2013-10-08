@@ -41,20 +41,21 @@ class SkillTrack
   end
 
   def get_outcome_sets
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "language_arts"), :level => self.language_arts_level).clone )
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "math"), :level => self.math_level).clone )
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "social_studies"), :level => self.social_studies_level).clone )
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "science"), :level => self.science_level).clone )
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "art"), :level => self.art_level).clone )
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "ict"), :level => self.ict_level).clone )
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "music"), :level => self.music_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "language_arts").id, :level => self.language_arts_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "math").id, :level => self.math_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "social_studies").id, :level => self.social_studies_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "science").id, :level => self.science_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "art").id, :level => self.art_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "ict").id, :level => self.ict_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "music").id, :level => self.music_level).clone )
     if self.thai_native == "Non-Native" or self.thai_native == ""
-      self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "thai"), :level => self.thai_level).clone )
+      self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "thai").id, :level => self.thai_level).clone )
     else
-      self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "thai"), :level => "#{self.thai_level}-Native").clone )
+      self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "thai").id, :level => "#{self.thai_level}-Native").clone )
     end
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "pe"), :level => self.pe_level).clone )
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "work_study"), :level => self.work_study_level).clone )
-    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "citizenship"), :level => self.citizenship_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "pe").id, :level => self.pe_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "work_study").id, :level => self.work_study_level).clone )
+    self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "citizenship").id, :level => self.citizenship_level).clone )
+    self.save
   end
 end

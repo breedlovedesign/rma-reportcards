@@ -1,0 +1,4 @@
+-# coding: utf-8
+%h3=Subject.find_by(:id => outcome_set.subject_id).name + " " + outcome_set.level
+- outcome_set.outcomes.each do |o|
+	= partial( :"/grading/outcomes", {:outcome => o } )

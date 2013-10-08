@@ -13,7 +13,7 @@ SimpleNavigation::Configuration.run do |navigation|
       outcome.item :social_studies,       "Social Studies",      "/outcomes/social_studies"
       outcome.item :science,              "Science",             "/outcomes/science"
       outcome.item :work_study,           "Work & Study Habits", "/outcomes/work_study"
-      outcome.item :citizenship,          "Citzenship",          "/outcomes/citzenship"
+      outcome.item :citizenship,          "Citzenship",          "/outcomes/citizenship"
       outcome.item :art,                  "Art",                 "/outcomes/art"
       outcome.item :ict,                  "ICT",                 "/outcomes/ict"
       outcome.item :music,                "Music",               "/outcomes/music"
