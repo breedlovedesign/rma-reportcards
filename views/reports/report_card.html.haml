@@ -1,0 +1,102 @@
+-# coding: UTF-8
+!!! 5
+%html
+	%head
+		%meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => "UTF-8" }
+		%link{:rel => "stylesheet", :type => "text/css", :href => "stylesheets/style.css"}
+	%div{:class => "page"}
+		%div{:id => "logo_img"}
+			%img(src="images/logo.jpg" id="logo")
+		%h1(id="rma" class="cover") Academic Report
+		%h2(id="student_name" class="cover") #{@student.name}
+		%h3(id="dob" class="cover") DOB: #{@student.birthdate}
+		%h1(id="level"  class="cover") #{@student.lev}
+		%div{:id => "cover"}
+			%img{ :id => "cover_img", :src => "images/cover.png"}
+		%div{:id => "address"}
+			%p(class="address") 39/932-933 Soi Nichada Thani, Samakee Road, Pakkret, Nonthaburi, Thailand 11120
+			%p(class="address") E-mail: rma@rose-marie.ac.th	 Phone: (662) 960-3663
+		%div{:class => "page-break"}
+%div{:class => "page"}
+	%table(class="table_heading")
+		%tr
+			%td(class="subjects") Core Subjects
+			%td(class="subjects") Comments
+	= render_file("#{@template_path}outcomes/", "language_arts_#{@student.language_arts_l}.html.haml")
+	= render_file("#{@template_path}outcomes/", "math_#{@student.math_l}.html.haml")
+	= render_file("#{@template_path}outcomes/", "social_studies.html.haml")
+	= render_file("#{@template_path}outcomes/", "science.html.haml")
+	%div{:class => "page-break"}
+%div{:class => "page"}
+	%table(class="table_heading")
+		%tr
+			%td(class="subjects")  Special Subjects
+			%td(class="subjects")  Comments
+	= render_file("#{@template_path}outcomes/", "art.html.haml")
+	= render_file("#{@template_path}outcomes/", "ict.html.haml")
+	= render_file("#{@template_path}outcomes/", "music.html.haml")
+	= render_file("#{@template_path}outcomes/", "pe.html.haml")
+	= render_file("#{@template_path}outcomes/", "thai.html.haml")
+	%div{:class => "page-break"}
+	%div{:class => "page"}
+		= render_file("#{@template_path}outcomes/", "work_study.html.haml")
+		= render_file("#{@template_path}outcomes/", "citizenship.html.haml")
+		%br
+		%p(align="center") All students are assessed according to their individual learning ability.
+		%table
+			%tr
+				%td(colspan="4") Grading Code for Skills, Knowledge, Attainment
+			%tr
+				%td(width="25%")
+				%td(align="right") A –
+				%td Excellent
+				%td D – Needs Improvement
+			%tr
+				%td 
+				%td(align="right") B –
+				%td Good
+				%td E – Unsatisfactory
+			%tr
+				%td 
+				%td(align="right") C –
+				%td Satisfactory
+				%td NA – Not Applicable
+		%table{ :id => "attendance" }
+			%tr
+				%td{ :id => "attendance_title", :colspan => 5 } Attendance
+			%tr
+				%td Quarter
+				%td 1
+				%td 2
+				%td 3
+				%td 4
+			%tr
+				%td School Days
+				%td #{@student.q1days}
+				%td #{@student.q2days} 
+				%td #{@student.q3days}
+				%td #{@student.q4days}
+			%tr
+				%td Days Absent
+				%td #{@student.q1abs}
+				%td #{@student.q2abs} 
+				%td #{@student.q3abs}
+				%td #{@student.q4abs}
+			%tr
+				%td Days Tardy
+				%td #{@student.q1tards}
+				%td #{@student.q2tards} 
+				%td #{@student.q3tards}
+				%td #{@student.q4tards}
+				
+		%table
+			%tr 
+				%td Rose Marie Wanchupela, Academic Director
+				%td June 7th, 2013
+			%tr
+				%td #{@student.classroom_t}, Classroom Teacher
+				%td June 7th, 2013
+				
+	<!--<script src="js/jquery-1.4.2.min.js"></script>-->
+	<script src="js/yui-min.js"></script>
+	<script src="js/sweet-justice.js"></script>

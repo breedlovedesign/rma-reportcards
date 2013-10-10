@@ -1,0 +1,20 @@
+-# coding: UTF-8
+%table(class="special")
+	%tr(class="subject")
+		%td(class="table_header") #{@student.ict}
+	%tr
+		%td(class="teacher") Teacher #{@student.ict_t}
+%table(class="special")
+	%tr(class="o_g_c_set")
+		%td(class="nest")
+			%table(class="nested")
+				%tr(class="borderless")
+					%td(class="setwidth-o")
+					%td(class="setwidth-g")
+				- @student.ict_o_g_pairs.each do |pair|
+					%tr(class="o_g_pair")
+						%td(class="outcome")= "#{pair[0]}"
+						%td(class="grade")= "#{pair[1]}"
+			%td(class="comment" class="sweet-justice")
+				:markdown
+					#{@student.ict_c}

@@ -1,0 +1,32 @@
+-# coding: UTF-8
+%table(class="core")
+	%tr
+		%td(class="table_header" ) Language Arts ‒ Teacher #{@student.language_arts_t}
+%table(class="core")
+	%tr(class="o_g_c_set")
+		%td
+			%table(class="nested")
+				%tr(class="borderless")
+					%td(class="setwidth-o")
+					%td(class="setwidth-g")
+				%tr
+					%td(class="subhead" colspan="2") Listening and Speaking
+				- @student.language_arts_o_g_pairs[0..3].each do |pair|
+					%tr(class="o_g_pair")
+						%td(class="outcome")= "#{pair[0]}"
+						%td(class="grade")= "#{pair[1]}"
+				%tr
+					%td(class="subhead" colspan="2") Writing
+				- @student.language_arts_o_g_pairs[4..9].each do |pair|
+					%tr(class="o_g_pair")
+						%td(class="outcome")= "#{pair[0]}"
+						%td(class="grade")= "#{pair[1]}"
+				%tr
+					%td(class="subhead" colspan="2") Reading
+				- @student.language_arts_o_g_pairs[10..18].each do |pair|
+					%tr(class="o_g_pair")
+						%td(class="outcome")= "#{pair[0]}"
+						%td(class="grade")= "#{pair[1]}"
+			%td(class="comment" class="sweet-justice")
+				:markdown
+					#{@student.language_arts_c}
