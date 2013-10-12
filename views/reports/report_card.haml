@@ -8,9 +8,10 @@
 		%div{:id => "logo_img"}
 			%img(src="images/logo.jpg" id="logo")
 		%h1(id="rma" class="cover") Academic Report
-		%h2(id="student_name" class="cover") #{@student.name}
-		%h3(id="dob" class="cover") DOB: #{@student.birthdate}
-		%h1(id="level"  class="cover") #{@student.lev}
+		%h1(id="year" class="cover") #{@student_var.year}
+		%h2(id="student_name" class="cover") #{@student_var.name}
+		%h3(id="dob" class="cover") DOB: #{@student_var.birthdate}
+		%h1(id="level"  class="cover") Level #{@student_var.lev}
 		%div{:id => "cover"}
 			%img{ :id => "cover_img", :src => "images/cover.png"}
 		%div{:id => "address"}
@@ -22,8 +23,8 @@
 		%tr
 			%td(class="subjects") Core Subjects
 			%td(class="subjects") Comments
-	= render_file("#{@template_path}outcomes/", "language_arts_#{@student.language_arts_l}.html.haml")
-	= render_file("#{@template_path}outcomes/", "math_#{@student.math_l}.html.haml")
+	= render_file("#{@template_path}outcomes/", "language_arts_#{@student_var.language_arts_l}.html.haml")
+	= render_file("#{@template_path}outcomes/", "math_#{@student_var.math_l}.html.haml")
 	= render_file("#{@template_path}outcomes/", "social_studies.html.haml")
 	= render_file("#{@template_path}outcomes/", "science.html.haml")
 	%div{:class => "page-break"}
@@ -72,30 +73,30 @@
 				%td 4
 			%tr
 				%td School Days
-				%td #{@student.q1days}
-				%td #{@student.q2days} 
-				%td #{@student.q3days}
-				%td #{@student.q4days}
+				%td #{@student_var.q1days}
+				%td #{@student_var.q2days} 
+				%td #{@student_var.q3days}
+				%td #{@student_var.q4days}
 			%tr
 				%td Days Absent
-				%td #{@student.q1abs}
-				%td #{@student.q2abs} 
-				%td #{@student.q3abs}
-				%td #{@student.q4abs}
+				%td #{@student_var.q1abs}
+				%td #{@student_var.q2abs} 
+				%td #{@student_var.q3abs}
+				%td #{@student_var.q4abs}
 			%tr
 				%td Days Tardy
-				%td #{@student.q1tards}
-				%td #{@student.q2tards} 
-				%td #{@student.q3tards}
-				%td #{@student.q4tards}
+				%td #{@student_var.q1tards}
+				%td #{@student_var.q2tards} 
+				%td #{@student_var.q3tards}
+				%td #{@student_var.q4tards}
 				
 		%table
 			%tr 
 				%td Rose Marie Wanchupela, Academic Director
-				%td June 7th, 2013
+				%td #{@signing_date}
 			%tr
-				%td #{@student.classroom_t}, Classroom Teacher
-				%td June 7th, 2013
+				%td #{@student_var.classroom_t}, Classroom Teacher
+				%td #{@signing_date}
 				
 	<!--<script src="js/jquery-1.4.2.min.js"></script>-->
 	<script src="js/yui-min.js"></script>

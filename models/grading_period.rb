@@ -11,4 +11,7 @@ class GradingPeriod
   def name  
     name = "#{self.school_year} – #{self.period_name}"
   end
+  def year  
+    name = "#{self.period_name}  #{self.school_year}"
+  end
 end

@@ -1,7 +1,7 @@
 -# coding: UTF-8
 %table(class="core")
 	%tr
-		%td(class="table_header" ) Social Studies ‒ Teacher #{@student.social_studies_t}
+		%td(class="table_header" ) Social Studies ‒ Teacher #{@student_var.social_studies_t}
 %table(class="core")
 	%tr(class="o_g_c_set")
 		%td
@@ -9,10 +9,10 @@
 				%tr(class="borderless")
 					%td(class="setwidth-o")
 					%td(class="setwidth-g")
-				- @student.social_studies_o_g_pairs.each do |pair|
+				- @student_var.social_studies_o_g_pairs.each do |pair|
 					%tr(class="o_g_pair")
 						%td(class="outcome")= "#{pair[0]}"
 						%td(class="grade")= "#{pair[1]}"
 			%td(class="comment" class="sweet-justice")
 				:markdown
-					#{@student.social_studies_c}
+					#{@student_var.social_studies_c}

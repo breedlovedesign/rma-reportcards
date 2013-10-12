@@ -9,3 +9,11 @@
 	%input{:type => "text", :name => "admin_form[message]", :placeholder => "message for teachers"}
 	%br
 	%input.button{:type => "submit", :value => "Submit", :title => "Submit", :class => "button"}
+%br
+%hr
+%br
+%br
+%hr
+-Student.all.each do |student|
+	%form{:action => "/admin/create_report/#{student.id}", :method => "POST"}
+		%input.button{:type => "submit", :value => "Create #{student.name}'s Report Card", :title => "Create #{student.name}'s Report Card", :class => "button"}

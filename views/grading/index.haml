@@ -10,7 +10,7 @@
 				=@language_arts_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@language_arts_outcome_set.id}", :name => "grades_comments_form[language_arts_outcome_set.id]"}
 			%br
-			- @language_arts_outcome_set.outcomes.each do |o|
+			- @language_arts_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[language_arts_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -65,7 +65,7 @@
 				=@math_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@math_outcome_set.id}", :name => "grades_comments_form[math_outcome_set.id]"}
 			%br
-			- @math_outcome_set.outcomes.each do |o|
+			- @math_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[math_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -120,7 +120,7 @@
 				=@social_studies_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@social_studies_outcome_set.id}", :name => "grades_comments_form[social_studies_outcome_set.id]"}
 			%br
-			- @social_studies_outcome_set.outcomes.each do |o|
+			- @social_studies_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[social_studies_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -175,7 +175,7 @@
 				=@science_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@science_outcome_set.id}", :name => "grades_comments_form[science_outcome_set.id]"}
 			%br
-			- @science_outcome_set.outcomes.each do |o|
+			- @science_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[science_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -230,7 +230,7 @@
 				=@work_study_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@work_study_outcome_set.id}", :name => "grades_comments_form[work_study_outcome_set.id]"}
 			%br
-			- @work_study_outcome_set.outcomes.each do |o|
+			- @work_study_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[work_study_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -285,7 +285,7 @@
 				=@citizenship_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@citizenship_outcome_set.id}", :name => "grades_comments_form[citizenship_outcome_set.id]"}
 			%br
-			- @citizenship_outcome_set.outcomes.each do |o|
+			- @citizenship_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[citizenship_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -340,7 +340,7 @@
 				=@art_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@art_outcome_set.id}", :name => "grades_comments_form[art_outcome_set.id]"}
 			%br
-			- @art_outcome_set.outcomes.each do |o|
+			- @art_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[art_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -395,7 +395,7 @@
 				=@ict_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@ict_outcome_set.id}", :name => "grades_comments_form[ict_outcome_set.id]"}
 			%br
-			- @ict_outcome_set.outcomes.each do |o|
+			- @ict_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[ict_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -449,7 +449,7 @@
 				=@music_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@music_outcome_set.id}", :name => "grades_comments_form[music_outcome_set.id]"}
 			%br
-			- @music_outcome_set.outcomes.each do |o|
+			- @music_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[music_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -504,7 +504,7 @@
 				=@pe_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@pe_outcome_set.id}", :name => "grades_comments_form[pe_outcome_set.id]"}
 			%br
-			- @pe_outcome_set.outcomes.each do |o|
+			- @pe_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[pe_plus_minus_#{o.indexo}]", :value => "+"} +
@@ -559,7 +559,7 @@
 				=@thai_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@thai_outcome_set.id}", :name => "grades_comments_form[thai_outcome_set.id]"}
 			%br
-			- @thai_outcome_set.outcomes.each do |o|
+			- @thai_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
 				%p
 					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
 						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[thai_plus_minus_#{o.indexo}]", :value => "+"} +
