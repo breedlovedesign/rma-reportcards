@@ -12,6 +12,9 @@
 %br
 %hr
 %br
+%p With great power comes great responsibility.
+%form{:action => "/admin/create_reports", :method => "POST"}
+	%input.button{:id => "create_all_reports", :type => "submit", :value => "RECREATE / CREATE ALL REPORTS", :title => "RECREATE / CREATE ALL REPORTS", :class => "button"}
 %br
 %hr
 -Student.all.each do |student|

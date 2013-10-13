@@ -34,7 +34,7 @@ class StudentVar
     skill_track                = student.skill_tracks.find_by(:grading_period => $current_quarter)
     grading_period             = GradingPeriod.find($current_quarter)
     @year                      = grading_period.year
-    @signing_date              = grading_period.signing_date
+    @signing_date              = grading_period.signing_date.strftime("%B %e, %Y")
     @birthdate                 = student.dob.strftime("%B %e, %Y")
     @name                      = student.name
     @lev                       = skill_track.student_level
@@ -138,19 +138,18 @@ class StudentVar
     @q3days                    = student.attendance_set.q3_days
     @q4days                    = student.attendance_set.q4_days
     #
-    @q1abs                     = student.attendance_set.q1_abs
-    @q2abs                     = student.attendance_set.q2_abs
-    @q3abs                     = student.attendance_set.q3_abs
-    @q4abs                     = student.attendance_set.q4_abs
+    @q1abs                     = student.attendance_set.q1_absence
+    @q2abs                     = student.attendance_set.q2_absence
+    @q3abs                     = student.attendance_set.q3_absence
+    @q4abs                     = student.attendance_set.q4_absence
     #
-    @q1tards                   = student.attendance_set.q1_tards
-    @q2tards                   = student.attendance_set.q2_tards
-    @q3tards                   = student.attendance_set.q3_tards
-    @q4tards                   = student.attendance_set.q4_tards
+    @q1tards                   = student.attendance_set.q1_tardy
+    @q2tards                   = student.attendance_set.q2_tardy
+    @q3tards                   = student.attendance_set.q3_tardy
+    @q4tards                   = student.attendance_set.q4_tardy
     #
     @classroom_t               = Teacher.find(skill_track.teacher).name
     
     
   end
 end
-

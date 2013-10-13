@@ -66,6 +66,14 @@ footer {
 	background-color: #aae6e8;
 }
 
+#create_all_reports {
+	background-color: #8fc627;
+}
+
+#create_all_reports:hover {
+	background-color: #dce123;
+}
+
 .button {
 	padding: 10px 20px ;
 	margin-top: 50px;
