@@ -1,0 +1,6 @@
+-# coding: utf-8
+%h2 Students
+%ul.students
+	%li{:class => "list_row"} 
+	- @students.each do |s|
+		= partial( :"attendance/attendance", {:student => s } )

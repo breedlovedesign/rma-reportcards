@@ -1,0 +1,20 @@
+-# coding: utf-8
+!!!
+%link(rel="icon" type="image/png" href="/favicon.png")
+%title= @title
+%meta{ :charset => "utf-8" }
+%meta{ :content => "", :name => "description" }
+%meta{ :content => "", :name => "author" }
+%link(type="text/css" rel="stylesheet" href="/css/common.css" )
+%section
+	%header.top
+		%h2.top= @title.upcase unless @title.nil?
+		%p A message from the admin: #{$message}
+		%p The current grading period is: #{GradingPeriod.find($current_quarter).gpname unless $current_quarter.nil?}
+		%p= "You are logged in  as #{(session[:teacher_id] == "attendance") ? "Attendance" : ""}"
+		%div.nav
+			= partial( :"attendance/attendance_nav" )
+	%article
+		= yield
+		%footer.foot
+			.footer
