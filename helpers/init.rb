@@ -7,3 +7,6 @@ RmaReports.helpers NiceBytes
 
 require_relative 'authorize'
 RmaReports.helpers Authorize
+
+require_relative 'gradesoap'
+RmaReports.helpers Gradesoap

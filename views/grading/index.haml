@@ -10,51 +10,19 @@
 				=@language_arts_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@language_arts_outcome_set.id}", :name => "grades_comments_form[language_arts_outcome_set.id]"}
 			%br
-			- @language_arts_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[language_arts_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[language_arts_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[language_arts_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[language_arts_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @language_arts_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[language_arts_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "language_arts").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @math_outcome_set.skill_track.math_teacher == @teacher.id.to_s
 	%li
@@ -65,51 +33,19 @@
 				=@math_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@math_outcome_set.id}", :name => "grades_comments_form[math_outcome_set.id]"}
 			%br
-			- @math_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[math_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[math_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[math_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[math_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[math_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @math_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[math_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[math_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "math").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @social_studies_outcome_set.skill_track.social_studies_teacher == @teacher.id.to_s
 	%li
@@ -120,51 +56,19 @@
 				=@social_studies_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@social_studies_outcome_set.id}", :name => "grades_comments_form[social_studies_outcome_set.id]"}
 			%br
-			- @social_studies_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[social_studies_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[social_studies_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[social_studies_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[social_studies_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @social_studies_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[social_studies_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "social_studies").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @science_outcome_set.skill_track.science_teacher == @teacher.id.to_s
 	%li
@@ -175,51 +79,19 @@
 				=@science_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@science_outcome_set.id}", :name => "grades_comments_form[science_outcome_set.id]"}
 			%br
-			- @science_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[science_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[science_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[science_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[science_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[science_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
+			%ul.grade_list
+				- @science_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)|| (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[science_grade_#{o.indexo}]"}
 
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[science_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "science").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @work_study_outcome_set.skill_track.work_study_teacher == @teacher.id.to_s
 	%li
@@ -230,51 +102,19 @@
 				=@work_study_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@work_study_outcome_set.id}", :name => "grades_comments_form[work_study_outcome_set.id]"}
 			%br
-			- @work_study_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[work_study_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[work_study_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[work_study_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[work_study_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[work_study_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @work_study_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[work_study_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[work_study_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "work_study").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @citizenship_outcome_set.skill_track.citizenship_teacher == @teacher.id.to_s
 	%li
@@ -285,51 +125,19 @@
 				=@citizenship_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@citizenship_outcome_set.id}", :name => "grades_comments_form[citizenship_outcome_set.id]"}
 			%br
-			- @citizenship_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[citizenship_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[citizenship_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[citizenship_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[citizenship_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @citizenship_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[citizenship_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "citizenship").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @art_outcome_set.skill_track.art_teacher == @teacher.id.to_s
 	%li
@@ -340,51 +148,19 @@
 				=@art_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@art_outcome_set.id}", :name => "grades_comments_form[art_outcome_set.id]"}
 			%br
-			- @art_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[art_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[art_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[art_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[art_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[art_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @art_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[art_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[art_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "art").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @ict_outcome_set.skill_track.ict_teacher == @teacher.id.to_s
 	%li
@@ -395,50 +171,19 @@
 				=@ict_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@ict_outcome_set.id}", :name => "grades_comments_form[ict_outcome_set.id]"}
 			%br
-			- @ict_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[ict_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[ict_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[ict_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[ict_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[ict_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @ict_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[ict_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[ict_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "ict").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @music_outcome_set.skill_track.music_teacher == @teacher.id.to_s
 	%li
@@ -449,51 +194,19 @@
 				=@music_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@music_outcome_set.id}", :name => "grades_comments_form[music_outcome_set.id]"}
 			%br
-			- @music_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[music_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[music_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[music_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[music_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[music_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @music_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[music_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[music_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "music").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @pe_outcome_set.skill_track.pe_teacher == @teacher.id.to_s
 	%li
@@ -504,51 +217,19 @@
 				=@pe_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@pe_outcome_set.id}", :name => "grades_comments_form[pe_outcome_set.id]"}
 			%br
-			- @pe_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[pe_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[pe_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[pe_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[pe_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[pe_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @pe_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[pe_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[pe_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "pe").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br
-
 
 -if @thai_outcome_set.skill_track.thai_teacher == @teacher.id.to_s
 	%li
@@ -559,47 +240,16 @@
 				=@thai_outcome_set.comment
 			%input{:type => "hidden", :value => "#{@thai_outcome_set.id}", :name => "grades_comments_form[thai_outcome_set.id]"}
 			%br
-			- @thai_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
-				%p
-					-if (o.grade =~ /[+]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[thai_plus_minus_#{o.indexo}]", :value => "+"} +
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[thai_plus_minus_#{o.indexo}]", :value => "+"} +
-					-if (o.grade =~ /[-]/) && ((o.grade != "NA+") &&  (o.grade != "NA-"))
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[thai_plus_minus_#{o.indexo}]", :value => "-"} -
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[thai_plus_minus_#{o.indexo}]", :value => "-"} -
-					
-					-if o.grade =~ /\AA|\+A|\-A/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]", :value => "A"} A
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]",      :value => "A" } A
-					
-					-if o.grade =~ /B/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]", :value => "B"} B
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]",      :value => "B" } B
-					-if o.grade =~ /C/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]", :value => "C"} C
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]",      :value => "C" } C
-					-if o.grade =~ /D/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]", :value => "D"} D
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]",      :value => "D" } D
-					-if o.grade =~ /E/
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]", :value => "E"} E
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]",      :value => "E" } E
-					-if ("#{o.grade}" =~ /NA/) == 0
-						%input{:checked => "checked", :type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]", :value => "NA"} NA
-					-else
-						%input{:type => "radio", :name => "grades_comments_form[thai_grade_#{o.indexo}]",      :value => "NA" } NA
-					
-					
-
-					-if o.grade.nil?; grade = "" 
-					-else; grade = o.grade
-					= ("....." + o.texto + "......." + grade) 
+			%ul.grade_list
+				- @thai_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o| 
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_comments_form[thai_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_comments_form[thai_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
 			%input.button{:type => "submit", :value => "Update #{Subject.find_by(:subject_id => "thai").name} Grades & Comment(s)", :title => "Update Student", :class => "button"}
 			%br

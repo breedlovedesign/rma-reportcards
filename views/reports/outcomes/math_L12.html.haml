@@ -13,3 +13,6 @@
 					%tr(class="o_g_pair")
 						%td(class="outcome")= "#{pair[0]}"
 						%td(class="grade")= "#{pair[1]}"
+			%td(class="comment" class="sweet-justice")
+				:markdown
+					#{@student_var.math_c}

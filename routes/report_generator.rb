@@ -2,7 +2,8 @@ post "/admin/create_report/:mongo_id" do
 
 
 # Set up the directories all relative to 'base_dir'
-base_dir = "/Users/localadmin/development/rma-reportcards/"
+#make it a little bit more portable
+base_dir = "#{Dir.home}/development/rma-reportcards/"
 template_dir = "#{base_dir}views/reports/"
 output_dir = "#{base_dir}/output/html/"
 pdf_dir = "#{base_dir}/output/pdf/"
@@ -14,7 +15,7 @@ redirect to("/admin")
 end
 
 post "/admin/create_reports" do
-	base_dir = "/Users/localadmin/development/rma-reportcards/"
+	base_dir = "#{Dir.home}/development/rma-reportcards/"
 	template_dir = "#{base_dir}views/reports/"
 	output_dir = "#{base_dir}/output/html/"
 	pdf_dir = "#{base_dir}/output/pdf/"
