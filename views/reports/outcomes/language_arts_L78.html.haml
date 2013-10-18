@@ -9,8 +9,6 @@
 				%tr(class="borderless")
 					%td(class="setwidth-o")
 					%td(class="setwidth-g")
-				%tr
-					%td(class="subhead" colspan="2") Listening and Speaking
 				- @student_var.language_arts_o_g_pairs.each do |pair|
 					%tr(class="o_g_pair")
 						%td(class="outcome")= "#{pair[0]}"
