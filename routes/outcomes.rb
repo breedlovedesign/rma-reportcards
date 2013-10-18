@@ -80,5 +80,5 @@ get "/outcomes/:outcome_name" do
 	admin?
 	subject = Subject.find_by(:subject_id => params[:outcome_name] )
 	@outcome_set = OutcomeSet.find_by(:subject_id =>   subject.id)
-	redirect to("outcomes/list/#{@outcome_set.subject.id}")
+	redirect to("outcomes/list/#{@outcome_set.subject_id}")
 end
