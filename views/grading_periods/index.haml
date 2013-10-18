@@ -1,6 +1,7 @@
 %form{:action => "/grading_periods/new", :method => "POST"}
 	%input{:placeholder => "ex: 2013-2014", :type => "text", :name => "gp_form_1[school_year]"}
 	%input{:placeholder => "ex: Quarter 1", :type => "text", :name => "gp_form_1[period_name]"}
+	%label{:for => "gp_form_1[signing_date]"} dd/mm/yyyy
 	%input{:placeholder => "dd/mm/yyyy",    :type => "text", :name => "gp_form_1[signing_date]"}
 	%input.button{:type => "submit", :value => "New Grading Period", :title => "New Grading Period", :class => "button"}
 %h2 Grading Periods
