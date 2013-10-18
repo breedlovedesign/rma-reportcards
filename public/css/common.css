@@ -48,6 +48,13 @@ h2.top {
 	color: white;
 }
 
+h2.top#warning {
+	margin-left:30px;
+	margin-top: 15px;
+	margin-bottom:15px;
+	color: orange;
+}
+
 footer {
 	background-color: #aae6e8;
 	margin: 40px -40px -61px -40px;

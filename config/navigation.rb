@@ -1,7 +1,7 @@
 # encoding: utf-8
 SimpleNavigation::Configuration.run do |navigation|  
   navigation.items do |primary|
-    primary.item :home,                'Home',             "/"
+    primary.item :home,                'Home',             "/admin" # this nav is only used for Administrator. Others get custom navs.
     primary.item :teachers,            'Teachers',         "/teachers"
     primary.item :students,            'Students',         "/students"
     primary.item :subjects,            'Subjects',         "/subjects"
