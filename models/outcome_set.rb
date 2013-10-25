@@ -2,22 +2,12 @@
 class OutcomeSet
   include Mongoid::Document
   field :level
-  field :comment
   embeds_many :outcomes
+  embeds_many :commentos
   embedded_in :skill_track
-  belongs_to :subject
+  field :comment
   def count
     ls = self.outcomes
     ls.count
   end
 end
-
-
-
-
-
-
-
-
-
-
