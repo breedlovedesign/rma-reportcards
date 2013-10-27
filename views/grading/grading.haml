@@ -1,0 +1,194 @@
+-# coding: utf-8
+
+/grading/submit/:student_id/:skill_track_id # receive info
+
+%h1=@student.name
+%ul.skill_tracks
+-if @language_arts_outcome_set.skill_track.language_arts_teacher == @teacher.id.to_s
+	%li{:id => 'language_arts'}
+		%form{:action => "/grading/submit/language_arts/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "language_arts").name + " ..... " + @skill_track.language_arts_level
+			%ul.grade_list
+				- @language_arts_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[language_arts_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[language_arts_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "language_arts").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+-if @math_outcome_set.skill_track.math_teacher == @teacher.id.to_s
+	%li{:id => 'math'}
+		%form{:action => "/grading/submit/math/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "math").name + " ..... " + @skill_track.math_level
+			%ul.grade_list
+				- @math_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[math_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[math_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "math").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+-if @social_studies_outcome_set.skill_track.social_studies_teacher == @teacher.id.to_s
+	%li{:id => 'social_studies'}
+		%form{:action => "/grading/submit/social_studies/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "social_studies").name + " ..... " + @skill_track.social_studies_level
+			%ul.grade_list
+				- @social_studies_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[social_studies_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[social_studies_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "social_studies").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+-if @science_outcome_set.skill_track.science_teacher == @teacher.id.to_s
+	%li{:id => 'science'}
+		%form{:action => "/grading/submit/science/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "science").name + " ..... " + @skill_track.science_level
+			%ul.grade_list
+				- @science_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[science_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[science_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "science").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+-if @work_study_outcome_set.skill_track.work_study_teacher == @teacher.id.to_s
+	%li{:id => 'work_study'}
+		%form{:action => "/grading/submit/work_study/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "work_study").name + " ..... " + @skill_track.work_study_level
+			%ul.grade_list
+				- @work_study_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[work_study_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[work_study_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "work_study").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+-if @citizenship_outcome_set.skill_track.citizenship_teacher == @teacher.id.to_s
+	%li{:id => 'citizenship'}
+		%form{:action => "/grading/submit/citizenship/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "citizenship").name + " ..... " + @skill_track.citizenship_level
+			%ul.grade_list
+				- @citizenship_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[citizenship_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[citizenship_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "citizenship").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+	}
+-if @art_outcome_set.skill_track.art_teacher == @teacher.id.to_s
+	%li{:id => 'art'}
+		%form{:action => "/grading/submit/art/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "art").name + " ..... " + @skill_track.art_level
+			%ul.grade_list
+				- @art_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[art_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[art_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "art").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+-if @ict_outcome_set.skill_track.ict_teacher == @teacher.id.to_s
+	%li{:id => 'ict'}
+		%form{:action => "/grading/submit/ict/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "ict").name + " ..... " + @skill_track.ict_level
+			%ul.grade_list
+				- @ict_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[ict_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[ict_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "ict").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+-if @music_outcome_set.skill_track.music_teacher == @teacher.id.to_s
+	%li{:id => 'music'}
+		%form{:action => "/grading/submit/music/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "music").name + " ..... " + @skill_track.music_level
+			%ul.grade_list
+				- @music_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[music_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[music_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "music").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+-if @pe_outcome_set.skill_track.pe_teacher == @teacher.id.to_s
+	%li{:id => 'pe'}
+		%form{:action => "/grading/submit/pe/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "pe").name + " ..... " + @skill_track.pe_level
+			%ul.grade_list
+				- @pe_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[pe_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[pe_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "pe").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br
+-if @thai_outcome_set.skill_track.thai_teacher == @teacher.id.to_s
+	%li{:id => 'thai'}
+		%form{:action => "/grading/submit/thai/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			%h2= Subject.find_by(:subject_id => "thai").name + " ..... " + @skill_track.thai_level
+			%ul.grade_list
+				- @thai_outcome_set.outcomes.sort_by {|obj| obj.indexo}.each do |o|
+					%li{:class => "list_row"}
+						-if o.grade.nil? || (o.grade == false)
+							%input{:placeholder => "", :type => "text", :name => "grades_form[thai_grade_#{o.indexo}]"}
+							-grade = o.grade
+							= ("....." + o.texto + '.....current grade => ""') 
+						-else
+							%input{:placeholder => o.grade, :type => "text", :name => "grades_form[thai_grade_#{o.indexo}]"} 
+							-grade = o.grade
+							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"') 
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "thai").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
+			%br

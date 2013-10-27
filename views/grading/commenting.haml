@@ -1,0 +1,233 @@
+-# coding: utf-8
+%h1=@student.name
+%ul.skill_tracks
+-if @language_arts_outcome_set.skill_track.language_arts_teacher == @teacher.id.to_s
+	%li{:id => 'language_arts'}
+		%h2= Subject.find_by(:subject_id => "language_arts").name + " ..... " + @skill_track.language_arts_level
+		%p number of revisions of this comment = #{@language_arts_num_versions}
+		-if @language_arts_current.nil? == false && @language_arts_num_versions == 1
+			%p Current comment shown: Sentences-#{@language_arts_current_sentence_count}, Words-#{@language_arts_current_word_count}, Characters-#{@language_arts_current_character_count}
+		-elsif @language_arts_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@language_arts_current_sentence_count}, Words-#{@language_arts_current_word_count}, Characters-#{@language_arts_current_character_count}
+		%p{:class => "cmt"}
+			=@language_arts_diffwords
+		%form{:action => "/comment/submit/language_arts/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @language_arts_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @language_arts_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[language_arts_comment]"}
+				=@language_arts_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @math_outcome_set.skill_track.math_teacher == @teacher.id.to_s
+	%li{:id => 'math'}
+		%h2= Subject.find_by(:subject_id => "math").name + " ..... " + @skill_track.math_level
+		%p number of revisions of this comment = #{@math_num_versions}
+		-if @math_current.nil? == false && @math_num_versions == 1
+			%p Current comment shown: Sentences-#{@math_current_sentence_count}, Words-#{@math_current_word_count}, Characters-#{@math_current_character_count}
+		-elsif @math_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@math_current_sentence_count}, Words-#{@math_current_word_count}, Characters-#{@math_current_character_count}
+		%p{:class => "cmt"}
+			=@math_diffwords
+		%form{:action => "/comment/submit/math/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @math_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @math_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[math_comment]"}
+				=@math_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "math").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @social_studies_outcome_set.skill_track.social_studies_teacher == @teacher.id.to_s
+	%li{:id => 'social_studies'}
+		%h2= Subject.find_by(:subject_id => "social_studies").name + " ..... " + @skill_track.social_studies_level
+		%p number of revisions of this comment = #{@social_studies_num_versions}
+		-if @social_studies_current.nil? == false && @social_studies_num_versions == 1
+			%p Current comment shown: Sentences-#{@social_studies_current_sentence_count}, Words-#{@social_studies_current_word_count}, Characters-#{@social_studies_current_character_count}
+		-elsif @social_studies_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@social_studies_current_sentence_count}, Words-#{@social_studies_current_word_count}, Characters-#{@social_studies_current_character_count}
+		%p{:class => "cmt"}
+			=@social_studies_diffwords
+		%form{:action => "/comment/submit/social_studies/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @social_studies_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @social_studies_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[social_studies_comment]"}
+				=@social_studies_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "social_studies").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @science_outcome_set.skill_track.science_teacher == @teacher.id.to_s
+	%li{:id => 'science'}
+		%h2= Subject.find_by(:subject_id => "science").name + " ..... " + @skill_track.science_level
+		%p number of revisions of this comment = #{@science_num_versions}
+		-if @science_current.nil? == false && @science_num_versions == 1
+			%p Current comment shown: Sentences-#{@science_current_sentence_count}, Words-#{@science_current_word_count}, Characters-#{@science_current_character_count}
+		-elsif @science_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@science_current_sentence_count}, Words-#{@science_current_word_count}, Characters-#{@science_current_character_count}
+		%p{:class => "cmt"}
+			=@science_diffwords
+		%form{:action => "/comment/submit/science/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @science_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @science_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[science_comment]"}
+				=@science_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "science").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @work_study_outcome_set.skill_track.work_study_teacher == @teacher.id.to_s
+	%li{:id => 'work_study'}
+		%h2= Subject.find_by(:subject_id => "work_study").name + " ..... " + @skill_track.work_study_level
+		%p number of revisions of this comment = #{@work_study_num_versions}
+		-if @work_study_current.nil? == false && @work_study_num_versions == 1
+			%p Current comment shown: Sentences-#{@work_study_current_sentence_count}, Words-#{@work_study_current_word_count}, Characters-#{@work_study_current_character_count}
+		-elsif @work_study_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@work_study_current_sentence_count}, Words-#{@work_study_current_word_count}, Characters-#{@work_study_current_character_count}
+		%p{:class => "cmt"}
+			=@work_study_diffwords
+		%form{:action => "/comment/submit/work_study/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @work_study_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @work_study_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[work_study_comment]"}
+				=@work_study_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "work_study").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @citizenship_outcome_set.skill_track.citizenship_teacher == @teacher.id.to_s
+	%li{:id => 'citizenship'}
+		%h2= Subject.find_by(:subject_id => "citizenship").name + " ..... " + @skill_track.citizenship_level
+		%p number of revisions of this comment = #{@citizenship_num_versions}
+		-if @citizenship_current.nil? == false && @citizenship_num_versions == 1
+			%p Current comment shown: Sentences-#{@citizenship_current_sentence_count}, Words-#{@citizenship_current_word_count}, Characters-#{@citizenship_current_character_count}
+		-elsif @citizenship_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@citizenship_current_sentence_count}, Words-#{@citizenship_current_word_count}, Characters-#{@citizenship_current_character_count}
+		%p{:class => "cmt"}
+			=@citizenship_diffwords
+		%form{:action => "/comment/submit/citizenship/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @citizenship_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @citizenship_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[citizenship_comment]"}
+				=@citizenship_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "citizenship").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @art_outcome_set.skill_track.art_teacher == @teacher.id.to_s
+	%li{:id => 'art'}
+		%h2= Subject.find_by(:subject_id => "art").name + " ..... " + @skill_track.art_level
+		%p number of revisions of this comment = #{@art_num_versions}
+		-if @art_current.nil? == false && @art_num_versions == 1
+			%p Current comment shown: Sentences-#{@art_current_sentence_count}, Words-#{@art_current_word_count}, Characters-#{@art_current_character_count}
+		-elsif @art_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@art_current_sentence_count}, Words-#{@art_current_word_count}, Characters-#{@art_current_character_count}
+		%p{:class => "cmt"}
+			=@art_diffwords
+		%form{:action => "/comment/submit/art/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @art_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @art_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[art_comment]"}
+				=@art_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "art").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @ict_outcome_set.skill_track.ict_teacher == @teacher.id.to_s
+	%li{:id => 'ict'}
+		%h2= Subject.find_by(:subject_id => "ict").name + " ..... " + @skill_track.ict_level
+		%p number of revisions of this comment = #{@ict_num_versions}
+		-if @ict_current.nil? == false && @ict_num_versions == 1
+			%p Current comment shown: Sentences-#{@ict_current_sentence_count}, Words-#{@ict_current_word_count}, Characters-#{@ict_current_character_count}
+		-elsif @ict_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@ict_current_sentence_count}, Words-#{@ict_current_word_count}, Characters-#{@ict_current_character_count}
+		%p{:class => "cmt"}
+			=@ict_diffwords
+		%form{:action => "/comment/submit/ict/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @ict_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @ict_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[ict_comment]"}
+				=@ict_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "ict").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @music_outcome_set.skill_track.music_teacher == @teacher.id.to_s
+	%li{:id => 'music'}
+		%h2= Subject.find_by(:subject_id => "music").name + " ..... " + @skill_track.music_level
+		%p number of revisions of this comment = #{@music_num_versions}
+		-if @music_current.nil? == false && @music_num_versions == 1
+			%p Current comment shown: Sentences-#{@music_current_sentence_count}, Words-#{@music_current_word_count}, Characters-#{@music_current_character_count}
+		-elsif @music_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@music_current_sentence_count}, Words-#{@music_current_word_count}, Characters-#{@music_current_character_count}
+		%p{:class => "cmt"}
+			=@music_diffwords
+		%form{:action => "/comment/submit/music/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @music_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @music_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[music_comment]"}
+				=@music_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "music").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @pe_outcome_set.skill_track.pe_teacher == @teacher.id.to_s
+	%li{:id => 'pe'}
+		%h2= Subject.find_by(:subject_id => "pe").name + " ..... " + @skill_track.pe_level
+		%p number of revisions of this comment = #{@pe_num_versions}
+		-if @pe_current.nil? == false && @pe_num_versions == 1
+			%p Current comment shown: Sentences-#{@pe_current_sentence_count}, Words-#{@pe_current_word_count}, Characters-#{@pe_current_character_count}
+		-elsif @pe_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@pe_current_sentence_count}, Words-#{@pe_current_word_count}, Characters-#{@pe_current_character_count}
+		%p{:class => "cmt"}
+			=@pe_diffwords
+		%form{:action => "/comment/submit/pe/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @pe_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @pe_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[pe_comment]"}
+				=@pe_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "pe").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+      
+-if @thai_outcome_set.skill_track.thai_teacher == @teacher.id.to_s
+	%li{:id => 'thai'}
+		%h2= Subject.find_by(:subject_id => "thai").name + " ..... " + @skill_track.thai_level
+		%p number of revisions of this comment = #{@thai_num_versions}
+		-if @thai_current.nil? == false && @thai_num_versions == 1
+			%p Current comment shown: Sentences-#{@thai_current_sentence_count}, Words-#{@thai_current_word_count}, Characters-#{@thai_current_character_count}
+		-elsif @thai_current.nil? == false
+			%p Current comment with most recent edits shown: Sentences-#{@thai_current_sentence_count}, Words-#{@thai_current_word_count}, Characters-#{@thai_current_character_count}
+		%p{:class => "cmt"}
+			=@thai_diffwords
+		%form{:action => "/comment/submit/thai/#{@student.id}/#{@skill_track.id}", :method => "POST"}
+			-if @thai_current.nil?
+				%p Enter Comment
+			-elsif
+				%p Edit Comment
+			-current = @thai_current
+			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[thai_comment]"}
+				=@thai_current
+			%br
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "thai").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}

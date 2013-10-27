@@ -1,6 +1,8 @@
 # encoding: utf-8
 require 'sinatra'
 require 'haml'
+require 'lingua'
+require 'differ'
 
 require_relative 'minify_resources'
 class RmaReports < Sinatra::Application

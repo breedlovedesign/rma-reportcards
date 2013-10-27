@@ -1,3 +1,26 @@
+.cmt {
+	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+	font-size: 11pt;
+}
+
+del {
+	text-decoration: line-through;
+	color: #9b9a98;
+	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+	font-size: 11pt;
+}
+
+ins {
+	text-decoration: none;
+	background-color: #cafdcb;
+}
+
+textarea.comment { 
+	width: 800px;
+	height: 150px;
+	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+	font-size: 11pt;
+}
 .float {float:left; margin-left:40px; margin-bottom:60px;}
 .foot {clear: both;}
 
@@ -96,6 +119,11 @@ footer {
 	font-size: 11pt;
 	font-family: sans-serif;
 	border-radius: 3px;
+}
+
+.button.grade_submit{
+	margin-top: 0px;
+	margin-bottom: 50px;
 }
 
 .logoutbutton {
