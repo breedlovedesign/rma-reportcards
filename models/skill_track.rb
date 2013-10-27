@@ -13,7 +13,7 @@ class SkillTrack
   field :pe_teacher
   field :work_study_teacher
   field :citizenship_teacher
- 
+
   field :language_arts_level
   field :math_level
   field :social_studies_level
@@ -25,12 +25,12 @@ class SkillTrack
   field :pe_level
   field :work_study_level
   field :citizenship_level
-  
+
   field :student_level
-  
+
   field :eal_sss_status
   field :thai_native
-  
+
   embeds_many   :outcome_sets
   belongs_to :student
   belongs_to :grading_period

@@ -6,13 +6,13 @@ get "/login" do
 end
 
 get "/retry" do
-  @title = "Retry Login"  
+  @title = "Retry Login"
   @teachers = Teacher.all
   haml :"login/retry", :layout => false
 end
 
 
-post "/login" do 
+post "/login" do
   p = params[:login_form]
   if p["teacher"] == "fail"
     redirect to('/retry')
@@ -40,10 +40,10 @@ post "/login" do
     session[:teacher_id] = Teacher.find_by(:id => p["teacher"]).id
   	redirect to('/retry')
   end
-  
+
 end
 
-post "/retry" do 
+post "/retry" do
   p = params[:login_form]
   if p["teacher"] == "fail"
     redirect to('/retry')
@@ -71,7 +71,7 @@ post "/retry" do
     session[:teacher_id] = Teacher.find_by(:id => p["teacher"]).id
     redirect to('/retry')
   end
-  
+
 end
 
 

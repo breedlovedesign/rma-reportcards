@@ -1,7 +1,7 @@
 
 
 
-# Here is the studentvar class where most of the 
+# Here is the studentvar class where most of the
 # work is done. When a new student is created
 # the csv files are queried for all the values
 # associated with that student for this quarter.
@@ -27,7 +27,7 @@ class StudentVar
     :q1days,         :q2days,           :q3days,           :q4days,                                                                           \
     :q1abs,          :q2abs,            :q3abs,            :q4abs,                                                                            \
     :q1tards,        :q2tards,          :q3tards,          :q4tards,                                                                          \
-    :classroom_t                                                                    
+    :classroom_t
   def initialize(id)
     @id                        = id
     student                    = Student.find(id)
@@ -116,7 +116,7 @@ class StudentVar
     art_outcome_set            = skill_track.outcome_sets.find_by(:subject_id => "#{Subject.find_by(:subject_id => "art").id}")
     art_outcomes               = art_outcome_set.outcomes.sort_by {|obj| obj.indexo}
     @art_o_g_pairs             = art_outcomes.map {|out| [out.texto, out.grade]}
-  
+
     ict_outcome_set            = skill_track.outcome_sets.find_by(:subject_id => "#{Subject.find_by(:subject_id => "ict").id}")
     ict_outcomes               = ict_outcome_set.outcomes.sort_by {|obj| obj.indexo}
     @ict_o_g_pairs             = ict_outcomes.map {|out| [out.texto, out.grade]}
@@ -149,7 +149,7 @@ class StudentVar
     @q4tards                   = student.attendance_set.q4_tardy
     #
     @classroom_t               = Teacher.find(skill_track.teacher).name
-    
-    
+
+
   end
 end

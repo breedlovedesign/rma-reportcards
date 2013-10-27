@@ -1,5 +1,5 @@
 -# coding: utf-8
-%p Editing outcome: (index: #{@outcome.indexo}) #{@outcome.texto} 
+%p Editing outcome: (index: #{@outcome.indexo}) #{@outcome.texto}
 %form{:action => "/outcomes/update_outcome/#{@outcome_set.id}/#{@outcome.id}", :method => "POST"}
 	%input{:type => "textarea", :name => "update_outcome[item]", :placeholder => "Outcome Text"}
 	%input{:type => "text", :name => "update_outcome[index]", :placeholder => "Index, ex '1'"}

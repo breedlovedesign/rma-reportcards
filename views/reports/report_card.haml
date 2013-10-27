@@ -44,7 +44,7 @@
 		= render_file("#{@template_path}outcomes/", "citizenship.html.haml")
 		%br
 		%p{:id => "assessed"} All students are assessed according to their individual learning ability.
-		%table{:id => "key"} 
+		%table{:id => "key"}
 			%tr
 				%td(class="d" colspan="3") Grading Code for Skills, Knowledge, Attainment
 			%tr
@@ -71,38 +71,38 @@
 			%tr
 				%td{ :class => "lalign"} School Days
 				%td #{@student_var.q1days}
-				%td #{@student_var.q2days} 
+				%td #{@student_var.q2days}
 				%td #{@student_var.q3days}
 				%td #{@student_var.q4days}
 			%tr
 				%td{ :class => "lalign"} Days Absent
 				%td #{@student_var.q1abs}
-				%td #{@student_var.q2abs} 
+				%td #{@student_var.q2abs}
 				%td #{@student_var.q3abs}
 				%td #{@student_var.q4abs}
 			%tr
 				%td{ :class => "lalign"} Days Tardy
 				%td #{@student_var.q1tards}
-				%td #{@student_var.q2tards} 
+				%td #{@student_var.q2tards}
 				%td #{@student_var.q3tards}
 				%td #{@student_var.q4tards}
 				
 		%table{ :id => "signing" }
-			%tr 
+			%tr
 				%td{ :class => "signing_area"}
 					%hr
 					%p
-						Rose Marie Wanchupela, 
+						Rose Marie Wanchupela,
 						%em Academic Director
-				%td{ :class => "date_area"} 
+				%td{ :class => "date_area"}
 					%p #{@student_var.signing_date}
 			%tr
-				%td 
+				%td
 					%hr
 					%p
-						#{@student_var.classroom_t}, 
+						#{@student_var.classroom_t},
 						%em Classroom Teacher
-				%td{ :class => "date_area"} 
+				%td{ :class => "date_area"}
 					%p #{@student_var.signing_date}
 				
 	<!--<script src="js/jquery-1.4.2.min.js"></script>-->

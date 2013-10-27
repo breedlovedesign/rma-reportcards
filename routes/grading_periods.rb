@@ -9,7 +9,7 @@ end
 post "/grading_periods/new" do
   admin?
 	p = params[:gp_form_1]
-	GradingPeriod.where(:school_year => p["school_year"], :period_name => p["period_name"], :signing_date => p["signing_date"]).create 
+	GradingPeriod.where(:school_year => p["school_year"], :period_name => p["period_name"], :signing_date => p["signing_date"]).create
 	redirect to('/grading_periods')
 end
 
@@ -26,7 +26,7 @@ get "/grading_period/edit/:mongo_id" do
 end
 
 post "/grading_period/update/:mongo_id" do
-  admin? 
+  admin?
 	form = params[:gp_edit_form]
 	pants = GradingPeriod.find(params[:mongo_id])
 	pants.update_attributes!(:school_year => form["school_year"]) unless form["school_year"] == ""

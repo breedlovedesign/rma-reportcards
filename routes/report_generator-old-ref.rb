@@ -20,7 +20,7 @@ pdf_dir = "#{base_dir}pdf_output/"
 folders = ["attendance", "info", "levels", "teachers"]
 
 # Go through subfolders creating pairs of [filename, path]
-# Each of these will be used to create a method that 
+# Each of these will be used to create a method that
 # pulls data from the .csv file at that location
 csv_pairs = []
 folders.each do |folder|
@@ -32,7 +32,7 @@ folders.each do |folder|
   end
 end
 
-# Comments, grades and outcomes need special handling 
+# Comments, grades and outcomes need special handling
 # so they go in their own variables
 comment_pairs = []
 Dir.glob("#{comment_dir}*.csv") do |name|
@@ -99,7 +99,7 @@ end
 # puts
 # puts outcome_pairs_78.inspect
 
-# Here is the student class where most of the 
+# Here is the student class where most of the
 # work is done. When a new student is created
 # the csv files are queried for all the values
 # associated with that student for this quarter.
@@ -122,7 +122,7 @@ class Student
     :q1days,         :q2days,           :q3days,           :q4days,                                                                           \
     :q1abs,          :q2abs,            :q3abs,            :q4abs,                                                                            \
     :q1tards,        :q2tards,          :q3tards,          :q4tards,                                                                          \
-    :classroom_t                                                                    
+    :classroom_t
   def initialize(id)
     @id = id
     @year = self.grading_period_info["year"]
@@ -131,7 +131,7 @@ class Student
     @birthdate = self.dob[id]
     @name = self.student[id]
     @lev = self.level[self.student_level[id]]
-    
+
     @art = subject_list["art"]
     @citizenship = subject_list["citizenship"]
     @ict = subject_list["ict"]
@@ -143,7 +143,7 @@ class Student
     @social_studies = subject_list["social_studies"]
     @thai = subject_list["thai"]
     @work_study = subject_list["work_study"]
-    
+
     @art_t = self.teacher[self.art_teacher[id]]
     @citizenship_t = self.teacher[self.citizenship_teacher[id]]
     @ict_t = self.teacher[self.ict_teacher[id]]
@@ -155,7 +155,7 @@ class Student
     @social_studies_t = self.teacher[self.social_studies_teacher[id]]
     @thai_t = self.teacher[self.thai_teacher[id]]
     @work_study_t = self.teacher[self.work_study_teacher[id]]
-    
+
     @art_l = self.art_level[id]
     @citizenship_l = self.citizenship_level[id]
     @ict_l = self.ict_level[id]
@@ -168,7 +168,7 @@ class Student
     @student_l = self.student_level[id]
     @thai_l = self.thai_level[id]
     @work_study_l = self.work_study_level[id]
-    
+
     @art_c = self.art_comments[id]
     @citizenship_c = self.citizenship_comments[id]
     @ict_c = self.ict_comments[id]
@@ -180,14 +180,14 @@ class Student
     @social_studies_c = self.social_studies_comments[id]
     @thai_c = self.thai_comments[id]
     @work_study_c = self.work_study_comments[id]
-    
+
     outs = Outcomes.new(@name, @art_l, @citizenship_l, @ict_l, @language_arts_l, \
       @math_l, @music_l, @pe_l, @science_l, @social_studies_l, @student_l, @thai_l, @work_study_l)
-    
+
     @art_o = outs.art_o
     @art_g = [nil]
     unless self.art_grades[id] == nil
-      @art_g = self.art_grades[id].split(/ *,/) 
+      @art_g = self.art_grades[id].split(/ *,/)
       @art_g = @art_g.each { |g| g.strip! }
     end
     @art_o_g_pairs = []
@@ -196,7 +196,7 @@ class Student
     @citizenship_o = outs.citizenship_o
     @citizenship_g = [nil]
     unless self.citizenship_grades[id] == nil
-      @citizenship_g = self.citizenship_grades[id].split(/ *,/) 
+      @citizenship_g = self.citizenship_grades[id].split(/ *,/)
       @citizenship_g = @citizenship_g.each { |g| g.strip! }
     end
     @citizenship_o_g_pairs = []
@@ -205,7 +205,7 @@ class Student
     @ict_o = outs.ict_o
     @ict_g = [nil]
     unless self.ict_grades[id] == nil
-      @ict_g = self.ict_grades[id].split(/ *,/) 
+      @ict_g = self.ict_grades[id].split(/ *,/)
       @ict_g = @ict_g.each { |g| g.strip! }
     end
     @ict_o_g_pairs = []
@@ -214,7 +214,7 @@ class Student
     @language_arts_o = outs.language_arts_o
     @language_arts_g = [nil]
     unless self.language_arts_grades[id] == nil
-      @language_arts_g = self.language_arts_grades[id].split(/ *,/) 
+      @language_arts_g = self.language_arts_grades[id].split(/ *,/)
       @language_arts_g = @language_arts_g.each { |g| g.strip! }
     end
     @language_arts_o_g_pairs = []
@@ -223,7 +223,7 @@ class Student
     @math_o = outs.math_o
     @math_g = [nil]
     unless self.math_grades[id] == nil
-      @math_g = self.math_grades[id].split(/ *,/) 
+      @math_g = self.math_grades[id].split(/ *,/)
       @math_g = @math_g.each { |g| g.strip! }
     end
     @math_o_g_pairs = []
@@ -232,7 +232,7 @@ class Student
     @music_o = outs.music_o
     @music_g = [nil]
     unless self.music_grades[id] == nil
-      @music_g = self.music_grades[id].split(/ *,/) 
+      @music_g = self.music_grades[id].split(/ *,/)
       @music_g = @music_g.each { |g| g.strip! }
     end
     @music_o_g_pairs = []
@@ -241,7 +241,7 @@ class Student
     @pe_o = outs.pe_o
     @pe_g = [nil]
     unless self.pe_grades[id] == nil
-      @pe_g = self.pe_grades[id].split(/ *,/) 
+      @pe_g = self.pe_grades[id].split(/ *,/)
       @pe_g = @pe_g.each { |g| g.strip! }
     end
     @pe_o_g_pairs = []
@@ -250,7 +250,7 @@ class Student
     @science_o = outs.science_o
     @science_g = [nil]
     unless self.science_grades[id] == nil
-      @science_g = self.science_grades[id].split(/ *,/) 
+      @science_g = self.science_grades[id].split(/ *,/)
       @science_g = @science_g.each { |g| g.strip! }
     end
     @science_o_g_pairs = []
@@ -259,7 +259,7 @@ class Student
     @social_studies_o = outs.social_studies_o
     @social_studies_g = [nil]
     unless self.social_studies_grades[id] == nil
-      @social_studies_g = self.social_studies_grades[id].split(/ *,/) 
+      @social_studies_g = self.social_studies_grades[id].split(/ *,/)
       @social_studies_g = @social_studies_g.each { |g| g.strip! }
     end
     @social_studies_o_g_pairs = []
@@ -268,7 +268,7 @@ class Student
     @thai_o = outs.thai_o
     @thai_g = [nil]
     unless self.thai_grades[id] == nil
-      @thai_g = self.thai_grades[id].split(/ *,/) 
+      @thai_g = self.thai_grades[id].split(/ *,/)
       @thai_g = @thai_g.each { |g| g.strip! }
     end
     @thai_o_g_pairs = []
@@ -277,17 +277,17 @@ class Student
     @work_study_o = outs.work_study_o
     @work_study_g = [nil]
     unless self.work_study_grades[id] == nil
-      @work_study_g = self.work_study_grades[id].split(/ *,/) 
+      @work_study_g = self.work_study_grades[id].split(/ *,/)
       @work_study_g = @work_study_g.each { |g| g.strip! }
     end
     @work_study_o_g_pairs = []
     @work_study_o_g_pairs = @work_study_o.zip(work_study_g)
-    
+
     @q1days = self.grading_period_info["q1_num_days"]
     @q2days = self.grading_period_info["q2_num_days"]
     @q3days = self.grading_period_info["q3_num_days"]
     @q4days = self.grading_period_info["q4_num_days"]
-    
+
     @q1abs = self.q1_absences[id]
     @q2abs = self.q2_absences[id]
     @q3abs = self.q3_absences[id]
@@ -297,10 +297,10 @@ class Student
     @q2tards = self.q2_tardies[id]
     @q3tards = self.q3_tardies[id]
     @q4tards = self.q4_tardies[id]
-    
+
     class_rm_teacher_id = self.classroom_teacher[id]
     @classroom_t = self.teacher["#{class_rm_teacher_id}"]
-    
+
   end
 end
 
@@ -308,45 +308,45 @@ Student.class_eval do
   csv_pairs.each do |name|
     define_method("#{name[0]}") do
       var = {}
-      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line| 
+      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line|
         key   = line[0]
         value = line[1]
         var.merge!(key => value)
       end
       var.shift
-      var 
+      var
     end
-  end  
+  end
   comment_pairs.each do |name|
     define_method("#{name[0]}") do
       var = {}
-      CSV.foreach("#{name[1]}", :row_sep => :auto, :col_sep => "\t", :quote_char => "#") do |line| 
+      CSV.foreach("#{name[1]}", :row_sep => :auto, :col_sep => "\t", :quote_char => "#") do |line|
         key   = line[0]
         value = line[1]
         var.merge!(key => value)
       end
       var.shift
-      var 
+      var
     end
   end
   grade_pairs.each do |name|
     define_method("#{name[0]}") do
       var = {}
-      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line| 
+      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line|
         key   = line[0]
         value = line[1]
         var.merge!(key => value)
       end
       var.shift
-      var 
+      var
     end
-  end        
+  end
 end
 
 class Outcomes
   attr_reader :art_o, :citizenship_o, :ict_o, :language_arts_o, :math_o, :music_o, :pe_o, :science_o, :social_studies_o, :student_o, :thai_o, :work_study_o
   def initialize(student, art_l, citizenship_l, ict_l, language_arts_l, math_l, music_l, pe_l, science_l, social_studies_l, student_l, thai_l, work_study_l)
-    
+
     if art_l == "L12"
       @art_o = self.art_outcomes_12
     elsif art_l == "L34"
@@ -478,58 +478,58 @@ class Outcomes
     else
       raise "Work Study level not entered for #{student}."
     end
-    
+
   end
 end
 
-Outcomes.class_eval do 
+Outcomes.class_eval do
   outcome_pairs_12.each do |name|
     define_method("#{name[0]}_12") do
       var = []
-      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line| 
+      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line|
         var << line[0]
       end
       var.shift
       var
     end
   end
-  
+
   outcome_pairs_34.each do |name|
     define_method("#{name[0]}_34") do
       var = []
-      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line| 
+      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line|
         var << line[0]
       end
       var.shift
       var
     end
   end
-  
+
   outcome_pairs_56.each do |name|
     define_method("#{name[0]}_56") do
       var = []
-      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line| 
+      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line|
         var << line[0]
       end
       var.shift
       var
     end
   end
-  
+
   outcome_pairs_78.each do |name|
     define_method("#{name[0]}_78") do
       var = []
-      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line| 
+      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line|
         var << line[0]
       end
       var.shift
       var
     end
-  end  
+  end
 end
 
 # Variables that are available within the scope
-# of an instance of this class can be used in 
+# of an instance of this class can be used in
 # haml templates
 class ReportCard
   def initialize(student_obj, template_path, output_path)
@@ -586,9 +586,9 @@ class DataIntegrity
       @uniq_std_ids = "There are #{ student_list.compact.length - student_list.uniq.compact.length } duplicates in the student list. Please look at: #{dups.inspect}"
       @error_count += 1
     end
-    
 
-    if self.q1_absences.compact.sort == student_list.compact.sort 
+
+    if self.q1_absences.compact.sort == student_list.compact.sort
       @q1_absences_ok = "ok"
     else
       extra   = self.q1_absences - student_list
@@ -596,8 +596,8 @@ class DataIntegrity
       @q1_absences_ok = "q1_absences.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.q1_tardies.compact.sort == student_list.compact.sort 
+
+    if self.q1_tardies.compact.sort == student_list.compact.sort
       @q1_tardies_ok = "ok"
     else
       extra   = self.q1_tardies - student_list
@@ -605,8 +605,8 @@ class DataIntegrity
       @q1_tardies_ok = "q1_tardies.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.q2_absences.compact.sort == student_list.compact.sort 
+
+    if self.q2_absences.compact.sort == student_list.compact.sort
       @q2_absences_ok = "ok"
     else
       extra   = self.q2_absences - student_list
@@ -614,8 +614,8 @@ class DataIntegrity
       @q2_absences_ok = "q2_absences.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.q2_tardies.compact.sort == student_list.compact.sort 
+
+    if self.q2_tardies.compact.sort == student_list.compact.sort
       @q2_tardies_ok = "ok"
     else
       extra   = self.q2_tardies - student_list
@@ -623,8 +623,8 @@ class DataIntegrity
       @q2_tardies_ok = "q2_tardies.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.q3_absences.compact.sort == student_list.compact.sort 
+
+    if self.q3_absences.compact.sort == student_list.compact.sort
       @q3_absences_ok = "ok"
     else
       extra   = self.q3_absences - student_list
@@ -632,8 +632,8 @@ class DataIntegrity
       @q3_absences_ok = "q3_absences.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.q3_tardies.compact.sort == student_list.compact.sort 
+
+    if self.q3_tardies.compact.sort == student_list.compact.sort
       @q3_tardies_ok = "ok"
     else
       extra   = self.q3_tardies - student_list
@@ -641,8 +641,8 @@ class DataIntegrity
       @q3_tardies_ok = "q3_tardies.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.q4_absences.compact.sort == student_list.compact.sort 
+
+    if self.q4_absences.compact.sort == student_list.compact.sort
       @q4_absences_ok = "ok"
     else
       extra   = self.q4_absences - student_list
@@ -650,8 +650,8 @@ class DataIntegrity
       @q4_absences_ok = "q4_absences.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.q4_tardies.compact.sort == student_list.compact.sort 
+
+    if self.q4_tardies.compact.sort == student_list.compact.sort
       @q4_tardies_ok = "ok"
     else
       extra   = self.q4_tardies - student_list
@@ -659,8 +659,8 @@ class DataIntegrity
       @q4_tardies_ok = "q4_tardies.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.dob.compact.sort == student_list.compact.sort 
+
+    if self.dob.compact.sort == student_list.compact.sort
       @dob_ok = "ok"
     else
       extra   = self.dob - student_list
@@ -668,8 +668,8 @@ class DataIntegrity
       @dob_ok = "dob.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.art_level.compact.sort == student_list.compact.sort 
+
+    if self.art_level.compact.sort == student_list.compact.sort
       @art_level_ok = "ok"
     else
       extra   = self.art_level - student_list
@@ -677,8 +677,8 @@ class DataIntegrity
       @art_level_ok = "art_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.citizenship_level.compact.sort == student_list.compact.sort 
+
+    if self.citizenship_level.compact.sort == student_list.compact.sort
       @citizenship_level_ok = "ok"
     else
       extra   = self.citizenship_level - student_list
@@ -686,8 +686,8 @@ class DataIntegrity
       @citizenship_level_ok = "citizenship_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.ict_level.compact.sort == student_list.compact.sort 
+
+    if self.ict_level.compact.sort == student_list.compact.sort
       @ict_level_ok = "ok"
     else
       extra   = self.ict_level - student_list
@@ -695,8 +695,8 @@ class DataIntegrity
       @ict_level_ok = "ict_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.language_arts_level.compact.sort == student_list.compact.sort 
+
+    if self.language_arts_level.compact.sort == student_list.compact.sort
       @language_arts_level_ok = "ok"
     else
       extra   = self.language_arts_level - student_list
@@ -704,8 +704,8 @@ class DataIntegrity
       @language_arts_level_ok = "language_arts_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.math_level.compact.sort == student_list.compact.sort 
+
+    if self.math_level.compact.sort == student_list.compact.sort
       @math_level_ok = "ok"
     else
       extra   = self.math_level - student_list
@@ -713,8 +713,8 @@ class DataIntegrity
       @math_level_ok = "math_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.music_level.compact.sort == student_list.compact.sort 
+
+    if self.music_level.compact.sort == student_list.compact.sort
       @music_level_ok = "ok"
     else
       extra   = self.music_level - student_list
@@ -722,8 +722,8 @@ class DataIntegrity
       @music_level_ok = "music_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.pe_level.compact.sort == student_list.compact.sort 
+
+    if self.pe_level.compact.sort == student_list.compact.sort
       @pe_level_ok = "ok"
     else
       extra   = self.pe_level - student_list
@@ -731,8 +731,8 @@ class DataIntegrity
       @pe_level_ok = "pe_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.science_level.compact.sort == student_list.compact.sort 
+
+    if self.science_level.compact.sort == student_list.compact.sort
       @science_level_ok = "ok"
     else
       extra   = self.science_level - student_list
@@ -740,8 +740,8 @@ class DataIntegrity
       @science_level_ok = "science_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.social_studies_level.compact.sort == student_list.compact.sort 
+
+    if self.social_studies_level.compact.sort == student_list.compact.sort
       @social_studies_level_ok = "ok"
     else
       extra   = self.social_studies_level - student_list
@@ -749,8 +749,8 @@ class DataIntegrity
       @social_studies_level_ok = "social_studies_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.student_level.compact.sort == student_list.compact.sort 
+
+    if self.student_level.compact.sort == student_list.compact.sort
       @student_level_ok = "ok"
     else
       extra   = self.student_level - student_list
@@ -758,8 +758,8 @@ class DataIntegrity
       @student_level_ok = "student_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.thai_level.compact.sort == student_list.compact.sort 
+
+    if self.thai_level.compact.sort == student_list.compact.sort
       @thai_level_ok = "ok"
     else
       extra   = self.thai_level - student_list
@@ -767,8 +767,8 @@ class DataIntegrity
       @thai_level_ok = "thai_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.work_study_level.compact.sort == student_list.compact.sort 
+
+    if self.work_study_level.compact.sort == student_list.compact.sort
       @work_study_level_ok = "ok"
     else
       extra   = self.work_study_level - student_list
@@ -776,8 +776,8 @@ class DataIntegrity
       @work_study_level_ok = "work_study_level.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.art_teacher.compact.sort == student_list.compact.sort 
+
+    if self.art_teacher.compact.sort == student_list.compact.sort
       @art_teacher_ok = "ok"
     else
       extra   = self.art_teacher - student_list
@@ -785,8 +785,8 @@ class DataIntegrity
       @art_teacher_ok = "art_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.citizenship_teacher.compact.sort == student_list.compact.sort 
+
+    if self.citizenship_teacher.compact.sort == student_list.compact.sort
       @citizenship_teacher_ok = "ok"
     else
       extra   = self.citizenship_teacher - student_list
@@ -794,8 +794,8 @@ class DataIntegrity
       @citizenship_teacher_ok = "citizenship_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.classroom_teacher.compact.sort == student_list.compact.sort 
+
+    if self.classroom_teacher.compact.sort == student_list.compact.sort
       @classroom_teacher_ok = "ok"
     else
       extra   = self.classroom_teacher - student_list
@@ -803,8 +803,8 @@ class DataIntegrity
       @classroom_teacher_ok = "classroom_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.ict_teacher.compact.sort == student_list.compact.sort 
+
+    if self.ict_teacher.compact.sort == student_list.compact.sort
       @ict_teacher_ok = "ok"
     else
       extra   = self.ict_teacher - student_list
@@ -812,8 +812,8 @@ class DataIntegrity
       @ict_teacher_ok = "ict_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.language_arts_teacher.compact.sort == student_list.compact.sort 
+
+    if self.language_arts_teacher.compact.sort == student_list.compact.sort
       @language_arts_teacher_ok = "ok"
     else
       extra   = self.language_arts_teacher - student_list
@@ -821,8 +821,8 @@ class DataIntegrity
       @language_arts_teacher_ok = "language_arts_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.math_teacher.compact.sort == student_list.compact.sort 
+
+    if self.math_teacher.compact.sort == student_list.compact.sort
       @math_teacher_ok = "ok"
     else
       extra   = self.math_teacher - student_list
@@ -830,8 +830,8 @@ class DataIntegrity
       @math_teacher_ok = "math_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.music_teacher.compact.sort == student_list.compact.sort 
+
+    if self.music_teacher.compact.sort == student_list.compact.sort
       @music_teacher_ok = "ok"
     else
       extra   = self.music_teacher - student_list
@@ -839,8 +839,8 @@ class DataIntegrity
       @music_teacher_ok = "music_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.pe_teacher.compact.sort == student_list.compact.sort 
+
+    if self.pe_teacher.compact.sort == student_list.compact.sort
       @pe_teacher_ok = "ok"
     else
       extra   = self.pe_teacher - student_list
@@ -848,8 +848,8 @@ class DataIntegrity
       @pe_teacher_ok = "pe_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.science_teacher.compact.sort == student_list.compact.sort 
+
+    if self.science_teacher.compact.sort == student_list.compact.sort
       @science_teacher_ok = "ok"
     else
       extra   = self.science_teacher - student_list
@@ -857,8 +857,8 @@ class DataIntegrity
       @science_teacher_ok = "science_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.social_studies_teacher.compact.sort == student_list.compact.sort 
+
+    if self.social_studies_teacher.compact.sort == student_list.compact.sort
       @social_studies_teacher_ok = "ok"
     else
       extra   = self.social_studies_teacher - student_list
@@ -866,8 +866,8 @@ class DataIntegrity
       @social_studies_teacher_ok = "social_studies_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.student_grade_level_teacher.compact.sort == student_list.compact.sort 
+
+    if self.student_grade_level_teacher.compact.sort == student_list.compact.sort
       @student_grade_level_teacher_ok = "ok"
     else
       extra   = self.student_grade_level_teacher - student_list
@@ -875,8 +875,8 @@ class DataIntegrity
       @student_grade_level_teacher_ok = "student_grade_level_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.thai_teacher.compact.sort == student_list.compact.sort 
+
+    if self.thai_teacher.compact.sort == student_list.compact.sort
       @thai_teacher_ok = "ok"
     else
       extra   = self.thai_teacher - student_list
@@ -884,8 +884,8 @@ class DataIntegrity
       @thai_teacher_ok = "thai_teacher.csv Extra students: #{extra}. Missing students: #{missing}"
       @error_count += 1
     end
-  
-    if self.work_study_teacher.compact.sort == student_list.compact.sort 
+
+    if self.work_study_teacher.compact.sort == student_list.compact.sort
       @work_study_teacher_ok = "ok"
     else
       extra   = self.work_study_teacher - student_list
@@ -894,12 +894,12 @@ class DataIntegrity
       @error_count += 1
     end
     @error_count = @error_count.to_s
-    
-    
+
+
     p = self.methods - Object.methods
     puts p.inspect
-    @pass_std_ids = "only all the time" #stub 
-    
+    @pass_std_ids = "only all the time" #stub
+
     @template_path = template_path
     @output_path = "http://localhost/~localadmin/"
     data_integrity = File.read("#{template_path}data_integrity.html.haml")
@@ -914,49 +914,49 @@ DataIntegrity.class_eval do
   csv_pairs.each do |name|
     define_method("#{name[0]}") do
       var = []
-      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line| 
+      CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line|
         key   = line[0]
         var << key
       end
       var.shift
-      var 
+      var
     end
-  end  
+  end
   # comment_pairs.each do |name|
   #   define_method("#{name[0]}") do
   #     var = {}
-  #     CSV.foreach("#{name[1]}", :row_sep => :auto, :col_sep => "\t", :quote_char => "#") do |line| 
+  #     CSV.foreach("#{name[1]}", :row_sep => :auto, :col_sep => "\t", :quote_char => "#") do |line|
   #       key   = line[0]
   #       value = line[1]
   #       var.merge!(key => value)
   #     end
   #     var.shift
-  #     var 
+  #     var
   #   end
   # end
   # grade_pairs.each do |name|
   #   define_method("#{name[0]}") do
   #     var = {}
-  #     CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line| 
+  #     CSV.foreach("#{name[1]}", {:col_sep=>"\t"}) do |line|
   #       key   = line[0]
   #       value = line[1]
   #       var.merge!(key => value)
   #     end
   #     var.shift
-  #     var 
+  #     var
   #   end
-  # end        
+  # end
 end
 
 class Teacher
   attr_reader :language_arts_teacher
   def initialize(student_list, teacher_list)
-    
+
     teacher_list.compact!
     no_language_arts_students = []
     teacher_list.each do |teacher|
       @language_arts_students = []
-      
+
       student_list.compact!
       student_list.each do |id|
         student = Student.new(id)
@@ -966,14 +966,14 @@ class Teacher
           @language_arts_students << student.id
         end
       end
-      
+
       if @language_arts_students.empty?
         no_language_arts_students << teacher
       else
         puts "#{teacher} has for Language Arts:"
         puts @language_arts_students.inspect
       end
-      
+
     end
     puts "#{no_language_arts_students.inspect} have no Language Arts students"
   end
@@ -1015,9 +1015,9 @@ a = Teacher.new(students, teachers)
 #   student = Student.new(id)
 #   report = ReportCard.new(student, template_dir, output_dir)
 #   puts "Successfully created report for #{student.name}."
-#   `mv #{output_dir}REPORT_CARD_#{student.id}.html /Users/localadmin/Sites/REPORT_CARD_#{student.id}.html` 
+#   `mv #{output_dir}REPORT_CARD_#{student.id}.html /Users/localadmin/Sites/REPORT_CARD_#{student.id}.html`
 # end
-# 
+#
 # LandingPage.new(students, template_dir, output_dir)
 
         #`/usr/local/bin/html2pdf --papersize=a4 #{output_dir}REPORT_CARD_#{student.id}.html`

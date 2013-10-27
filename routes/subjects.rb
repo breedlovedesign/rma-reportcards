@@ -9,7 +9,7 @@ end
 post "/subjects/new" do
 	admin?
   p = params[:subject]
-  Subject.where(name: p["name"], subject_id: p["subject_id"]).create 
+  Subject.where(name: p["name"], subject_id: p["subject_id"]).create
   redirect to('/subjects')
 end
 
@@ -22,7 +22,7 @@ end
 get "/subjects/edit/:mongo_id" do
 	admin?
   @subject = Subject.find_by(id: params[:mongo_id])
-  haml :"subjects/edit"   
+  haml :"subjects/edit"
 end
 
 post "/subjects/update/:mongo_id" do

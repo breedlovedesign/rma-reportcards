@@ -15,7 +15,7 @@ ins {
 	background-color: #cafdcb;
 }
 
-textarea.comment { 
+textarea.comment {
 	width: 800px;
 	height: 150px;
 	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;

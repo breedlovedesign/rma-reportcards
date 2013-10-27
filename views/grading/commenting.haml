@@ -21,7 +21,7 @@
 				=@language_arts_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @math_outcome_set.skill_track.math_teacher == @teacher.id.to_s
 	%li{:id => 'math'}
 		%h2= Subject.find_by(:subject_id => "math").name + " ..... " + @skill_track.math_level
@@ -42,7 +42,7 @@
 				=@math_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "math").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @social_studies_outcome_set.skill_track.social_studies_teacher == @teacher.id.to_s
 	%li{:id => 'social_studies'}
 		%h2= Subject.find_by(:subject_id => "social_studies").name + " ..... " + @skill_track.social_studies_level
@@ -63,7 +63,7 @@
 				=@social_studies_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "social_studies").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @science_outcome_set.skill_track.science_teacher == @teacher.id.to_s
 	%li{:id => 'science'}
 		%h2= Subject.find_by(:subject_id => "science").name + " ..... " + @skill_track.science_level
@@ -84,7 +84,7 @@
 				=@science_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "science").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @work_study_outcome_set.skill_track.work_study_teacher == @teacher.id.to_s
 	%li{:id => 'work_study'}
 		%h2= Subject.find_by(:subject_id => "work_study").name + " ..... " + @skill_track.work_study_level
@@ -105,7 +105,7 @@
 				=@work_study_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "work_study").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @citizenship_outcome_set.skill_track.citizenship_teacher == @teacher.id.to_s
 	%li{:id => 'citizenship'}
 		%h2= Subject.find_by(:subject_id => "citizenship").name + " ..... " + @skill_track.citizenship_level
@@ -126,7 +126,7 @@
 				=@citizenship_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "citizenship").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @art_outcome_set.skill_track.art_teacher == @teacher.id.to_s
 	%li{:id => 'art'}
 		%h2= Subject.find_by(:subject_id => "art").name + " ..... " + @skill_track.art_level
@@ -147,7 +147,7 @@
 				=@art_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "art").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @ict_outcome_set.skill_track.ict_teacher == @teacher.id.to_s
 	%li{:id => 'ict'}
 		%h2= Subject.find_by(:subject_id => "ict").name + " ..... " + @skill_track.ict_level
@@ -168,7 +168,7 @@
 				=@ict_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "ict").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @music_outcome_set.skill_track.music_teacher == @teacher.id.to_s
 	%li{:id => 'music'}
 		%h2= Subject.find_by(:subject_id => "music").name + " ..... " + @skill_track.music_level
@@ -189,7 +189,7 @@
 				=@music_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "music").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @pe_outcome_set.skill_track.pe_teacher == @teacher.id.to_s
 	%li{:id => 'pe'}
 		%h2= Subject.find_by(:subject_id => "pe").name + " ..... " + @skill_track.pe_level
@@ -210,7 +210,7 @@
 				=@pe_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "pe").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-      
+
 -if @thai_outcome_set.skill_track.thai_teacher == @teacher.id.to_s
 	%li{:id => 'thai'}
 		%h2= Subject.find_by(:subject_id => "thai").name + " ..... " + @skill_track.thai_level

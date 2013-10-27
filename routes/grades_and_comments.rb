@@ -56,12 +56,12 @@ get "/commenting/:student_id" do
 		@language_arts_current = @language_arts_commentos[-1].texto
 		@language_arts_prior = @language_arts_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@language_arts_prior) 
+		report_prior = Lingua::EN::Readability.new(@language_arts_prior)
 		@language_arts_prior_sentence_count = report_prior.num_sentences
 		@language_arts_prior_word_count = report_prior.num_words
 		@language_arts_prior_character_count = @language_arts_prior.length
 
-		report_current = Lingua::EN::Readability.new(@language_arts_current) 
+		report_current = Lingua::EN::Readability.new(@language_arts_current)
 		@language_arts_current_sentence_count = report_current.num_sentences
 		@language_arts_current_word_count = report_current.num_words
 		@language_arts_current_character_count = @language_arts_current.length
@@ -80,7 +80,7 @@ get "/commenting/:student_id" do
 		@language_arts_current = @language_arts_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@language_arts_current) 
+		report_current = Lingua::EN::Readability.new(@language_arts_current)
 		@language_arts_current_sentence_count = report_current.num_sentences
 		@language_arts_current_word_count = report_current.num_words
 		@language_arts_current_character_count = @language_arts_current.length
@@ -104,12 +104,12 @@ get "/commenting/:student_id" do
 		@math_current = @math_commentos[-1].texto
 		@math_prior = @math_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@math_prior) 
+		report_prior = Lingua::EN::Readability.new(@math_prior)
 		@math_prior_sentence_count = report_prior.num_sentences
 		@math_prior_word_count = report_prior.num_words
 		@math_prior_character_count = @math_prior.length
 
-		report_current = Lingua::EN::Readability.new(@math_current) 
+		report_current = Lingua::EN::Readability.new(@math_current)
 		@math_current_sentence_count = report_current.num_sentences
 		@math_current_word_count = report_current.num_words
 		@math_current_character_count = @math_current.length
@@ -128,7 +128,7 @@ get "/commenting/:student_id" do
 		@math_current = @math_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@math_current) 
+		report_current = Lingua::EN::Readability.new(@math_current)
 		@math_current_sentence_count = report_current.num_sentences
 		@math_current_word_count = report_current.num_words
 		@math_current_character_count = @math_current.length
@@ -152,12 +152,12 @@ get "/commenting/:student_id" do
 		@social_studies_current = @social_studies_commentos[-1].texto
 		@social_studies_prior = @social_studies_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@social_studies_prior) 
+		report_prior = Lingua::EN::Readability.new(@social_studies_prior)
 		@social_studies_prior_sentence_count = report_prior.num_sentences
 		@social_studies_prior_word_count = report_prior.num_words
 		@social_studies_prior_character_count = @social_studies_prior.length
 
-		report_current = Lingua::EN::Readability.new(@social_studies_current) 
+		report_current = Lingua::EN::Readability.new(@social_studies_current)
 		@social_studies_current_sentence_count = report_current.num_sentences
 		@social_studies_current_word_count = report_current.num_words
 		@social_studies_current_character_count = @social_studies_current.length
@@ -176,7 +176,7 @@ get "/commenting/:student_id" do
 		@social_studies_current = @social_studies_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@social_studies_current) 
+		report_current = Lingua::EN::Readability.new(@social_studies_current)
 		@social_studies_current_sentence_count = report_current.num_sentences
 		@social_studies_current_word_count = report_current.num_words
 		@social_studies_current_character_count = @social_studies_current.length
@@ -200,12 +200,12 @@ get "/commenting/:student_id" do
 		@science_current = @science_commentos[-1].texto
 		@science_prior = @science_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@science_prior) 
+		report_prior = Lingua::EN::Readability.new(@science_prior)
 		@science_prior_sentence_count = report_prior.num_sentences
 		@science_prior_word_count = report_prior.num_words
 		@science_prior_character_count = @science_prior.length
 
-		report_current = Lingua::EN::Readability.new(@science_current) 
+		report_current = Lingua::EN::Readability.new(@science_current)
 		@science_current_sentence_count = report_current.num_sentences
 		@science_current_word_count = report_current.num_words
 		@science_current_character_count = @science_current.length
@@ -224,7 +224,7 @@ get "/commenting/:student_id" do
 		@science_current = @science_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@science_current) 
+		report_current = Lingua::EN::Readability.new(@science_current)
 		@science_current_sentence_count = report_current.num_sentences
 		@science_current_word_count = report_current.num_words
 		@science_current_character_count = @science_current.length
@@ -248,12 +248,12 @@ get "/commenting/:student_id" do
 		@work_study_current = @work_study_commentos[-1].texto
 		@work_study_prior = @work_study_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@work_study_prior) 
+		report_prior = Lingua::EN::Readability.new(@work_study_prior)
 		@work_study_prior_sentence_count = report_prior.num_sentences
 		@work_study_prior_word_count = report_prior.num_words
 		@work_study_prior_character_count = @work_study_prior.length
 
-		report_current = Lingua::EN::Readability.new(@work_study_current) 
+		report_current = Lingua::EN::Readability.new(@work_study_current)
 		@work_study_current_sentence_count = report_current.num_sentences
 		@work_study_current_word_count = report_current.num_words
 		@work_study_current_character_count = @work_study_current.length
@@ -272,7 +272,7 @@ get "/commenting/:student_id" do
 		@work_study_current = @work_study_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@work_study_current) 
+		report_current = Lingua::EN::Readability.new(@work_study_current)
 		@work_study_current_sentence_count = report_current.num_sentences
 		@work_study_current_word_count = report_current.num_words
 		@work_study_current_character_count = @work_study_current.length
@@ -296,12 +296,12 @@ get "/commenting/:student_id" do
 		@citizenship_current = @citizenship_commentos[-1].texto
 		@citizenship_prior = @citizenship_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@citizenship_prior) 
+		report_prior = Lingua::EN::Readability.new(@citizenship_prior)
 		@citizenship_prior_sentence_count = report_prior.num_sentences
 		@citizenship_prior_word_count = report_prior.num_words
 		@citizenship_prior_character_count = @citizenship_prior.length
 
-		report_current = Lingua::EN::Readability.new(@citizenship_current) 
+		report_current = Lingua::EN::Readability.new(@citizenship_current)
 		@citizenship_current_sentence_count = report_current.num_sentences
 		@citizenship_current_word_count = report_current.num_words
 		@citizenship_current_character_count = @citizenship_current.length
@@ -320,7 +320,7 @@ get "/commenting/:student_id" do
 		@citizenship_current = @citizenship_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@citizenship_current) 
+		report_current = Lingua::EN::Readability.new(@citizenship_current)
 		@citizenship_current_sentence_count = report_current.num_sentences
 		@citizenship_current_word_count = report_current.num_words
 		@citizenship_current_character_count = @citizenship_current.length
@@ -344,12 +344,12 @@ get "/commenting/:student_id" do
 		@art_current = @art_commentos[-1].texto
 		@art_prior = @art_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@art_prior) 
+		report_prior = Lingua::EN::Readability.new(@art_prior)
 		@art_prior_sentence_count = report_prior.num_sentences
 		@art_prior_word_count = report_prior.num_words
 		@art_prior_character_count = @art_prior.length
 
-		report_current = Lingua::EN::Readability.new(@art_current) 
+		report_current = Lingua::EN::Readability.new(@art_current)
 		@art_current_sentence_count = report_current.num_sentences
 		@art_current_word_count = report_current.num_words
 		@art_current_character_count = @art_current.length
@@ -368,7 +368,7 @@ get "/commenting/:student_id" do
 		@art_current = @art_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@art_current) 
+		report_current = Lingua::EN::Readability.new(@art_current)
 		@art_current_sentence_count = report_current.num_sentences
 		@art_current_word_count = report_current.num_words
 		@art_current_character_count = @art_current.length
@@ -392,12 +392,12 @@ get "/commenting/:student_id" do
 		@ict_current = @ict_commentos[-1].texto
 		@ict_prior = @ict_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@ict_prior) 
+		report_prior = Lingua::EN::Readability.new(@ict_prior)
 		@ict_prior_sentence_count = report_prior.num_sentences
 		@ict_prior_word_count = report_prior.num_words
 		@ict_prior_character_count = @ict_prior.length
 
-		report_current = Lingua::EN::Readability.new(@ict_current) 
+		report_current = Lingua::EN::Readability.new(@ict_current)
 		@ict_current_sentence_count = report_current.num_sentences
 		@ict_current_word_count = report_current.num_words
 		@ict_current_character_count = @ict_current.length
@@ -416,7 +416,7 @@ get "/commenting/:student_id" do
 		@ict_current = @ict_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@ict_current) 
+		report_current = Lingua::EN::Readability.new(@ict_current)
 		@ict_current_sentence_count = report_current.num_sentences
 		@ict_current_word_count = report_current.num_words
 		@ict_current_character_count = @ict_current.length
@@ -440,12 +440,12 @@ get "/commenting/:student_id" do
 		@music_current = @music_commentos[-1].texto
 		@music_prior = @music_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@music_prior) 
+		report_prior = Lingua::EN::Readability.new(@music_prior)
 		@music_prior_sentence_count = report_prior.num_sentences
 		@music_prior_word_count = report_prior.num_words
 		@music_prior_character_count = @music_prior.length
 
-		report_current = Lingua::EN::Readability.new(@music_current) 
+		report_current = Lingua::EN::Readability.new(@music_current)
 		@music_current_sentence_count = report_current.num_sentences
 		@music_current_word_count = report_current.num_words
 		@music_current_character_count = @music_current.length
@@ -464,7 +464,7 @@ get "/commenting/:student_id" do
 		@music_current = @music_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@music_current) 
+		report_current = Lingua::EN::Readability.new(@music_current)
 		@music_current_sentence_count = report_current.num_sentences
 		@music_current_word_count = report_current.num_words
 		@music_current_character_count = @music_current.length
@@ -488,12 +488,12 @@ get "/commenting/:student_id" do
 		@pe_current = @pe_commentos[-1].texto
 		@pe_prior = @pe_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@pe_prior) 
+		report_prior = Lingua::EN::Readability.new(@pe_prior)
 		@pe_prior_sentence_count = report_prior.num_sentences
 		@pe_prior_word_count = report_prior.num_words
 		@pe_prior_character_count = @pe_prior.length
 
-		report_current = Lingua::EN::Readability.new(@pe_current) 
+		report_current = Lingua::EN::Readability.new(@pe_current)
 		@pe_current_sentence_count = report_current.num_sentences
 		@pe_current_word_count = report_current.num_words
 		@pe_current_character_count = @pe_current.length
@@ -512,7 +512,7 @@ get "/commenting/:student_id" do
 		@pe_current = @pe_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@pe_current) 
+		report_current = Lingua::EN::Readability.new(@pe_current)
 		@pe_current_sentence_count = report_current.num_sentences
 		@pe_current_word_count = report_current.num_words
 		@pe_current_character_count = @pe_current.length
@@ -536,12 +536,12 @@ get "/commenting/:student_id" do
 		@thai_current = @thai_commentos[-1].texto
 		@thai_prior = @thai_commentos[-2].texto
 
-		report_prior = Lingua::EN::Readability.new(@thai_prior) 
+		report_prior = Lingua::EN::Readability.new(@thai_prior)
 		@thai_prior_sentence_count = report_prior.num_sentences
 		@thai_prior_word_count = report_prior.num_words
 		@thai_prior_character_count = @thai_prior.length
 
-		report_current = Lingua::EN::Readability.new(@thai_current) 
+		report_current = Lingua::EN::Readability.new(@thai_current)
 		@thai_current_sentence_count = report_current.num_sentences
 		@thai_current_word_count = report_current.num_words
 		@thai_current_character_count = @thai_current.length
@@ -560,7 +560,7 @@ get "/commenting/:student_id" do
 		@thai_current = @thai_commentos[0].texto
 		
 
-		report_current = Lingua::EN::Readability.new(@thai_current) 
+		report_current = Lingua::EN::Readability.new(@thai_current)
 		@thai_current_sentence_count = report_current.num_sentences
 		@thai_current_word_count = report_current.num_words
 		@thai_current_character_count = @thai_current.length
@@ -580,7 +580,7 @@ end
 
 # grades_form[language_arts_grade_#{o.indexo}]
 
-# unless form["language_arts_comment"].nil? 
+# unless form["language_arts_comment"].nil?
 # 	language_arts_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "language_arts"))
 # 	language_arts_outcome_set.commentos.create!(:texto => form["language_arts_comment"])
 # 	language_arts_outcome_set.save
@@ -701,67 +701,67 @@ post "/comment/submit/:subject_id/:student_id/:skill_track_id" do
 	student = Student.find_by(:id => params[:student_id])
 	skill_track = student.skill_tracks.find_by(:id => params[:skill_track_id])
 
-unless form["language_arts_comment"].nil? 
+unless form["language_arts_comment"].nil?
 	language_arts_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "language_arts"))
 	language_arts_outcome_set.commentos.create!(:texto => form["language_arts_comment"])
 	language_arts_outcome_set.save
 end	
 
-unless form["math_comment"].nil? 
+unless form["math_comment"].nil?
 	math_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "math"))
 	math_outcome_set.commentos.create!(:texto => form["math_comment"])
 	math_outcome_set.save
 end	
 
-unless form["social_studies_comment"].nil? 
+unless form["social_studies_comment"].nil?
 	social_studies_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "social_studies"))
 	social_studies_outcome_set.commentos.create!(:texto => form["social_studies_comment"])
 	social_studies_outcome_set.save
 end	
 
-unless form["science_comment"].nil? 
+unless form["science_comment"].nil?
 	science_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "science"))
 	science_outcome_set.commentos.create!(:texto => form["science_comment"])
 	science_outcome_set.save
 end	
 
-unless form["work_study_comment"].nil? 
+unless form["work_study_comment"].nil?
 	work_study_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "work_study"))
 	work_study_outcome_set.commentos.create!(:texto => form["work_study_comment"])
 	work_study_outcome_set.save
 end	
 
-unless form["citizenship_comment"].nil? 
+unless form["citizenship_comment"].nil?
 	citizenship_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "citizenship"))
 	citizenship_outcome_set.commentos.create!(:texto => form["citizenship_comment"])
 	citizenship_outcome_set.save
 end	
 
-unless form["art_comment"].nil? 
+unless form["art_comment"].nil?
 	art_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "art"))
 	art_outcome_set.commentos.create!(:texto => form["art_comment"])
 	art_outcome_set.save
 end	
 
-unless form["ict_comment"].nil? 
+unless form["ict_comment"].nil?
 	ict_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "ict"))
 	ict_outcome_set.commentos.create!(:texto => form["ict_comment"])
 	ict_outcome_set.save
 end	
 
-unless form["music_comment"].nil? 
+unless form["music_comment"].nil?
 	music_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "music"))
 	music_outcome_set.commentos.create!(:texto => form["music_comment"])
 	music_outcome_set.save
 end	
 
-unless form["pe_comment"].nil? 
+unless form["pe_comment"].nil?
 	pe_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "pe"))
 	pe_outcome_set.commentos.create!(:texto => form["pe_comment"])
 	pe_outcome_set.save
 end	
 
-unless form["thai_comment"].nil? 
+unless form["thai_comment"].nil?
 	thai_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "thai"))
 	thai_outcome_set.commentos.create!(:texto => form["thai_comment"])
 	thai_outcome_set.save
