@@ -20,10 +20,10 @@ post "/skill_track/new" do
   form = params[:grap]
   # look at all skill tracks, list those that belong to this student
   # of those, are any already for this quarter? If no, make new. If yes edit
-  student = Student.find("#{ form["kid_id"] }") 
+  student = Student.find("#{ form["kid_id"] }")
   grading_period = GradingPeriod.find("#{ form["quarter_id"] }")
   old_track = SkillTrack.where(:student => student.id, :grading_period => grading_period.id )[0]
-  
+
   if old_track.nil?
     skill_track_obj = student.skill_tracks.create
     skill_track_obj.grading_period = grading_period
@@ -32,13 +32,13 @@ post "/skill_track/new" do
   else
     redirect to("/skill_tracks/edit/#{old_track.id}")
   end
-  
+
 end
 
 post "/students/new" do
 	admin?
   p = params[:student]
-  Student.where( :name => p["name"], :nickname => p["nickname"] ).create 
+  Student.where( :name => p["name"], :nickname => p["nickname"] ).create
   redirect to('/students')
 end
 
@@ -64,7 +64,7 @@ post "/skill_tracks/update/:mongo_id" do
   this_track = SkillTrack.find(params[:mongo_id])
   this_track.teacher = Teacher.find("#{ form["homeroom_teacher"] }")                      unless form["homeroom_teacher"]      == ""
   this_track.update_attributes!(:student_level          => form["student_level"])         unless form["student_level"]         == ""
-  
+
   this_track.update_attributes!(:language_arts_teacher  => form["language_arts_teacher"]) unless form["language_arts_teacher"] == ""
   this_track.update_attributes!(:language_arts_level    => form["language_arts_level"])   unless form["language_arts_level"]   == ""
   this_track.update_attributes!(:social_studies_teacher => form["language_arts_teacher"]) unless form["language_arts_teacher"] == ""
@@ -74,7 +74,7 @@ post "/skill_tracks/update/:mongo_id" do
 
   this_track.update_attributes!(:math_teacher           => form["math_teacher"])          unless form["math_teacher"]          == ""
   this_track.update_attributes!(:math_level             => form["math_level"])            unless form["math_level"]            == ""
-                                                                                       
+
   this_track.update_attributes!(:art_teacher            => form["art_teacher"])           unless form["art_teacher"]           == ""
   this_track.update_attributes!(:art_level              => form["art_level"])             unless form["art_level"]             == ""
   this_track.update_attributes!(:ict_teacher            => form["ict_teacher"])           unless form["ict_teacher"]           == ""
@@ -85,12 +85,12 @@ post "/skill_tracks/update/:mongo_id" do
   this_track.update_attributes!(:pe_level               => form["pe_level"])              unless form["pe_level"]              == ""
   this_track.update_attributes!(:thai_teacher           => form["thai_teacher"])          unless form["thai_teacher"]          == ""
   this_track.update_attributes!(:thai_level             => form["thai_level"])            unless form["thai_level"]            == ""
-  
+
   this_track.update_attributes!(:work_study_teacher     => form["work_study_teacher"])    unless form["work_study_teacher"]    == ""
   this_track.update_attributes!(:work_study_level       => form["work_study_level"])      unless form["work_study_level"]      == ""
   this_track.update_attributes!(:citizenship_teacher    => form["work_study_teacher"])    unless form["work_study_teacher"]    == ""
   this_track.update_attributes!(:citizenship_level      => form["work_study_level"])      unless form["work_study_level"]      == ""
-  
+
   this_track.update_attributes!(:eal_sss_status         => form["eal_sss_status"])        unless form["eal_sss_status"]        == ""
   this_track.update_attributes!(:thai_native            => form["thai_native"])           unless form["thai_native"]           == ""
   this_track.save

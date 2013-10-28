@@ -7,7 +7,7 @@ end
 get "/teachers/students" do
   teacher?
   logged_in_teacher = Teacher.find_by(:id => session[:teacher_id])
-  @title = "#{logged_in_teacher.name}'s Students" 
+  @title = "#{logged_in_teacher.name}'s Students"
   students = Student.all
   @students = []
 
@@ -18,7 +18,7 @@ get "/teachers/students" do
         @students << student
       end
     end
-    
+
   end
   haml :"/teachers/students", :layout => :teacher_layout
 end

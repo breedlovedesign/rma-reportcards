@@ -1,0 +1,53 @@
+-# coding: utf-8
+%li{:class => "list_row"}
+	%form{:action => "/attendance/edit/#{student.id}", :method => "POST"}
+		%table.attendance
+			%tr
+				%td{:colspan => 5} #{student.name}'s (#{student.nickname}) Attendance
+			%tr
+				%td Quarter
+				%td 1
+				%td 2
+				%td 3
+				%td 4
+			%tr
+				%td School Days
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q1_days}", :type => "text", :name => "attendance_form[q1_days]"}
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q2_days}", :type => "text", :name => "attendance_form[q2_days]"}
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q3_days}", :type => "text", :name => "attendance_form[q3_days]"}
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q4_days}", :type => "text", :name => "attendance_form[q4_days]"}
+			%tr
+				%td Days Absent
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q1_absence}", :type => "text", :name => "attendance_form[q1_absence]"}
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q2_absence}", :type => "text", :name => "attendance_form[q2_absence]"}
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q3_absence}", :type => "text", :name => "attendance_form[q3_absence]"}
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q4_absence}", :type => "text", :name => "attendance_form[q4_absence]"}
+			%tr
+				%td Days Tardy
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q1_tardy}", :type => "text", :name => "attendance_form[q1_tardy]"}
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q2_tardy}", :type => "text", :name => "attendance_form[q2_tardy]"}
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q3_tardy}", :type => "text", :name => "attendance_form[q3_tardy]"}
+				%td
+					%input{ :placeholder => "#{student.attendance_set.q4_tardy}", :type => "text", :name => "attendance_form[q4_tardy]"}
+		%input.button{:type => "submit", :value => "Update #{student.name}'s Attendance", :title => "Update #{student.name}'s Attendance", :class => "button"}
+
+
+
+
+
+
+
+
+
+

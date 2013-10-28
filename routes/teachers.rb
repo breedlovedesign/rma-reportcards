@@ -9,7 +9,7 @@ end
 post "/teachers/new" do
 	admin?
   p = params[:teacher]
-  Teacher.where(name: p["name"]).create 
+  Teacher.where(name: p["name"]).create
   redirect to('/teachers')
 end
 

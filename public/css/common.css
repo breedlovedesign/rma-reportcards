@@ -1,5 +1,34 @@
+.cmt {
+	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+	font-size: 11pt;
+}
+
+del {
+	text-decoration: line-through;
+	color: #9b9a98;
+	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+	font-size: 11pt;
+}
+
+ins {
+	text-decoration: none;
+	background-color: #cafdcb;
+}
+
+textarea.comment {
+	width: 800px;
+	height: 150px;
+	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+	font-size: 11pt;
+}
 .float {float:left; margin-left:40px; margin-bottom:60px;}
 .foot {clear: both;}
+
+ul.grade_list li input {
+	width: 2em;
+	padding-left: 1em;
+	font-size: 13px;
+}
 
 li#math a, li#la a, li#social_studies a, li#science a , li#work_study a , li#citizenship a , li#art a , li#ict a , li#music a , li#pe a , li#thai a, #selected #simple-navigation-active-leaf ul {  padding:0px;}
 
@@ -38,8 +67,15 @@ header {padding-top:50px;}
 
 h2.top {
 	margin-left:30px;
-	margin-bottom:70px;
+	margin-bottom:5px;
 	color: white;
+}
+
+h2.top#warning {
+	margin-left:30px;
+	margin-top: 15px;
+	margin-bottom:15px;
+	color: orange;
 }
 
 footer {
@@ -66,6 +102,14 @@ footer {
 	background-color: #aae6e8;
 }
 
+#create_all_reports {
+	background-color: #8fc627;
+}
+
+#create_all_reports:hover {
+	background-color: #dce123;
+}
+
 .button {
 	padding: 10px 20px ;
 	margin-top: 50px;
@@ -75,6 +119,11 @@ footer {
 	font-size: 11pt;
 	font-family: sans-serif;
 	border-radius: 3px;
+}
+
+.button.grade_submit{
+	margin-top: 0px;
+	margin-bottom: 50px;
 }
 
 .logoutbutton {
@@ -166,4 +215,19 @@ li:hover form input {
 .nav a.selected:hover {
 	background: #fff;
 	color: #000;
+}
+
+table.attendance {
+	border:  2px solid #00b2e9 ;
+	border-collapse: collapse;
+}
+
+table.attendance td {
+	border:  1px solid #00b2e9 ;
+	text-align: center;
+}
+
+table.attendance input {
+	text-align: center;
+	border: none;
 }

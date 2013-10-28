@@ -8,10 +8,10 @@
 %link(type="text/css" rel="stylesheet" href="/css/common.css" )
 %section
 	%header.top
-		%h2.top= @title.upcase unless @title.nil?
-		%p A message from the admin: #{$message}
-		%p The current grading period is: #{GradingPeriod.find($current_quarter).gpname unless $current_quarter.nil?}
-		%p= if session[:teacher_id].nil? then "You are not logged in." else "You are logged in  as " + (session[:teacher_id] == "admin" ? "Administrator" : Teacher.find_by(:id => session[:teacher_id]).name) end
+		- title = @title.upcase unless @title.nil?
+		- quarter = (GradingPeriod.find($current_quarter).name).upcase unless $current_quarter.nil?
+		%h2.top #{quarter}
+		%h2.top #{title}
 		%div.nav
 			= partial( :"teachers/teacher_nav" )
 	%article
@@ -24,6 +24,5 @@
 					Example: \*\*This text will be bold.\*\*  Produces: **This text will be bold.**
 					
 					Example: \*This text will be italicized.\*  Produces: *This text will be italicized.*
-			%h4
-				%a{:href => "http://daringfireball.net/projects/markdown/syntax#em", :target => "blank"} Complete Markdown Reference
-%h2
+
+					"How about quotes?", you ask.

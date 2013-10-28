@@ -1,7 +1,7 @@
 # encoding: utf-8
 post "/outcomes/add_outcome/:mongo_id" do
 	admin?
- p = params[:add_outcome] 
+ p = params[:add_outcome]
  outcome_set = OutcomeSet.find(params[:mongo_id])
  outcome = outcome_set.outcomes.push(Outcome.new(:texto => "#{p["item"]}", :indexo => "#{p["index"]}"))
  redirect to("/outcomes/list/#{outcome_set.subject.id}")
@@ -45,9 +45,9 @@ end
 post "/outcomes/new" do
 	admin?
   p = params[:form_data]
-  outcome_set = OutcomeSet.where(:level => p["level"]).create 
+  outcome_set = OutcomeSet.where(:level => p["level"]).create
   outcome_set.subject = Subject.find_by( :id => "#{p["subject"]}" )
-  outcome_set.save 
+  outcome_set.save
   redirect to("/outcomes/list/#{outcome_set.subject.id}")
 end
 
@@ -80,5 +80,5 @@ get "/outcomes/:outcome_name" do
 	admin?
 	subject = Subject.find_by(:subject_id => params[:outcome_name] )
 	@outcome_set = OutcomeSet.find_by(:subject_id =>   subject.id)
-	redirect to("outcomes/list/#{@outcome_set.subject.id}")
+	redirect to("outcomes/list/#{@outcome_set.subject_id}")
 end

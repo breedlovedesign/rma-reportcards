@@ -5,13 +5,12 @@
 %meta{ :charset => "utf-8" }
 %meta{ :content => "", :name => "description" }
 %meta{ :content => "", :name => "author" }
-%link(type="text/css" rel="stylesheet" href="/css/common.css" )
+%link(type="text/css" rel="stylesheet" href="/css/common.css")
 %section
 	%header.top
 		%h2.top= @title.upcase unless @title.nil?
-		%p Current message: #{$message}
-		%p The current grading period is: #{GradingPeriod.find($current_quarter).gpname unless $current_quarter.nil?}
-		%p= if session[:teacher_id].nil? then "You are not logged in." else "You are logged in  as " + (session[:teacher_id] == "admin" ? "Administrator" : Teacher.find_by(:id => session[:teacher_id]).name) end
+		%h2.top#warning= "SET THE GRADING PERIOD" if $current_quarter.nil?
+		%h2.top #{(GradingPeriod.find($current_quarter).name).upcase unless $current_quarter.nil?}
 		%div.nav
 			=render_navigation
 	%article

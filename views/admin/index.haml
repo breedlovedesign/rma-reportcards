@@ -1,11 +1,19 @@
 -# coding: utf-8
-%p Hello. Please set the Current Grading Period for all teachers' activites.
+%p
+	%strong Please set the Current Grading Period for all teachers' activites.
 %form{:action => "/admin/go", :method => "POST"}
 	%select{:name => "admin_form[current_quarter]"}
 		- @quarters.each do |q|
 			%option{:value => q.id} #{q.name}
-	%br
-	%p Optionally enter a message the teachers will see while they are logged in.
-	%input{:type => "text", :name => "admin_form[message]", :placeholder => "message for teachers"}
-	%br
 	%input.button{:type => "submit", :value => "Submit", :title => "Submit", :class => "button"}
+%br
+%hr
+%br
+%p WARNING: The following commands will overwrite files in the output directory.
+%form{:action => "/admin/create_reports", :method => "POST"}
+	%input.button{:id => "create_all_reports", :type => "submit", :value => "RECREATE / CREATE ALL REPORTS", :title => "RECREATE / CREATE ALL REPORTS", :class => "button"}
+%br
+%hr
+-Student.all.each do |student|
+	%form{:action => "/admin/create_report/#{student.id}", :method => "POST"}
+		%input.button{:type => "submit", :value => "Create #{student.name}'s Report Card", :title => "Create #{student.name}'s Report Card", :class => "button"}

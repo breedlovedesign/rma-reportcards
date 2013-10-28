@@ -1,0 +1,15 @@
+MAC:
+
+html2pdf --papersize=a4  REPORT_CARD_Matthew\ Sterling.html
+pdfjam -o ./ --a3paper --nup 2x1 --landscape  REPORT_CARD_Matthew\ Sterling.pdf 4,1,2,3
+
+
+LINUX:
+
+?
+
+
+starting the server
+Log on. Run screen. Launch your python program. Press crtl-a crtl-d to detach from your screen. Log out.
+
+Log in again. screen -r to reattach to your process.

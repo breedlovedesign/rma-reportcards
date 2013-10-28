@@ -2,7 +2,7 @@
 class OutcomeSet
   include Mongoid::Document
   field :level
-  field :comment
+  embeds_many :commentos
   embeds_many :outcomes
   embedded_in :skill_track
   belongs_to :subject
@@ -11,13 +11,3 @@ class OutcomeSet
     ls.count
   end
 end
-
-
-
-
-
-
-
-
-
-

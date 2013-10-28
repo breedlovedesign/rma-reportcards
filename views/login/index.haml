@@ -27,6 +27,10 @@
 												%option{:value => t.id, :selected => 'selected'} #{t.name}
 											-else
 												%option{:value => t.id} #{t.name}
+										-if session[:teacher_id] == "attendance"
+											%option{:value => "attendance", :selected => 'selected'} Attendance
+										-else
+											%option{:value => "attendance"} Attendance		
 										-if session[:teacher_id] == "admin"
 											%option{:value => "admin", :selected => 'selected'} Administrator
 										-else

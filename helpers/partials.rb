@@ -7,4 +7,5 @@ module PartialPartials
 	def partial( page, variables={} )
 		haml page, {layout:false}, variables
 	end
+
 end

@@ -1,4 +1,5 @@
 -# coding: utf-8
 %li{:class => "list_row"}
 	= student.name.ljust(28, ".") + student.nickname.ljust(10, ".")
-	%a{ :class => "edit_link", :href => "/grading/#{student.id}" } Grades & Comments
+	%a{ :class => "edit_link", :href => "/grading/#{student.id}" } Grades
+	%a{ :class => "edit_link", :href => "/commenting/#{student.id}" } Comments
