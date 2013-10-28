@@ -1,15 +1,22 @@
 MAC:
 
-html2pdf --papersize=a4  REPORT_CARD_Matthew\ Sterling.html
-pdfjam -o ./ --a3paper --nup 2x1 --landscape  REPORT_CARD_Matthew\ Sterling.pdf 4,1,2,3
+html2pdf --papersize=a4  path/to/input.html #outputs to same dir
+pdfjam -o ./ --a3paper --nup 2x1 --landscape  path/to/input.pdf 4,1,2,3 
 
 
 LINUX:
+*wkhtmltopdf compiled against a wk patched QT
+wkhtmltopdf -s a4 -T 0 -B 0 -L 0 -R 0 path/to/input.html path/to/output.pdf
+pdfjam -o ./ --a3paper --nup 2x1 --landscape  path/to/input.pdf 4,1,2,3
 
-?
 
+remotely starting the server
+SSH to the server. 
+Run 'screen'. 
+'cd' to the application directory.
+'rackup congfig.ru'
+Press 'crtl-a' followed by 'crtl-d' to detach from your screen.
+Log out.
 
-starting the server
-Log on. Run screen. Launch your python program. Press crtl-a crtl-d to detach from your screen. Log out.
-
-Log in again. screen -r to reattach to your process.
+Log in again.
+use 'screen -r' to reattach to your process.
