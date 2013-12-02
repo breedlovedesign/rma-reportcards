@@ -2,6 +2,7 @@
 %form{:action => "/students/new", :method => "POST"}
 	%input{:placeholder => "student name", :type => "text", :name => "student[name]"}
 	%input{:placeholder => "nickname", :type => "text", :name => "student[nickname]"}
+	%input{:placeholder => "dd/mm/yyyy", :type => "text", :name => "student[dob]"}
 	%input.button{:type => "submit", :value => "New Student", :title => "New Student", :class => "button"}
 %h2 Students
 %ul.students
