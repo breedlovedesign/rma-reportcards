@@ -106,7 +106,7 @@
 							= ("....." + o.texto + ".....current grade => " + '"' + grade + '"')
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "citizenship").name} Grades", :title => "Update Student", :class => "button", :class => "grade_submit"}
 			%br
-	}
+
 -if @art_outcome_set.skill_track.art_teacher == @teacher.id.to_s
 	%li{:id => 'art'}
 		%form{:action => "/grading/submit/art/#{@student.id}/#{@skill_track.id}", :method => "POST"}
