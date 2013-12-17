@@ -25,7 +25,7 @@
 				-else
 					%option{:value => "#{s}"} #{s}
 		%hr
-		%p Language Arts, Social Studies, Science
+		%p Language Arts
 		%select{:name => "form_data[language_arts_teacher]"}
 			%option{:value => ""}
 			- @teachers.each do |t|
@@ -37,6 +37,38 @@
 			%option{:value => ""}
 			- @levels.each do |l|
 				-if @this_track.language_arts_level.nil? == false && (@this_track.language_arts_level == l)
+					%option{:value => "#{l}", :selected => 'selected'} #{l}
+				-else
+					%option{:value => "#{l}"} #{l}
+
+		%p Social Studies
+		%select{:name => "form_data[social_studies_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				-if @this_track.social_studies_teacher.nil? == false && (@this_track.social_studies_teacher == t.id.to_s)
+					%option{:value => "#{@this_track.social_studies_teacher}", :selected => 'selected'} #{Teacher.find_by(:id => @this_track.social_studies_teacher).name}
+				-else
+					%option{:value => "#{t.id}"} #{t.name}
+		%select{:name => "form_data[social_studies_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				-if @this_track.social_studies_level.nil? == false && (@this_track.social_studies_level == l)
+					%option{:value => "#{l}", :selected => 'selected'} #{l}
+				-else
+					%option{:value => "#{l}"} #{l}
+
+		%p Science
+		%select{:name => "form_data[science_teacher]"}
+			%option{:value => ""}
+			- @teachers.each do |t|
+				-if @this_track.science_teacher.nil? == false && (@this_track.science_teacher == t.id.to_s)
+					%option{:value => "#{@this_track.science_teacher}", :selected => 'selected'} #{Teacher.find_by(:id => @this_track.science_teacher).name}
+				-else
+					%option{:value => "#{t.id}"} #{t.name}
+		%select{:name => "form_data[science_level]"}
+			%option{:value => ""}
+			- @levels.each do |l|
+				-if @this_track.science_level.nil? == false && (@this_track.science_level == l)
 					%option{:value => "#{l}", :selected => 'selected'} #{l}
 				-else
 					%option{:value => "#{l}"} #{l}
