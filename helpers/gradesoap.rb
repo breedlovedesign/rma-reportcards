@@ -16,6 +16,8 @@ module Gradesoap
 			plus_minus = grade[0]
 			grade = letter + plus_minus
 			grade
+		elsif grade == "N/A"
+			grade = "NA"
 		else
 			grade = ""
 		end

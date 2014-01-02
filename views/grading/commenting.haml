@@ -4,6 +4,9 @@
 -if @language_arts_outcome_set.skill_track.language_arts_teacher == @teacher.id.to_s
 	%li{:id => 'language_arts'}
 		%h2= Subject.find_by(:subject_id => "language_arts").name + " ..... " + @skill_track.language_arts_level
+		-@language_arts_previous_comments.each do |comment|
+			%p=comment
+		%p previous comments (put up arrow here)
 		%p number of revisions of this comment = #{@language_arts_num_versions}
 		-if @language_arts_current.nil? == false && @language_arts_num_versions == 1
 			%p Current comment shown: Sentences-#{@language_arts_current_sentence_count}, Words-#{@language_arts_current_word_count}, Characters-#{@language_arts_current_character_count}
@@ -21,7 +24,7 @@
 				=@language_arts_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-
+%h2 Preview:
 -if @math_outcome_set.skill_track.math_teacher == @teacher.id.to_s
 	%li{:id => 'math'}
 		%h2= Subject.find_by(:subject_id => "math").name + " ..... " + @skill_track.math_level

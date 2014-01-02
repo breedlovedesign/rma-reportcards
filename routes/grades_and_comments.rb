@@ -55,6 +55,7 @@ get "/commenting/:student_id" do
 		@language_arts_commentos = @language_arts_outcome_set.commentos
 		@language_arts_current = @language_arts_commentos[-1].texto
 		@language_arts_prior = @language_arts_commentos[-2].texto
+		@language_arts_previous_comments = @language_arts_commentos[0..-3].map{ |comment| comment.texto}
 
 		report_prior = Lingua::EN::Readability.new(@language_arts_prior)
 		@language_arts_prior_sentence_count = report_prior.num_sentences
