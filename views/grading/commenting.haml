@@ -4,8 +4,9 @@
 -if @language_arts_outcome_set.skill_track.language_arts_teacher == @teacher.id.to_s
 	%li{:id => 'language_arts'}
 		%h2= Subject.find_by(:subject_id => "language_arts").name + " ..... " + @skill_track.language_arts_level
-		-@language_arts_previous_comments.each do |comment|
-			%p=comment
+		-if @language_arts_previous_comments.nil? == false
+			-@language_arts_previous_comments.each do |comment|
+				%p=comment
 		%p previous comments (put up arrow here)
 		%p number of revisions of this comment = #{@language_arts_num_versions}
 		-if @language_arts_current.nil? == false && @language_arts_num_versions == 1

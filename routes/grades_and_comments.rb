@@ -1,4 +1,22 @@
 # encoding: utf-8
+	class String
+		def paragraph_prep
+			self.gsub!(/^[ \t]/, "")
+			self.gsub!(/[ \t]$/, "")
+			self.gsub!(/[ \t]{2,}/, " ")
+			self.gsub!(/\r\n/, "\n")
+			self.gsub!(/(\n\n|\r\n\r\n)/, '0129934')
+			if self == nil
+				raise "whitespace error"
+			end
+			return self
+		end
+
+		def paragraph_reinsertion
+			self.gsub!(/0129934/, "\n\n")
+		end
+	end
+
 get "/grading/:student_id" do
 	teacher?
 	@teacher = Teacher.find_by(:id => session[:teacher_id])
@@ -704,7 +722,13 @@ post "/comment/submit/:subject_id/:student_id/:skill_track_id" do
 
 unless form["language_arts_comment"].nil?
 	language_arts_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "language_arts"))
-	language_arts_outcome_set.commentos.create!(:texto => form["language_arts_comment"])
+	#language_arts_outcome_set.commentos.create!(:texto => form["language_arts_comment"])
+	raw_comment = form["language_arts_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	language_arts_outcome_set.commentos.create!(:texto => doub)
+
 	language_arts_outcome_set.save
 end	
 
