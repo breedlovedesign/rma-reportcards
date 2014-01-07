@@ -7,7 +7,7 @@
 		-if @language_arts_previous_comments.nil? == false
 			-@language_arts_previous_comments.each do |comment|
 				%p=comment
-		%p previous comments (put up arrow here)
+		%p previous comments above ⬆
 		%p number of revisions of this comment = #{@language_arts_num_versions}
 		-if @language_arts_current.nil? == false && @language_arts_num_versions == 1
 			%p Current comment shown: Sentences-#{@language_arts_current_sentence_count}, Words-#{@language_arts_current_word_count}, Characters-#{@language_arts_current_character_count}
@@ -26,6 +26,37 @@
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
 %h2 Preview:
+%table(class="core")
+	%tr
+		%td(class="table_header" )= "#{@student_var.language_arts} Teacher #{@student_var.language_arts_t}"
+%table(class="core")
+	%tr(class="o_g_c_set")
+		%td
+			%table(class="nested")
+				%tr(class="borderless")
+					%td(class="setwidth-o")
+					%td(class="setwidth-g")
+				%tr
+					%td(class="subhead" colspan="2") Listening and Speaking
+				- @student_var.language_arts_o_g_pairs[0..3].each do |pair|
+					%tr(class="o_g_pair")
+						%td(class="outcome")= "#{pair[0]}"
+						%td(class="grade")= "#{pair[1]}"
+				%tr
+					%td(class="subhead" colspan="2") Writing
+				- @student_var.language_arts_o_g_pairs[4..8].each do |pair|
+					%tr(class="o_g_pair")
+						%td(class="outcome")= "#{pair[0]}"
+						%td(class="grade")= "#{pair[1]}"
+				%tr
+					%td(class="subhead" colspan="2") Reading
+				- @student_var.language_arts_o_g_pairs[9..15].each do |pair|
+					%tr(class="o_g_pair")
+						%td(class="outcome")= "#{pair[0]}"
+						%td(class="grade")= "#{pair[1]}"
+			%td(class="comment" class="sweet-justice")
+				:markdown
+					#{@student_var.language_arts_c}
 -if @math_outcome_set.skill_track.math_teacher == @teacher.id.to_s
 	%li{:id => 'math'}
 		%h2= Subject.find_by(:subject_id => "math").name + " ..... " + @skill_track.math_level

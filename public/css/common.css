@@ -231,3 +231,168 @@ table.attendance input {
 	text-align: center;
 	border: none;
 }
+
+
+
+table#key_p td.a_p, table#key_p  td.b_p, table#key_p td.c_p, table#key_p td.d_p {
+	font-family: "Luxi Sans";
+	font-size: 10pt;
+	padding: 4pt;
+}
+
+table#key_p td.d_p {
+	text-align: center;
+	border-bottom: 1px solid #000;
+}
+
+
+table#key_p td.a_p {
+	width: 50mm;
+	text-align: right;
+	padding-right: .5mm
+}
+
+table#key_p td.b_p {
+	width: 40mm;
+	text-align: left;
+}
+
+table#key_p td.c_p {
+	
+	text-align: left;
+}
+
+table#attendance_p {
+	margin-top: 19px;
+}
+
+table#attendance_p td {
+	font-family: "Luxi Sans";
+	font-size: 10pt;
+	padding: 4pt;
+	border: 1px solid #000;
+	text-align: center;
+}
+
+
+h1 {
+	font-family: sans-serif;
+}
+table {
+	font-family: "Luxi Sans";
+	width: 199mm;
+	border: 2px solid #000;
+	padding: 0em;
+	table-layout: fixed;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+}
+table.core_p, table.special_p {
+	border-top: none;
+}
+table.core_p tr.o_g_c_set_p td.sweet-justice_p, table.special_p tr.o_g_c_set_p td.sweet-justice_p {
+	border-top: 1px solid #000;
+}
+td.subjects_p {
+	text-align: center;
+	padding: 2mm 0mm 5mm 0mm;
+	font-size: 15pt;
+	font-weight: bold;
+}
+table.nested_p {
+	margin: 0mm;
+	width: 100mm;
+	font-size: 10pt;
+	border:0px;
+}
+td.setwidth-o_p {
+	border: 0px;
+	padding: 0;
+	width: 88mm;
+	height: 0px;
+}
+tr.borderless_p {
+	display:hidden;
+}
+td.setwidth-g_p {
+	border: 0px;
+	padding: 0;
+	width: 12mm;
+	height: 0px;
+}
+td.outcome_p {
+	padding: 1.2mm;
+	font-size: 8pt;
+	width: 88mm;
+}
+td.grade_p {
+	width: 7mm;
+	text-align: left;
+	padding-left: 5.4mm;
+	font-size: 8pt;
+}
+td.comment_p {
+	width: 98mm;
+	font-size: 9pt;
+	vertical-align:top;
+	line-height: 1.2;
+}
+td.comment_p p {
+	margin: 1.4mm;
+	text-indent:4mm;
+	text-align:left;
+}
+
+td.sweet-justice_p {
+	width: 98mm;
+	font-size: 9pt;
+	vertical-align:top;
+	line-height: 1.2;
+}
+td.sweet-justice_p p {
+	margin: 1.4mm;
+	text-indent:4mm;
+}
+td.nest_p {
+	padding: 0mm;
+}
+table.table_heading_p, #workstudy_p {
+	margin-top: 16mm;
+}
+td.table_header_p {
+	background-color: #160082;
+	color: white;
+	font-weight: bold;
+	font-size: 10pt;
+	padding: 2mm
+}
+td.subhead_p {
+	padding: 1.5mm;
+	background-color: #e7e5fe;
+	font-weight: bold;
+}
+td.teacher_p {
+	padding: 1.5mm;
+	background-color: #e7e5fe;
+	font-weight: bold;
+}
+table.nested_p td, table.nested_p th {
+	border: 1px solid black;
+}
+table.nested_p tr:first-child th {
+	border-top: 0;
+}
+table.nested_p tr:first-child td {
+	border: 0;
+	border-color:red;
+}
+table.nested_p tr:last-child td {
+	border-bottom: 0;
+}
+table.nested_p tr td:first-child, table.nested_p tr th:first-child {
+	border-left: 0;
+}
+table.nested_p tr td:last-child, table.nested_p tr th:last-child {
+	border-right: 1;
+}

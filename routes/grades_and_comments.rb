@@ -23,6 +23,7 @@ get "/grading/:student_id" do
 	@student = Student.find_by(:id => params[:student_id])
 	@skill_track = @student.skill_tracks.find_by(:grading_period => $current_quarter)
 
+
 	language_arts_id = Subject.find_by(:subject_id => "language_arts").id
 	@language_arts_outcome_set = @skill_track.outcome_sets.find_by(:subject_id => language_arts_id)
 
@@ -65,7 +66,10 @@ get "/commenting/:student_id" do
 	@teacher = Teacher.find_by(:id => session[:teacher_id])
 	@student = Student.find_by(:id => params[:student_id])
 	@skill_track = @student.skill_tracks.find_by(:grading_period => $current_quarter)
+#########
+	@student_var = StudentVar.new(@student.id)
 
+#########
 	language_arts_id = Subject.find_by(:subject_id => "language_arts").id
 	@language_arts_outcome_set = @skill_track.outcome_sets.find_by(:subject_id => language_arts_id)
 	if  (@language_arts_outcome_set.commentos.nil? == false) && (@language_arts_outcome_set.commentos.length > 1)
