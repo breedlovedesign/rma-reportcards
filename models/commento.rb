@@ -3,6 +3,7 @@ class Commento
   include Mongoid::Document
   field :texto
   field :indexo, :type => Float
+  field :editor
   field :time_stamp, :type => Time
   embedded_in :outcome_set
   def wordcount
