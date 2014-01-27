@@ -67,10 +67,10 @@ post "/skill_tracks/update/:mongo_id" do
 
   this_track.update_attributes!(:language_arts_teacher  => form["language_arts_teacher"]) unless form["language_arts_teacher"] == ""
   this_track.update_attributes!(:language_arts_level    => form["language_arts_level"])   unless form["language_arts_level"]   == ""
-  this_track.update_attributes!(:social_studies_teacher => form["language_arts_teacher"]) unless form["language_arts_teacher"] == ""
-  this_track.update_attributes!(:social_studies_level   => form["language_arts_level"])   unless form["language_arts_level"]   == ""
-  this_track.update_attributes!(:science_teacher        => form["language_arts_teacher"]) unless form["language_arts_teacher"] == ""
-  this_track.update_attributes!(:science_level          => form["language_arts_level"])   unless form["language_arts_level"]   == ""
+  this_track.update_attributes!(:social_studies_teacher => form["social_studies_teacher"]) unless form["social_studies_teacher"] == ""
+  this_track.update_attributes!(:social_studies_level   => form["social_studies_level"])   unless form["social_studies_level"]   == ""
+  this_track.update_attributes!(:science_teacher        => form["science_teacher"]) unless form["science_teacher"] == ""
+  this_track.update_attributes!(:science_level          => form["science_level"])   unless form["science_level"]   == ""
 
   this_track.update_attributes!(:math_teacher           => form["math_teacher"])          unless form["math_teacher"]          == ""
   this_track.update_attributes!(:math_level             => form["math_level"])            unless form["math_level"]            == ""

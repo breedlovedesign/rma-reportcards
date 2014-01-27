@@ -1,28 +1,32 @@
 -# coding: utf-8
 !!!
-%link(rel="icon" type="image/png" href="/favicon.png")
-%title= @title
-%meta{ :charset => "utf-8" }
-%meta{ :content => "", :name => "description" }
-%meta{ :content => "", :name => "author" }
-%link(type="text/css" rel="stylesheet" href="/css/common.css" )
-%section
-	%header.top
-		- title = @title.upcase unless @title.nil?
-		- quarter = (GradingPeriod.find($current_quarter).name).upcase unless $current_quarter.nil?
-		%h2.top #{quarter}
-		%h2.top #{title}
-		%div.nav
-			= partial( :"teachers/teacher_nav" )
-	%article
-		= yield
-		%footer.foot
-			.footer
-				:markdown
-					When working with comments, surround text to be bolded with two asterisks. Single astrerisks will produce italicized text.
-					
-					Example: \*\*This text will be bold.\*\*  Produces: **This text will be bold.**
-					
-					Example: \*This text will be italicized.\*  Produces: *This text will be italicized.*
+%html
+	%head
+		%link( rel="shortcut icon" href="/favicon.ico" type="image/x-icon")
+		%link( rel="icon" href="/favicon.ico" type="image/x-icon")
+		%title= @title
+		%meta{ :charset => "utf-8" }
+		%meta{ :content => "", :name => "description" }
+		%meta{ :content => "", :name => "author" }
+		%link(type="text/css" rel="stylesheet" href="/css/common.css" )
+	%body
+		%section
+			%header.top
+				- title = @title.upcase unless @title.nil?
+				- quarter = (GradingPeriod.find($current_quarter).name).upcase unless $current_quarter.nil?
+				%h2.top #{quarter}
+				%h2.top #{title}
+				%div.nav
+					= partial( :"teachers/teacher_nav" )
+			%article
+				= yield
+				%footer.foot
+					.footer
+						:markdown
+							When working with comments, surround text to be bolded with two asterisks. Single astrerisks will produce italicized text.
+							
+							Example: \*\*This text will be bold.\*\*  Produces: **This text will be bold.**
+							
+							Example: \*This text will be italicized.\*  Produces: *This text will be italicized.*
 
-					"How about quotes?", you ask.
+							"How about quotes?", you ask.

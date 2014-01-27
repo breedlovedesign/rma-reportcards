@@ -5,7 +5,7 @@ post "/admin/create_report/:mongo_id" do
 #make it a little bit more portable
 base_dir = "#{Dir.home}/development/rma-reportcards/"
 template_dir = "#{base_dir}views/reports/"
-output_dir = "#{base_dir}/output/html/"
+output_dir = "#{base_dir}/public/reports/"
 pdf_dir = "#{base_dir}/output/pdf/"
 
 stu = Student.find("#{params[:mongo_id]}")

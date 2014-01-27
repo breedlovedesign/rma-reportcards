@@ -10,3 +10,6 @@ RmaReports.helpers Authorize
 
 require_relative 'gradesoap'
 RmaReports.helpers Gradesoap
+
+require_relative 'doublespacer'
+RmaReports.helpers Doublespacer

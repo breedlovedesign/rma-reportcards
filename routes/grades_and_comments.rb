@@ -1,9 +1,28 @@
 # encoding: utf-8
+	class String
+		def paragraph_prep
+			self.gsub!(/^[ \t]/, "")
+			self.gsub!(/[ \t]$/, "")
+			self.gsub!(/[ \t]{2,}/, " ")
+			self.gsub!(/\r\n/, "\n")
+			self.gsub!(/(\n\n|\r\n\r\n)/, '0129934')
+			if self == nil
+				raise "whitespace error"
+			end
+			return self
+		end
+
+		def paragraph_reinsertion
+			self.gsub!(/0129934/, "\n\n")
+		end
+	end
+
 get "/grading/:student_id" do
 	teacher?
 	@teacher = Teacher.find_by(:id => session[:teacher_id])
 	@student = Student.find_by(:id => params[:student_id])
 	@skill_track = @student.skill_tracks.find_by(:grading_period => $current_quarter)
+
 
 	language_arts_id = Subject.find_by(:subject_id => "language_arts").id
 	@language_arts_outcome_set = @skill_track.outcome_sets.find_by(:subject_id => language_arts_id)
@@ -47,7 +66,10 @@ get "/commenting/:student_id" do
 	@teacher = Teacher.find_by(:id => session[:teacher_id])
 	@student = Student.find_by(:id => params[:student_id])
 	@skill_track = @student.skill_tracks.find_by(:grading_period => $current_quarter)
+#########
+	@student_var = StudentVar.new(@student.id)
 
+#########
 	language_arts_id = Subject.find_by(:subject_id => "language_arts").id
 	@language_arts_outcome_set = @skill_track.outcome_sets.find_by(:subject_id => language_arts_id)
 	if  (@language_arts_outcome_set.commentos.nil? == false) && (@language_arts_outcome_set.commentos.length > 1)
@@ -55,6 +77,7 @@ get "/commenting/:student_id" do
 		@language_arts_commentos = @language_arts_outcome_set.commentos
 		@language_arts_current = @language_arts_commentos[-1].texto
 		@language_arts_prior = @language_arts_commentos[-2].texto
+		@language_arts_previous_comments = @language_arts_commentos[0..-3].map{ |comment| comment.texto}
 
 		report_prior = Lingua::EN::Readability.new(@language_arts_prior)
 		@language_arts_prior_sentence_count = report_prior.num_sentences
@@ -703,7 +726,13 @@ post "/comment/submit/:subject_id/:student_id/:skill_track_id" do
 
 unless form["language_arts_comment"].nil?
 	language_arts_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "language_arts"))
-	language_arts_outcome_set.commentos.create!(:texto => form["language_arts_comment"])
+	#language_arts_outcome_set.commentos.create!(:texto => form["language_arts_comment"])
+	raw_comment = form["language_arts_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	language_arts_outcome_set.commentos.create!(:texto => doub)
+
 	language_arts_outcome_set.save
 end	
 
