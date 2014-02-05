@@ -1,0 +1,6 @@
+-# coding: utf-8
+%h3 Subjects
+%ul.students
+	- @subjects.each do |s|
+		= partial( :"/edits/subjects_partial", {:subject => s } )
+		

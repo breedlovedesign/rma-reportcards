@@ -1,0 +1,5 @@
+-# coding: utf-8
+%h3 Teachers
+%ul.students
+	- @teachers.each do |t|
+		= partial( :"/edits/teacher_partial", {:teacher => t } )
