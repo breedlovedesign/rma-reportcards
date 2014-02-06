@@ -36,7 +36,7 @@ use the following commands to delete or rename/move files
 git rm
 git mv
 
-if a new file is created
+if a new file is created OR CHANGED
 git add <path/to/file>
 
 Commit changes to whatever branch you are on to the local repository.
