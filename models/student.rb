@@ -11,14 +11,11 @@ class Student
     bday = "#{self.dob.strftime("%B %d, %Y")}"
     bday
   end
+  
   def current_skill_track
-    begin
-      self.skill_tracks.find_by(:grading_period => $current_quarter)
-    rescue
-      puts "this student does not have a skill track for this quarter"
-      false
-    end
+    self.skill_tracks.find_by(:grading_period => $current_quarter) # what if there is no skill track?
   end
+  
   def embed_outcome_sets grading_period
     
   end

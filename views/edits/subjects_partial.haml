@@ -1,4 +1,7 @@
 -# coding: utf-8
 %li{:class => "list_row"}
-	= subject.name.ljust(28, ".")
-	%a{ :class => "edit_link", :href => "/edits/#{subject.id}" } list of subjects? 
+	= :subject[:student_name].ljust(28, ".")
+	%p 
+		= :subject[:comment_object].length
+
+
