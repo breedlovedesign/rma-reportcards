@@ -3,7 +3,7 @@
 	%ul
 	- @language_arts.each do |la|
 		%hr
-		%li{:class => "list_row"}= la[:student_name].ljust(28, ".") 
+		%li{:class => "list_row"}= la[:student_name].ljust(28, ".") + "Language Arts Comments"
 		%label{:class => "collapse", :for => "la_prev_comments"}
 			Show/Hide
 		%ul{:id => "la_comments"}
