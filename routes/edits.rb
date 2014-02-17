@@ -1,6 +1,10 @@
 get '/edits/teachers' do
-  @title = "Peer Editing"	
-  @teachers = Teacher.all
+  @title = "Peer Editing"
+  if ["admin", "editor-in-chief"].include?(session[:role])
+  	@teachers = Teacher.all
+  elsif session[:role] == "teacher"
+  	@teachers = Teacher.excludes(id: session[:teacher_id])
+  end
   haml :"edits/teachers", :layout => :teacher_layout
 end
 

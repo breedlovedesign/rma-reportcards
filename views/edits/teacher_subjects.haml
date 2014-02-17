@@ -6,6 +6,7 @@
 		%li{:class => "list_row"}= la[:student_name].ljust(28, ".") 
 		%label{:class => "collapse", :for => "la_prev_comments"}
 			Show/Hide
-		%ul{:id => "la_prev_comments"}
-			-la[:comment_object].each do |comment|
-				%li{:class => "list_row",}= comment.texto			
+		%ul{:id => "la_comments"}
+			-la[:comment_object][0..-2].each do |comment|
+				%li{:class => "list_row la_prev_comments"}= comment.texto
+			%li{:class => "list_row"} Current Comment:	

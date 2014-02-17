@@ -35,6 +35,10 @@
 											%option{:value => "admin", :selected => 'selected'} Administrator
 										-else
 											%option{:value => "admin"} Administrator
+										-if session[:teacher_id] == "editor-in-chief"
+											%option{:value => "editor-in-chief", :selected => 'selected'} Editor-in-chief
+										-else
+											%option{:value => "editor-in-chief"} Editor-in-chief
 							%br
 							%li
 								%input{:placeholder => "Password", :type => "password", :name => "login_form[password]"}
