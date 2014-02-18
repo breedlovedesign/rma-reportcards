@@ -290,6 +290,7 @@ table {
 }
 table.core, table.special {
 	border-top: none;
+	background-color: #ffffff;
 }
 table.core tr.o_g_c_set td.sweet-justice, table.special tr.o_g_c_set td.sweet-justice {
 	border-top: 1px solid #000;

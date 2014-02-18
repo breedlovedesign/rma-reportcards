@@ -25,11 +25,13 @@
 				=@language_arts_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-%h2 Preview
-%button{ :class => "large ui button" }
-	%i{:class => "heart icon" }
-	Show/Hide
-= partial( "/previews/la_preview_#{@student_var.language_arts_l}".to_sym, {:student_var => @student_var } )
+%button{ :class => "la_toggle medium ui button", :onclick => "$('.la_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide Preview
+%script{:type=>"text/javascript"}
+	$('.la_preview.ui.sidebar')	.sidebar();
+.la_preview.ui.sidebar.very.wide
+	= partial( "/previews/la_preview_#{@student_var.language_arts_l}".to_sym, {:student_var => @student_var } )
 -if @math_outcome_set.skill_track.math_teacher == @teacher.id.to_s
 	%li{:id => 'math'}
 		%h2= Subject.find_by(:subject_id => "math").name + " ..... " + @skill_track.math_level
@@ -238,4 +240,4 @@
 			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[thai_comment]"}
 				=@thai_current
 			%br
-			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "thai").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id >= "thai").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
