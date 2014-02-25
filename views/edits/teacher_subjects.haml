@@ -3,10 +3,21 @@
 	%ul
 	- @language_arts.each do |la|
 		%hr
-		%li{:class => "list_row"}= la[:student_name].ljust(28, ".") + "Language Arts Comments"
-		%label{:class => "collapse", :for => "la_prev_comments"}
-			Show/Hide
-		%ul{:id => "la_comments"}
-			-la[:comment_object][0..-2].each do |comment|
-				%li{:class => "list_row la_prev_comments"}= comment.texto
-			%li{:class => "list_row"} Current Comment:	
+		%li{:class => "list_row_highlight"} 
+			= la[:student_name].ljust(28, ".") + Subject.find_by(:subject_id => "language_arts").name + " Comment" + "  " + la[:language_arts_level]
+			%ul{:id => "la_comments"}
+				-if la[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-la[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row la_prev_comments"}= comment.texto
+				Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/language_arts/#{Student.find_by(name: la[:student_name]).id}/#{la[:skill_track].id}", :method => "POST"} 
+						-if la[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[language_arts_comment]"}
+								=la[:comment_object][-1].texto
+							%br
+							%input.button{:type => "submit", :value => "Update #{la[:student_name]}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}

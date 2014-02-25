@@ -101,6 +101,19 @@ footer {
 .list_row:hover {
 	background-color: #aae6e8;
 }
+.list_row_highlight {
+	padding: 10px;
+	width: 1040px;
+	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+	font-size: 14pt;
+	list-style-type: none;
+}
+.list_row_highlight:hover {
+	background-color: #e2f6f7;
+}
+.la_prev_comments{
+	width: 900px;
+}
 
 #create_all_reports {
 	background-color: #8fc627;
@@ -137,7 +150,7 @@ footer {
 	border-radius: 3px;
 }
 .button:hover, .edit_link:hover {
-	background-color: #00b2e9;
+	background-color: #1BCE78;
 }
 
 .logoutbutton:hover {
