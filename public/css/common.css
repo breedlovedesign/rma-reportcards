@@ -1,3 +1,16 @@
+.approval_container{
+	margin-left: 50px;
+	padding-left: 20px;
+	list-style-type: none;
+	background-color: red;	
+}
+ul.approval_list{
+	margin-left: 50px;
+	padding-left: 20px;
+	list-style-type: none;
+	/background-color: blue;	
+}
+
 .cmt {
 	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
 	font-size: 11pt;
@@ -20,6 +33,8 @@ textarea.comment {
 	height: 150px;
 	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
 	font-size: 11pt;
+	float: left;
+	margin-right: 20px;
 }
 .float {float:left; margin-left:40px; margin-bottom:60px;}
 .foot {clear: both;}

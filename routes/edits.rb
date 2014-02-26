@@ -36,6 +36,7 @@ get "/edits/:teacher_id" do
 		language_arts_component[:skill_track] = set.skill_track
 		language_arts_component[:language_arts_level] = set.skill_track.language_arts_level
 		language_arts_component[:student_name] = Student.find("#{set.skill_track.student_id}").name
+		language_arts_component[:student_id] = set.skill_track.student_id
 		language_arts_component[:comment_object] = set.commentos 
 		language_arts_students << language_arts_component
 	end
@@ -43,8 +44,8 @@ get "/edits/:teacher_id" do
 
 	haml :"edits/teacher_subjects", :layout => :teacher_layout
 end
-
-post "/edit/submit/:subject_id/:student_id/:skill_track_id" do
+#/edit/submit/language_arts/#{Student.find_by(name: la[:student_name]).id}/#{la[:skill_track].id/#{@teacher.id}
+post "/edit/submit/:subject_id/:student_id/:skill_track_id/:teacher_id" do
 	form = params[:comment_form]
 
 	student = Student.find_by(:id => params[:student_id])
@@ -122,5 +123,5 @@ unless form["thai_comment"].nil?
 	thai_outcome_set.save
 end		
 
-	redirect to("/commenting/#{params[:student_id]}\##{params[:subject_id]}")
+	redirect to("/edits/#{params[:teacher_id]}##{params[:subject_id]}_#{params[:student_id]}")
 end
