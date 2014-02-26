@@ -13,3 +13,6 @@ RmaReports.helpers Gradesoap
 
 require_relative 'doublespacer'
 RmaReports.helpers Doublespacer
+
+require_relative 'pretty_date'
+RmaReports.helpers PrettyDate

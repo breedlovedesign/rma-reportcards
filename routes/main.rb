@@ -6,4 +6,8 @@ class RmaReports < Sinatra::Application
 		@teachers = Teacher.all
 		haml :index, :layout => :nobody_layout
 	end
+	get	"/learn" do
+		@title = "learn sinatra"
+		haml :learn, :layout => :teacher_layout
+	end
 end
