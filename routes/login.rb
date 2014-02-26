@@ -16,11 +16,11 @@ post "/login" do
   p = params[:login_form]
   if p["teacher"] == "fail"
     redirect to('/retry')
-  elsif p["teacher"] == "admin" && (p["password"] == "computer2")
+  elsif p["teacher"] == "admin" && (p["password"] == "p")
   	session[:teacher_id] = "admin"
   	session[:role] = "admin"
  	redirect to('/admin')
-  elsif p["teacher"] == "admin" && (p["password"] != "computer2")
+  elsif p["teacher"] == "admin" && (p["password"] != "p")
     session[:teacher_id] = "admin"
   	redirect to('/retry')
   # adding attendance
@@ -56,11 +56,11 @@ post "/retry" do
   p = params[:login_form]
   if p["teacher"] == "fail"
     redirect to('/retry')
-  elsif p["teacher"] == "admin" && (p["password"] == "computer2")
+  elsif p["teacher"] == "admin" && (p["password"] == "p")
     session[:teacher_id] = "admin"
     session[:role] = "admin"
   redirect to('/admin')
-  elsif p["teacher"] == "admin" && (p["password"] != "computer2")
+  elsif p["teacher"] == "admin" && (p["password"] != "p")
     session[:teacher_id] = "admin"
     redirect to('/retry')
   # adding attendance
