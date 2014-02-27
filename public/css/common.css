@@ -33,7 +33,7 @@ textarea.comment {
 	height: 150px;
 	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
 	font-size: 11pt;
-	float: left;
+	float: none;
 	margin-right: 20px;
 }
 .float {float:left; margin-left:40px; margin-bottom:60px;}

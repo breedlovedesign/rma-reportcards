@@ -11,26 +11,23 @@
 					-la[:comment_object][0..-2].each do |comment|
 						%li{:class => "list_row la_prev_comments"}= comment.texto
 				%p{:id => "language_arts_#{la[:student_id]}"}Current Comment:
-				%li{:class => "list_row"}= la[:comment_object][-1].texto
-				%form{:action => "/edit/submit/language_arts/#{Student.find_by(name: la[:student_name]).id}/#{la[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
-					.aproval_container
-						%p APPROVAL
-						%div{:class => "ui checkbox"}
-							%input{ :type => "checkbox", :id =>"AUTHOR-COMMENT-ID", :onclick => "this.form.submit();", :checked => "checked"}
-							%label{ :for=> "AUTHOR-COMMENT-ID"}AUTHOR
-						%br
-						%div{:class => "ui checkbox"}
-							%input{ :type => "checkbox", :id =>"EIC-COMMENT-ID", :onclick => "this.form.submit();", :disabled => "disabled"}
-							%label{ :for=> "EIC-COMMENT-ID"}EIC
-					%br
-			%form{:action => "/edit/submit/language_arts/#{Student.find_by(name: la[:student_name]).id}/#{la[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
-				-if la[:comment_object].nil?
-					%p{:class => "body"} No Comment Entered Yet
-				-else
-					%p{:class => "body"} Edit Comment
-					%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[language_arts_comment]"}
-						=la[:comment_object][-1].texto
-					%br
-					%input.button{:type => "submit", :value => "Update #{la[:student_name]}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-
-	
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/language_arts/#{Student.find_by(name: la[:student_name]).id}/#{la[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if la[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[language_arts_comment]"}
+								=la[:comment_object][-1].texto
+							.aproval_container
+							/ 	%p APPROVAL
+							/ 	%div{:class => "ui checkbox"}
+							/ 		%input{ :type => "checkbox", :id =>"AUTHOR-COMMENT-ID", :onclick => "this.form.submit();", :checked => "checked"}
+							/ 		%label{ :for=> "AUTHOR-COMMENT-ID"}AUTHOR
+							/ 	%br
+							/ 	%div{:class => "ui checkbox"}
+							/ 		%input{ :type => "checkbox", :id =>"EIC-COMMENT-ID", :onclick => "this.form.submit();", :disabled => "disabled"}
+							/ 		%label{ :for=> "EIC-COMMENT-ID"}EIC
+								
+							/ %br
+							/ %input.button{:type => "submit", :value => "Update #{la[:student_name]}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}

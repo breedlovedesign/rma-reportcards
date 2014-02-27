@@ -38,6 +38,10 @@ get "/edits/:teacher_id" do
 		language_arts_component[:student_name] = Student.find("#{set.skill_track.student_id}").name
 		language_arts_component[:student_id] = set.skill_track.student_id
 		language_arts_component[:comment_object] = set.commentos 
+		language_arts_component[:latest_comment] = set.commentos[-1]
+		if set.commentos[-1].editor != nil
+			language_arts_component[:editor] = Teacher.find(language_arts_component[:latest_comment].editor)
+		end
 		language_arts_students << language_arts_component
 	end
 @language_arts = language_arts_students
@@ -58,8 +62,7 @@ unless form["language_arts_comment"].nil?
 	processed_comment = raw_comment.paragraph_prep
 	doub = doublespacer(processed_comment)
 	doub.paragraph_reinsertion
-	language_arts_outcome_set.commentos.create!(:texto => doub)
-
+	language_arts_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	language_arts_outcome_set.save
 end	
 
