@@ -178,6 +178,13 @@
 				=@ict_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "ict").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "la_toggle medium ui button", :onclick => "$('.la_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide Preview
+%script{:type=>"text/javascript"}
+	$('.la_preview.ui.sidebar')	.sidebar();
+.la_preview.ui.sidebar.very.wide
+	= partial( "/previews/la_preview_#{@student_var.language_arts_l}".to_sym, {:student_var => @student_var } )			
 
 -if @music_outcome_set.skill_track.music_teacher == @teacher.id.to_s
 	%li{:id => 'music'}

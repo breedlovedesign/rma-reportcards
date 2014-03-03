@@ -31,15 +31,15 @@
 							%p{:class => "body"} Edit Comment
 							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[language_arts_comment]"}
 								=la[:comment_object][-1].texto
-							/ .aproval_container
-							/ 	%p APPROVAL
-							/ 	%div{:class => "ui checkbox"}
-							/ 		%input{ :type => "checkbox", :id =>"AUTHOR-COMMENT-ID", :onclick => "this.form.submit();", :checked => "checked"}
-							/ 		%label{ :for=> "AUTHOR-COMMENT-ID"}AUTHOR
-							/ 	%br
-							/ 	%div{:class => "ui checkbox"}
-							/ 		%input{ :type => "checkbox", :id =>"EIC-COMMENT-ID", :onclick => "this.form.submit();", :disabled => "disabled"}
-							/ 		%label{ :for=> "EIC-COMMENT-ID"}EIC
+							.aproval_container
+								%p APPROVAL
+								%div{:class => "ui checkbox"}
+									%input{ :type => "checkbox", :id =>"AUTHOR-COMMENT-ID", :onclick => "this.form.submit();", :checked => "checked"}
+									%label{ :for=> "AUTHOR-COMMENT-ID"}AUTHOR
+								%br
+								%div{:class => "ui checkbox"}
+									%input{ :type => "checkbox", :id =>"EIC-COMMENT-ID", :onclick => "this.form.submit();", :disabled => "disabled"}
+									%label{ :for=> "EIC-COMMENT-ID"}EIC
 								
-							/ %br
-							/ %input.button{:type => "submit", :value => "Update #{la[:student_name]}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+							%br
+							%input.button{:type => "submit", :value => "Update #{la[:student_name]}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}

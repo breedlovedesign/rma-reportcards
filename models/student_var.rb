@@ -76,17 +76,28 @@ class StudentVar
     @thai_l                    = skill_track.thai_level
     @work_study_l              = skill_track.work_study_level
     #
-    @art_c                     = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "art").id).commentos[-1].texto
-    @citizenship_c             = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "citizenship").id).commentos[-1].texto
-    @ict_c                     = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "ict").id).commentos[-1].texto
-    @language_arts_c           = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "language_arts").id).commentos[-1].texto
-    @math_c                    = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "math").id).commentos[-1].texto
-    @music_c                   = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "music").id).commentos[-1].texto
-    @pe_c                      = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "pe").id).commentos[-1].texto
-    @science_c                 = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "science").id).commentos[-1].texto
-    @social_studies_c          = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "social_studies").id).commentos[-1].texto
-    @thai_c                    = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "thai").id).commentos[-1].texto
-    @work_study_c              = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "work_study").id).commentos[-1].texto
+    art_c                     = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "art").id).commentos[-1]
+    citizenship_c             = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "citizenship").id).commentos[-1]
+    ict_c                     = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "ict").id).commentos[-1]
+    language_arts_c           = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "language_arts").id).commentos[-1]
+    math_c                    = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "math").id).commentos[-1]
+    music_c                   = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "music").id).commentos[-1]
+    pe_c                      = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "pe").id).commentos[-1]
+    science_c                 = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "science").id).commentos[-1]
+    social_studies_c          = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "social_studies").id).commentos[-1]
+    thai_c                    = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "thai").id).commentos[-1]
+    work_study_c              = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "work_study").id).commentos[-1]
+    @art_c                     =  art_c                    ? art_c.texto              : "" 
+    @citizenship_c             =  citizenship_c            ? citizenship_c.texto      : "" 
+    @ict_c                     =  ict_c                    ? ict_c.texto              : "" 
+    @language_arts_c           =  language_arts_c          ? language_arts_c.texto    : "" 
+    @math_c                    =  math_c                   ? math_c.texto             : "" 
+    @music_c                   =  music_c                  ? music_c.texto            : "" 
+    @pe_c                      =  pe_c                     ? pe_c.texto               : "" 
+    @science_c                 =  science_c                ? science_c.texto          : "" 
+    @social_studies_c          =  social_studies_c         ? social_studies_c.texto   : "" 
+    @thai_c                    =  thai_c                   ? thai_c.texto             : "" 
+    @work_study_c              =  work_study_c             ? work_study_c.texto       : "" 
     #
     #
     language_arts_outcome_set  = skill_track.outcome_sets.find_by(:subject_id => "#{Subject.find_by(:subject_id => "language_arts").id}")

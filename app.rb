@@ -17,6 +17,7 @@ class RmaReports < Sinatra::Application
 	end
 
 	configure :development do
+		set :clean_trace, true
 		set :css_files, MinifyResources::CSS_FILES
 		set :js_files,  MinifyResources::JS_FILES
 		set :session_secret, 'all_your_base'
