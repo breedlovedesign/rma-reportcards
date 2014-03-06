@@ -14,11 +14,11 @@ zach.skill_tracks.each {|tr| p tr.id}
 zach.skill_tracks.each {|tr| p tr.grading_period.name}
 zach.skill_tracks[2]
 zach.skill_tracks[1]
-$current_quarter = "52608932b924a12298000001"
+GradingPeriodPersist.all[0].grading_period.id.to_s = "52608932b924a12298000001"
 GradingPeriod.all.each {|gp| p gp.id}
 zach.skill_tracks[0]
 charn = Student.find_by(name: "eeee")
-$current_quarter = "5248ea24b924a184d600000c"
+GradingPeriodPersist.all[0].grading_period.id.to_s = "5248ea24b924a184d600000c"
 StudentVar.new(charn)
 student_var = StudentVar.new(charn)
 student_var.language_arts_o_g_pairs

@@ -6,6 +6,7 @@ require "mongoid"
 require "sinatra/flash"
 require "sinatra/form_helpers"
 require "sinatra/simple-navigation"
+require 'pp'
 
 require_relative 'main'
 require_relative 'students'

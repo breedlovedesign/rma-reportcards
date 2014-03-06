@@ -21,7 +21,7 @@ get "/grading/:student_id" do
 	teacher?
 	@teacher = Teacher.find_by(:id => session[:teacher_id])
 	@student = Student.find_by(:id => params[:student_id])
-	@skill_track = @student.skill_tracks.find_by(:grading_period => $current_quarter)
+	@skill_track = @student.skill_tracks.find_by(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s)
 
 
 	language_arts_id = Subject.find_by(:subject_id => "language_arts").id
@@ -65,7 +65,7 @@ get "/commenting/:student_id" do
 	teacher?
 	@teacher = Teacher.find_by(:id => session[:teacher_id])
 	@student = Student.find_by(:id => params[:student_id])
-	@skill_track = @student.skill_tracks.find_by(:grading_period => $current_quarter)
+	@skill_track = @student.skill_tracks.find_by(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s)
 #########
 	@student_var = StudentVar.new(@student.id)
 

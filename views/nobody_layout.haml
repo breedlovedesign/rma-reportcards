@@ -14,7 +14,7 @@
 			%header.top
 				%h2.top= @title.upcase unless @title.nil?
 				%p A message from the admin: #{$message}
-				%p The current grading period is: #{GradingPeriod.find($current_quarter).gpname unless $current_quarter.nil?}
+				%p The current grading period is: #{GradingPeriod.find(GradingPeriodPersist.all[0].grading_period.id.to_s).gpname unless GradingPeriodPersist.all[0].grading_period.id.to_s.nil?}
 				%p= if session[:teacher_id].nil? then "You are not logged in." else "You are logged in  as " + (session[:teacher_id] == "admin" ? "Administrator" : Teacher.find_by(:id => session[:teacher_id]).name) end
 				%div.nav
 					= partial( :"nobody_nav" )

@@ -10,6 +10,7 @@ post "/admin/go" do
 	admin?
 	p = params[:admin_form]
 	$message = p["message"] unless p["message"] == ""
-	$current_quarter = p["current_quarter"]
+	
+	GradingPeriodPersist.all[0].grading_period = GradingPeriod.find("#{p["current_quarter"]}")
 	redirect to('/admin')
 end

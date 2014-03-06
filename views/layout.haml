@@ -18,8 +18,8 @@
 		%section
 			%header.top
 				%h2.top= @title.upcase unless @title.nil?
-				%h2.top#warning= "SET THE GRADING PERIOD" if $current_quarter.nil?
-				%h2.top #{(GradingPeriod.find($current_quarter).name).upcase unless $current_quarter.nil?}
+				%h2.top#warning= "SET THE GRADING PERIOD" if GradingPeriodPersist.all[0].grading_period.id.to_s.nil?
+				%h2.top #{(GradingPeriod.find(GradingPeriodPersist.all[0].grading_period.id.to_s).name).upcase unless GradingPeriodPersist.all[0].grading_period.id.to_s.nil?}
 				%div.nav
 					=render_navigation
 			%article

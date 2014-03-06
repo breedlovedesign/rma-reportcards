@@ -14,39 +14,70 @@ get "/edits/:teacher_id" do
 	teacher_id =  params[:teacher_id]
 	@teacher  = Teacher.find_by(:id => params[:teacher_id])
 	
-	language_arts_students_skill_tracks  = SkillTrack.where(:grading_period => $current_quarter, :language_arts_teacher  => teacher_id)
-	math_students_skill_tracks           = SkillTrack.where(:grading_period => $current_quarter, :math_teacher           => teacher_id)
-	social_studies_students_skill_tracks = SkillTrack.where(:grading_period => $current_quarter, :social_studies_teacher => teacher_id)
-	science_students_skill_tracks        = SkillTrack.where(:grading_period => $current_quarter, :science_teacher        => teacher_id)
-	art_students_skill_tracks            = SkillTrack.where(:grading_period => $current_quarter, :art_teacher            => teacher_id)
-	ict_students_skill_tracks            = SkillTrack.where(:grading_period => $current_quarter, :ict_teacher            => teacher_id)
-	music_students_skill_tracks          = SkillTrack.where(:grading_period => $current_quarter, :music_teacher          => teacher_id)
-	thai_students_skill_tracks           = SkillTrack.where(:grading_period => $current_quarter, :thai_teacher           => teacher_id)
-	pe_students_skill_tracks             = SkillTrack.where(:grading_period => $current_quarter, :pe_teacher             => teacher_id)
-	work_study_students_skill_tracks     = SkillTrack.where(:grading_period => $current_quarter, :work_study_teacher     => teacher_id)
-	citizenship_students_skill_tracks    = SkillTrack.where(:grading_period => $current_quarter, :citizenship_teacher    => teacher_id)
+	language_arts_students_skill_tracks  = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :language_arts_teacher  => teacher_id)
+	math_students_skill_tracks           = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :math_teacher           => teacher_id)
+	social_studies_students_skill_tracks = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :social_studies_teacher => teacher_id)
+	science_students_skill_tracks        = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :science_teacher        => teacher_id)
+	art_students_skill_tracks            = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :art_teacher            => teacher_id)
+	ict_students_skill_tracks            = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :ict_teacher            => teacher_id)
+	music_students_skill_tracks          = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :music_teacher          => teacher_id)
+	thai_students_skill_tracks           = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :thai_teacher           => teacher_id)
+	pe_students_skill_tracks             = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :pe_teacher             => teacher_id)
+	work_study_students_skill_tracks     = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :work_study_teacher     => teacher_id)
+	citizenship_students_skill_tracks    = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :citizenship_teacher    => teacher_id)
 
 
-	language_arts_id = Subject.find_by(:subject_id => "language_arts").id.to_s
-	language_arts_outcome_sets = language_arts_students_skill_tracks.collect { |skill_track| skill_track.outcome_sets.find_by(:subject_id => language_arts_id) }
-	
-	language_arts_students = []
-	language_arts_outcome_sets.each do |set| 
-		language_arts_component = {}
-		language_arts_component[:skill_track] = set.skill_track
-		language_arts_component[:language_arts_level] = set.skill_track.language_arts_level
-		language_arts_component[:student_name] = Student.find("#{set.skill_track.student_id}").name
-		language_arts_component[:student_id] = set.skill_track.student_id
-		language_arts_component[:comment_object] = set.commentos 
-		language_arts_component[:latest_comment] = set.commentos[-1]
-		if set.commentos[-1].editor != nil
-			language_arts_component[:editor] = Teacher.find(language_arts_component[:latest_comment].editor)
-		end
+	begin
+		language_arts_id = Subject.find_by(:subject_id => "language_arts").id.to_s
+		language_arts_outcome_sets = language_arts_students_skill_tracks.collect { |skill_track| skill_track.outcome_sets.find_by(:subject_id => language_arts_id) }
+		
+		language_arts_students = []
+		language_arts_outcome_sets.each do |set| 
+			language_arts_component = {}
+			language_arts_component[:skill_track] = set.skill_track
+			language_arts_component[:language_arts_level] = set.skill_track.language_arts_level
+			language_arts_component[:student_name] = Student.find("#{set.skill_track.student_id}").name
+			language_arts_component[:student_id] = set.skill_track.student_id
+			language_arts_component[:comment_object] = set.commentos 
+			language_arts_component[:latest_comment] = set.commentos[-1]
+		p "made it here"
+			if set.commentos[-1].editor != nil
+				language_arts_component[:editor] = Teacher.find(language_arts_component[:latest_comment].editor)
+			end
+		p "this did not happen"
 		language_arts_students << language_arts_component
-	end
-@language_arts = language_arts_students
+		end
+		@language_arts = language_arts_students
 
-	haml :"edits/teacher_subjects", :layout => :teacher_layout
+		math_id = Subject.find_by(:subject_id => "math").id.to_s
+		math_outcome_sets = math_students_skill_tracks.collect { |skill_track| skill_track.outcome_sets.find_by(:subject_id => math_id) }
+		
+		math_students = []
+		math_outcome_sets.each do |set| 
+			math_component = {}
+			math_component[:skill_track] = set.skill_track
+			math_component[:math_level] = set.skill_track.math_level
+			math_component[:student_name] = Student.find("#{set.skill_track.student_id}").name
+			math_component[:student_id] = set.skill_track.student_id
+			math_component[:comment_object] = set.commentos 
+			math_component[:latest_comment] = set.commentos[-1]
+		
+			if set.commentos[-1].editor != nil
+				math_component[:editor] = Teacher.find(math_component[:latest_comment].editor)
+				p "math set"
+			else
+				p "set.commentos[-1] == nil maybe"
+			end
+			
+		math_students << math_component
+		end
+		@math = math_students
+		haml :"edits/teacher_subjects", :layout => :teacher_layout
+	rescue 
+		pp params
+		haml :"edits/fail", :layout => :teacher_layout	
+	end
+	
 end
 #/edit/submit/language_arts/#{Student.find_by(name: la[:student_name]).id}/#{la[:skill_track].id/#{@teacher.id}
 post "/edit/submit/:subject_id/:student_id/:skill_track_id/:teacher_id" do

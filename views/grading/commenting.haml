@@ -25,13 +25,13 @@
 				=@language_arts_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "language_arts").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-%button{ :class => "la_toggle medium ui button", :onclick => "$('.la_preview.sidebar') .sidebar('toggle');" }
+%button{ :class => "language_arts_toggle medium ui button", :onclick => "$('.language_arts_preview.sidebar') .sidebar('toggle');" }
 	%i{ :class => "hide icon"}
-	Show/Hide Preview
+	Show/Hide Language Arts Preview
 %script{:type=>"text/javascript"}
-	$('.la_preview.ui.sidebar')	.sidebar();
-.la_preview.ui.sidebar.very.wide
-	= partial( "/previews/la_preview_#{@student_var.language_arts_l}".to_sym, {:student_var => @student_var } )
+	$('.language_arts_preview.ui.sidebar')	.sidebar();
+.language_arts_preview.ui.sidebar.very.wide
+	= partial( "/previews/language_arts_#{@student_var.language_arts_l}_preview".to_sym, {:student_var => @student_var } )
 -if @math_outcome_set.skill_track.math_teacher == @teacher.id.to_s
 	%li{:id => 'math'}
 		%h2= Subject.find_by(:subject_id => "math").name + " ..... " + @skill_track.math_level
@@ -52,6 +52,13 @@
 				=@math_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "math").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "math_toggle medium ui button", :onclick => "$('.math_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide math Preview
+%script{:type=>"text/javascript"}
+	$('.math_preview.ui.sidebar')	.sidebar();
+.math_preview.ui.sidebar.very.wide
+	= partial( "/previews/math_#{@student_var.math_l}_preview".to_sym, {:student_var => @student_var } )
 
 -if @social_studies_outcome_set.skill_track.social_studies_teacher == @teacher.id.to_s
 	%li{:id => 'social_studies'}
@@ -73,6 +80,13 @@
 				=@social_studies_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "social_studies").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "social_studies_toggle medium ui button", :onclick => "$('.social_studies_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide social_studies Preview
+%script{:type=>"text/javascript"}
+	$('.social_studies_preview.ui.sidebar')	.sidebar();
+.social_studies_preview.ui.sidebar.very.wide
+	= partial( "/previews/social_studies_#{@student_subject}preview".to_sym, {:student_subject => @student_subject } )
 
 -if @science_outcome_set.skill_track.science_teacher == @teacher.id.to_s
 	%li{:id => 'science'}
@@ -94,6 +108,13 @@
 				=@science_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "science").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "science_toggle medium ui button", :onclick => "$('.science_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide science Preview
+%script{:type=>"text/javascript"}
+	$('.science_preview.ui.sidebar')	.sidebar();
+.science_preview.ui.sidebar.very.wide
+	= partial( "/previews/science_#{@student_subject}preview".to_sym, {:student_subject => @student_subject } )
 
 -if @work_study_outcome_set.skill_track.work_study_teacher == @teacher.id.to_s
 	%li{:id => 'work_study'}
@@ -115,6 +136,13 @@
 				=@work_study_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "work_study").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "work_study_toggle medium ui button", :onclick => "$('.work_study_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide work_study Preview
+%script{:type=>"text/javascript"}
+	$('.work_study_preview.ui.sidebar')	.sidebar();
+.work_study_preview.ui.sidebar.very.wide
+	= partial( "/previews/work_study_#{@student_subject}preview".to_sym, {:student_subject => @student_subject } )
 
 -if @citizenship_outcome_set.skill_track.citizenship_teacher == @teacher.id.to_s
 	%li{:id => 'citizenship'}
@@ -136,6 +164,13 @@
 				=@citizenship_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "citizenship").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "citizenship_toggle medium ui button", :onclick => "$('.citizenship_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide citizenship Preview
+%script{:type=>"text/javascript"}
+	$('.citizenship_preview.ui.sidebar')	.sidebar();
+.citizenship_preview.ui.sidebar.very.wide
+	= partial( "/previews/citizenship_#{@student_subject}preview".to_sym, {:student_subject => @student_subject } )
 
 -if @art_outcome_set.skill_track.art_teacher == @teacher.id.to_s
 	%li{:id => 'art'}
@@ -157,6 +192,13 @@
 				=@art_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "art").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "art_toggle medium ui button", :onclick => "$('.art_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide art Preview
+%script{:type=>"text/javascript"}
+	$('.art_preview.ui.sidebar')	.sidebar();
+.art_preview.ui.sidebar.very.wide
+	= partial( "/previews/art_#{@student_subject}preview".to_sym, {:student_subject => @student_subject } )
 
 -if @ict_outcome_set.skill_track.ict_teacher == @teacher.id.to_s
 	%li{:id => 'ict'}
@@ -178,13 +220,13 @@
 				=@ict_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "ict").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
-%button{ :class => "la_toggle medium ui button", :onclick => "$('.la_preview.sidebar') .sidebar('toggle');" }
+%button{ :class => "ict_toggle medium ui button", :onclick => "$('.ict_preview.sidebar') .sidebar('toggle');" }
 	%i{ :class => "hide icon"}
-	Show/Hide Preview
+	Show/Hide ict Preview
 %script{:type=>"text/javascript"}
-	$('.la_preview.ui.sidebar')	.sidebar();
-.la_preview.ui.sidebar.very.wide
-	= partial( "/previews/la_preview_#{@student_var.language_arts_l}".to_sym, {:student_var => @student_var } )			
+	$('.ict_preview.ui.sidebar')	.sidebar();
+.ict_preview.ui.sidebar.very.wide
+	= partial( "/previews/ict_#{@student_subject}preview".to_sym, {:student_subject => @student_subject } )	
 
 -if @music_outcome_set.skill_track.music_teacher == @teacher.id.to_s
 	%li{:id => 'music'}
@@ -206,6 +248,13 @@
 				=@music_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "music").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "music_toggle medium ui button", :onclick => "$('.music_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide music Preview
+%script{:type=>"text/javascript"}
+	$('.music_preview.ui.sidebar')	.sidebar();
+.music_preview.ui.sidebar.very.wide
+	= partial( "/previews/music_#{@student_subject}preview".to_sym, {:student_subject => @student_subject } )
 
 -if @pe_outcome_set.skill_track.pe_teacher == @teacher.id.to_s
 	%li{:id => 'pe'}
@@ -227,6 +276,13 @@
 				=@pe_current
 			%br
 			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "pe").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "pe_toggle medium ui button", :onclick => "$('.pe_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide pe Preview
+%script{:type=>"text/javascript"}
+	$('.pe_preview.ui.sidebar')	.sidebar();
+.pe_preview.ui.sidebar.very.wide
+	= partial( "/previews/pe_#{@student_subject}preview".to_sym, {:student_subject => @student_subject } )
 
 -if @thai_outcome_set.skill_track.thai_teacher == @teacher.id.to_s
 	%li{:id => 'thai'}
@@ -247,4 +303,11 @@
 			%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[thai_comment]"}
 				=@thai_current
 			%br
-			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id >= "thai").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+			%input.button{:type => "submit", :value => "Update #{@student.name}'s #{Subject.find_by(:subject_id => "thai").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+%button{ :class => "thai_toggle medium ui button", :onclick => "$('.thai_preview.sidebar') .sidebar('toggle');" }
+	%i{ :class => "hide icon"}
+	Show/Hide thai Preview
+%script{:type=>"text/javascript"}
+	$('.thai_preview.ui.sidebar')	.sidebar();
+.thai_preview.ui.sidebar.very.wide
+	= partial( "/previews/thai_#{@student_subject}preview".to_sym, {:student_subject => @student_subject } )

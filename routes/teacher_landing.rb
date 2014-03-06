@@ -12,7 +12,7 @@ get "/teachers/students" do
   @students = []
 
   students.each do |student|
-    tracks = student.skill_tracks.where(:grading_period => $current_quarter)
+    tracks = student.skill_tracks.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s)
     tracks.each do |track|
       if track.has_teacher(logged_in_teacher.id.to_s)
         @students << student

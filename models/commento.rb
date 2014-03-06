@@ -7,9 +7,9 @@ class Commento
   # and or .to_pretty (PrettyDate module)
   field :texto
   field :indexo, :type => Float
-  field :author
-  field :editor
-  field :eic
+  field :author, :default => ""
+  field :editor, :default => ""
+  field :eic, :default => ""
   field :author_approval, :type => Boolean, :default => false
   field :eic_approval, :type => Boolean, :default => false
   embedded_in :outcome_set

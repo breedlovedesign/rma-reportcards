@@ -9,7 +9,8 @@ end
 post "/students/new" do
 	admin?
   p = params[:student]
-  Student.where( :name => p["name"], :nickname => p["nickname"], :dob => p["dob"] ).create
+  stu = Student.where( :name => p["name"], :nickname => p["nickname"], :dob => p["dob"] ).create
+  stu.attendance_set = AttendanceSet.new
   redirect to('/students')
 end
 

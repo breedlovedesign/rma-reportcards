@@ -31,8 +31,8 @@ class StudentVar
   def initialize(id)
     @id                        = id
     student                    = Student.find(id)
-    skill_track                = student.skill_tracks.find_by(:grading_period => $current_quarter)
-    grading_period             = GradingPeriod.find($current_quarter)
+    skill_track                = student.skill_tracks.find_by(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s)
+    grading_period             = GradingPeriodPersist.all[0].grading_period
     @year                      = grading_period.year
     @signing_date              = grading_period.signing_date.strftime("%B %e, %Y")
     @birthdate                 = student.dob.strftime("%B %e, %Y")
