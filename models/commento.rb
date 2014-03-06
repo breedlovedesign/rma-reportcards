@@ -9,7 +9,6 @@ class Commento
   field :indexo, :type => Float
   field :author, :default => ""
   field :editor, :default => ""
-  field :eic, :default => ""
   field :author_approval, :type => Boolean, :default => false
   field :eic_approval, :type => Boolean, :default => false
   embedded_in :outcome_set
