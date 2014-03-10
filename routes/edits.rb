@@ -27,7 +27,7 @@ get "/edits/:teacher_id" do
 	citizenship_students_skill_tracks    = SkillTrack.where(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s, :citizenship_teacher    => teacher_id)
 
 
-	begin
+	#begin
 		language_arts_id = Subject.find_by(:subject_id => "language_arts").id.to_s
 		language_arts_outcome_sets = language_arts_students_skill_tracks.collect { |skill_track| skill_track.outcome_sets.find_by(:subject_id => language_arts_id) }
 		
@@ -40,11 +40,7 @@ get "/edits/:teacher_id" do
 			language_arts_component[:student_id] = set.skill_track.student_id
 			language_arts_component[:comment_object] = set.commentos 
 			language_arts_component[:latest_comment] = set.commentos[-1]
-		p "made it here"
-			if set.commentos[-1].editor != nil
-				language_arts_component[:editor] = Teacher.find(language_arts_component[:latest_comment].editor)
-			end
-		p "this did not happen"
+# Need to set language_arts_component[:editor]
 		language_arts_students << language_arts_component
 		end
 		@language_arts = language_arts_students
@@ -61,22 +57,15 @@ get "/edits/:teacher_id" do
 			math_component[:student_id] = set.skill_track.student_id
 			math_component[:comment_object] = set.commentos 
 			math_component[:latest_comment] = set.commentos[-1]
-		
-			if set.commentos[-1].editor != nil
-				math_component[:editor] = Teacher.find(math_component[:latest_comment].editor)
-				p "math set"
-			else
-				p "set.commentos[-1] == nil maybe"
-			end
 			
 		math_students << math_component
 		end
 		@math = math_students
 		haml :"edits/teacher_subjects", :layout => :teacher_layout
-	rescue 
-		pp params
-		haml :"edits/fail", :layout => :teacher_layout	
-	end
+	#rescue 
+	#	pp params
+	#	haml :"edits/fail", :layout => :teacher_layout	
+	#end
 	
 end
 #/edit/submit/language_arts/#{Student.find_by(name: la[:student_name]).id}/#{la[:skill_track].id/#{@teacher.id}
