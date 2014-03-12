@@ -39,7 +39,7 @@ end; nil
 
 
 
-
+#<Commento _id: 53191e2b7e225c098a00000f, c_at(created_at): 2014-03-07 01:17:31 UTC, texto: "Sale has read a wide variety of stories and she can talk about the characters and situations with good recall.&nbsp; Sale has not made much progress in the areas of writing.&nbsp; She has some good ideas during discussions but fails to produce the finished goods as she gets distracted and loses the thread of what she was writing.&nbsp; However, she has started completing her work at home and with practice might increase her writing speed.&nbsp; Sale enjoys and participates enthusiastically in group discussions.", indexo: nil, author: "", editor: "", author_approval: false, eic_approval: false>
 
 
 #Change Salemata's Language Arts Skill Tracking to 56 from 34 and keep kala's comments
@@ -58,6 +58,7 @@ temp_container = language_set.commentos
 l34_outcome = sale_skill_track.outcome_sets.find_by(:level => "L34", :subject => la_id)
 l34_outcome.delete
 language_set.inspect
+# change the level through the web interface
 sale_skill_track.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "language_arts").id, :level => sale_skill_track.language_arts_level).clone )
 # given gp = the correct grading period object, this command sets all the outcome
 # sets (be sure the skill tracking info is done well first)

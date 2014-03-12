@@ -16,3 +16,7 @@ RmaReports.helpers Doublespacer
 
 require_relative 'pretty_date'
 RmaReports.helpers PrettyDate
+
+require_relative 'heading'
+RmaReports.helpers Heading
+

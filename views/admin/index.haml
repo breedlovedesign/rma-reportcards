@@ -20,3 +20,4 @@
 -Student.all.each do |student|
 	%form{:action => "/admin/create_report/#{student.id}", :method => "POST"}
 		%input.button{:type => "submit", :value => "Create #{student.name}'s Report Card", :title => "Create #{student.name}'s Report Card", :class => "button"}
+	%a{:href => "/reports/REPORT_CARD_#{student.name}.html", :target => "blank"} See output
