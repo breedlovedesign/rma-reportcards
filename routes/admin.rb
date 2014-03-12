@@ -221,8 +221,8 @@ get "/admin/create_comment_hardcopy" do
 	output_dir = "#{base_dir}/public/reports/"
 	pdf_dir = "#{base_dir}/output/pdf/"
 
-	CommentHardcopy.new(doc, template_dir, output_dir)
-	
+	comment = CommentHardcopy.new(doc, template_dir, output_dir)
+	@pdf_path = comment.pdf_path
 	#filename = "/home/johnbreedlove/Desktop/new_out.md"
 	#File.open(filename, 'w') {|f| f.write(doc)}
 	haml :"/admin/create_comment_hardcopy"
