@@ -7,12 +7,12 @@ class GradingPeriod
   has_many :skill_tracks
   belongs_to :grading_period_persist
   def gpname
-    name = "#{self.school_year} – #{self.period_name} – #{self.signing_date.strftime("%B %e, %Y")}"
+    "#{self.school_year} – #{self.period_name} – #{self.signing_date.strftime("%B %e, %Y")}"
   end
   def name
-    name = "#{self.school_year} – #{self.period_name}"
+    "#{self.school_year} – #{self.period_name}"
   end
   def year
-    name = "#{self.period_name}  #{self.school_year}"
+    "#{self.period_name}  #{self.school_year}"
   end
 end

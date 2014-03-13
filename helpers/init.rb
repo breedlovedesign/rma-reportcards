@@ -20,3 +20,6 @@ RmaReports.helpers PrettyDate
 require_relative 'heading'
 RmaReports.helpers Heading
 
+require_relative 'render_static'
+RmaReports.helpers RenderStatic
+

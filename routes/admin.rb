@@ -184,17 +184,17 @@ get "/admin/create_comment_hardcopy" do
 	  student = Student.find(skt.student).name
 	  data << {:missing? => missing, :student => student, :subject => :thai, :comment => thai_comment, :teacher => thai_teacher, :level => thai_level}
 
-	end;nil
+	end
 
-	sorted_by_subject = data.sort_by {|d| d[:level]};nil
+	sorted_by_subject = data.sort_by {|d| d[:level]}
 
-	teachers = [];nil
-	data.each {|d| teachers << d[:teacher]};nil
-	teachers.uniq!;nil
+	teachers = []
+	data.each {|d| teachers << d[:teacher]}
+	teachers.uniq!
 
-	subjects = [];nil
-	data.each {|d| subjects << d[:subject]};nil
-	subjects.uniq!;nil
+	subjects = []
+	data.each {|d| subjects << d[:subject]}
+	subjects.uniq!
 
 	doc = ""
 	teachers.each do |teacher|
