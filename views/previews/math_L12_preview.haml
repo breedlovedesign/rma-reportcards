@@ -1,0 +1,18 @@
+-# coding: UTF-8
+%table(class="core")
+	%tr
+		%td(class="table_header" ) Mathematics ‒ Teacher #{@student_var.math_t}
+%table(class="core")
+	%tr(class="o_g_c_set")
+		%td
+			%table(class="nested")
+				%tr(class="borderless")
+					%td(class="setwidth-o")
+					%td(class="setwidth-g")
+				- @student_var.math_o_g_pairs.each do |pair|
+					%tr(class="o_g_pair")
+						%td(class="outcome")= "#{pair[0]}"
+						%td(class="grade")= "#{pair[1]}"
+			%td(class="comment" class="sweet-justice")
+				:markdown
+					#{@student_var.math_c}

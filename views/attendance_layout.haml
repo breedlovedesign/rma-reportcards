@@ -13,7 +13,7 @@
 		%section
 			%header.top
 				- title = @title.upcase unless @title.nil?
-				- quarter = (GradingPeriod.find($current_quarter).name).upcase unless $current_quarter.nil?
+				- quarter = (GradingPeriod.find(GradingPeriodPersist.all[0].grading_period.id.to_s).name).upcase unless GradingPeriodPersist.all[0].grading_period.id.to_s.nil?
 				%h2.top #{quarter}
 				%h2.top #{title}
 				%p= "You are logged in  as #{(session[:teacher_id] == "attendance") ? "Dear" : ""}"

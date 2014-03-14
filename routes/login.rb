@@ -16,22 +16,31 @@ post "/login" do
   p = params[:login_form]
   if p["teacher"] == "fail"
     redirect to('/retry')
-  elsif p["teacher"] == "admin" && (p["password"] == "computer2")
+  elsif p["teacher"] == "admin" && (p["password"] == "p")
   	session[:teacher_id] = "admin"
   	session[:role] = "admin"
  	redirect to('/admin')
-  elsif p["teacher"] == "admin" && (p["password"] != "computer2")
+  elsif p["teacher"] == "admin" && (p["password"] != "p")
     session[:teacher_id] = "admin"
   	redirect to('/retry')
   # adding attendance
-    elsif p["teacher"] == "attendance" && (p["password"] == "dear")
-    session[:teacher_id] = "attendance"
-    session[:role] = "attendance"
+  elsif p["teacher"] == "attendance" && (p["password"] == "dear")
+  session[:teacher_id] = "attendance"
+  session[:role] = "attendance"
   redirect to('/attendance')
   elsif p["teacher"] == "attendance" && (p["password"] != "dear")
     session[:teacher_id] = "attendance"
     redirect to('/retry')
   # done adding attendance
+  # adding editor
+  elsif p["teacher"] == "editor-in-chief" && (p["password"] == "p")
+  session[:teacher_id] = "editor-in-chief"
+  session[:role] = "editor-in-chief"
+  redirect to('/edits/teachers')
+  elsif p["teacher"] == "editor-in-chief" && (p["password"] != "p")
+    session[:teacher_id] = "editor-in-chief"
+    redirect to('/retry')
+  # done adding editor
   elsif p["password"] == Teacher.find_by(:id => p["teacher"]).password
   	session[:teacher_id] = Teacher.find_by(:id => p["teacher"]).id
   	session[:role] = "teacher"
@@ -47,11 +56,11 @@ post "/retry" do
   p = params[:login_form]
   if p["teacher"] == "fail"
     redirect to('/retry')
-  elsif p["teacher"] == "admin" && (p["password"] == "computer2")
+  elsif p["teacher"] == "admin" && (p["password"] == "p")
     session[:teacher_id] = "admin"
     session[:role] = "admin"
   redirect to('/admin')
-  elsif p["teacher"] == "admin" && (p["password"] != "computer2")
+  elsif p["teacher"] == "admin" && (p["password"] != "p")
     session[:teacher_id] = "admin"
     redirect to('/retry')
   # adding attendance
@@ -63,6 +72,15 @@ post "/retry" do
     session[:teacher_id] = "attendance"
     redirect to('/retry')
   # done adding attendance
+    # adding editor
+  elsif p["teacher"] == "editor-in-chief" && (p["password"] == "p")
+  session[:teacher_id] = "editor-in-chief"
+  session[:role] = "editor-in-chief"
+  redirect to('/edits/teachers')
+  elsif p["teacher"] == "editor-in-chief" && (p["password"] != "p")
+    session[:teacher_id] = "editor-in-chief"
+    redirect to('/retry')
+  # done adding editor
   elsif p["password"] == Teacher.find_by(:id => p["teacher"]).password
     session[:teacher_id] = Teacher.find_by(:id => p["teacher"]).id
     session[:role] = "teacher"

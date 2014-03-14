@@ -1,0 +1,262 @@
+-# coding: utf-8
+%li{:class => "list_row"}
+	%ul
+	- @language_arts.each do |la|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= la[:student_name].ljust(28, ".") + Subject.find_by(:subject_id => "language_arts").name + " Comment" + "  " + la[:language_arts_level]
+			%ul{:id => "la_comments"}
+				-if la[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-la[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row la_prev_comments"}= comment.texto
+				%p{:id => "language_arts_#{la[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/language_arts/#{Student.find_by(name: la[:student_name]).id}/#{la[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if la[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[language_arts_comment]"}
+								=la[:comment_object][-1].texto
+							.aproval_container
+							/ 	%p APPROVAL # THIS NEEDS TO BE UPDATED
+							/ 	%div{:class => "ui checkbox"}
+							/ 		%input{ :type => "checkbox", :id =>"AUTHOR-COMMENT-ID", :onclick => "this.form.submit();", :checked => "checked"}
+							/ 		%label{ :for=> "AUTHOR-COMMENT-ID"}AUTHOR
+							/ 	%br
+							/ 	%div{:class => "ui checkbox"}
+							/ 		%input{ :type => "checkbox", :id =>"EIC-COMMENT-ID", :onclick => "this.form.submit();", :disabled => "disabled"}
+							/ 		%label{ :for=> "EIC-COMMENT-ID"}EIC
+							/ %br
+							%input.button{:type => "submit", :value => "Update #{la[:student_name]}'s #{Subject.find_by(:subject_id => "math").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @math.each do |math_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= math_var[:student_name].ljust(28, ".") + Subject.find_by(:subject_id => "math").name + " Comment" + "  " + math_var[:math_level]
+			%ul{:id => "math_comments"}
+				-if math_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-math_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row math_prev_comments"}= comment.texto
+				%p{:id => "math_#{math_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/math/#{Student.find_by(name: math_var[:student_name]).id}/#{math_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if math_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[math_comment]"}
+								=math_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{math_var[:student_name]}'s #{Subject.find_by(:subject_id => "math").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @social_studies.each do |social_studies_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= social_studies_var[:student_name].ljust(28, ".") + social_studies.find_by(:social_studies_id => "social_studies").name + " Comment" + "  " + social_studies_var[:social_studies_level]
+			%ul{:id => "social_studies_comments"}
+				-if social_studies_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-social_studies_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row social_studies_prev_comments"}= comment.texto
+				%p{:id => "social_studies_#{social_studies_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/social_studies/#{Student.find_by(name: social_studies_var[:student_name]).id}/#{social_studies_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if social_studies_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[social_studies_comment]"}
+								=social_studies_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{social_studies_var[:student_name]}'s #{social_studies.find_by(:social_studies_id => "social_studies").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @science.each do |science_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= science_var[:student_name].ljust(28, ".") + science.find_by(:science_id => "science").name + " Comment" + "  " + science_var[:science_level]
+			%ul{:id => "science_comments"}
+				-if science_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-science_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row science_prev_comments"}= comment.texto
+				%p{:id => "science_#{science_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/science/#{Student.find_by(name: science_var[:student_name]).id}/#{science_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if science_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[science_comment]"}
+								=science_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{science_var[:student_name]}'s #{science.find_by(:science_id => "science").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @work_study.each do |work_study_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= work_study_var[:student_name].ljust(28, ".") + work_study.find_by(:work_study_id => "work_study").name + " Comment" + "  " + work_study_var[:work_study_level]
+			%ul{:id => "work_study_comments"}
+				-if work_study_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-work_study_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row work_study_prev_comments"}= comment.texto
+				%p{:id => "work_study_#{work_study_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/work_study/#{Student.find_by(name: work_study_var[:student_name]).id}/#{work_study_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if work_study_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[work_study_comment]"}
+								=work_study_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{work_study_var[:student_name]}'s #{work_study.find_by(:work_study_id => "work_study").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @citizenship.each do |citizenship_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= citizenship_var[:student_name].ljust(28, ".") + citizenship.find_by(:citizenship_id => "citizenship").name + " Comment" + "  " + citizenship_var[:citizenship_level]
+			%ul{:id => "citizenship_comments"}
+				-if citizenship_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-citizenship_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row citizenship_prev_comments"}= comment.texto
+				%p{:id => "citizenship_#{citizenship_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/citizenship/#{Student.find_by(name: citizenship_var[:student_name]).id}/#{citizenship_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if citizenship_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[citizenship_comment]"}
+								=citizenship_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{citizenship_var[:student_name]}'s #{citizenship.find_by(:citizenship_id => "citizenship").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @art.each do |art_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= art_var[:student_name].ljust(28, ".") + art.find_by(:art_id => "art").name + " Comment" + "  " + art_var[:art_level]
+			%ul{:id => "art_comments"}
+				-if art_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-art_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row art_prev_comments"}= comment.texto
+				%p{:id => "art_#{art_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/art/#{Student.find_by(name: art_var[:student_name]).id}/#{art_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if art_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[art_comment]"}
+								=art_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{art_var[:student_name]}'s #{art.find_by(:art_id => "art").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @ict.each do |ict_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= ict_var[:student_name].ljust(28, ".") + ict.find_by(:ict_id => "ict").name + " Comment" + "  " + ict_var[:ict_level]
+			%ul{:id => "ict_comments"}
+				-if ict_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-ict_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row ict_prev_comments"}= comment.texto
+				%p{:id => "ict_#{ict_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/ict/#{Student.find_by(name: ict_var[:student_name]).id}/#{ict_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if ict_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[ict_comment]"}
+								=ict_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{ict_var[:student_name]}'s #{ict.find_by(:ict_id => "ict").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @music.each do |music_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= music_var[:student_name].ljust(28, ".") + music.find_by(:music_id => "music").name + " Comment" + "  " + music_var[:music_level]
+			%ul{:id => "music_comments"}
+				-if music_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-music_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row music_prev_comments"}= comment.texto
+				%p{:id => "music_#{music_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/music/#{Student.find_by(name: music_var[:student_name]).id}/#{music_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if music_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[music_comment]"}
+								=music_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{music_var[:student_name]}'s #{music.find_by(:music_id => "music").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @thai.each do |thai_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= thai_var[:student_name].ljust(28, ".") + thai.find_by(:thai_id => "thai").name + " Comment" + "  " + thai_var[:thai_level]
+			%ul{:id => "thai_comments"}
+				-if thai_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-thai_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row thai_prev_comments"}= comment.texto
+				%p{:id => "thai_#{thai_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/thai/#{Student.find_by(name: thai_var[:student_name]).id}/#{thai_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if thai_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[thai_comment]"}
+								=thai_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{thai_var[:student_name]}'s #{thai.find_by(:thai_id => "thai").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}
+
+%li{:class => "list_row"}
+	%ul
+	- @pe.each do |pe_var|
+		%hr
+		%li{:class => "list_row_highlight"} 
+			= pe_var[:student_name].ljust(28, ".") + pe.find_by(:pe_id => "pe").name + " Comment" + "  " + pe_var[:pe_level]
+			%ul{:id => "pe_comments"}
+				-if pe_var[:comment_object][-2].nil? == false
+					Previous Version(s):
+					-pe_var[:comment_object][0..-2].each do |comment|
+						%li{:class => "list_row pe_prev_comments"}= comment.texto
+				%p{:id => "pe_#{pe_var[:student_id]}"}Current Comment:
+				%li{:class => "list_row"} 
+					%form{:action => "/edit/submit/pe/#{Student.find_by(name: pe_var[:student_name]).id}/#{pe_var[:skill_track].id}/#{@teacher.id}", :method => "POST"} 
+						-if pe_var[:comment_object].nil?
+							%p{:class => "body"} No Comment Entered Yet
+						-else
+							%p{:class => "body"} Edit Comment
+							%textarea.comment{:placeholder => "comment", :type => "textarea", :name => "comment_form[pe_comment]"}
+								=pe_var[:comment_object][-1].texto
+							.aproval_container
+							%input.button{:type => "submit", :value => "Update #{pe_var[:student_name]}'s #{pe.find_by(:pe_id => "pe").name} Comment", :title => "Comment", :class => "button", :class => "grade_submit"}

@@ -40,6 +40,50 @@ class SkillTrack
     [self.language_arts_teacher, self.math_teacher, self.social_studies_teacher, self.science_teacher, self.art_teacher, self.ict_teacher, self.music_teacher, self.thai_teacher, self.pe_teacher, self.work_study_teacher, self.citizenship_teacher].include?(teacher_id)
   end
 
+  def which_subjects teacher_id
+    subjects = []  
+      if self.language_arts_teacher == teacher_id
+        subjects << Subject.find_by(name: "Language Arts")
+      end
+
+      if self.math_teacher == teacher_id
+        subjects << Subject.find_by(name: "Mathematics")
+      end
+
+      if self.social_studies_teacher == teacher_id
+        subjects << Subject.find_by(name: "Social Studies")
+      end
+
+      if self.science_teacher == teacher_id
+        subjects << Subject.find_by(name: "Science")
+      end
+
+      if self.art_teacher == teacher_id
+        subjects << Subject.find_by(name: "Art")
+      end
+
+      if self.ict_teacher == teacher_id
+        subjects << Subject.find_by(name: "Information Communication Technology")
+      end
+
+      if self.music_teacher == teacher_id
+        subjects << Subject.find_by(name: "Music")
+      end
+
+      if self.thai_teacher == teacher_id
+        subjects << Subject.find_by(name: "Thai")
+      end
+
+      if self.pe_teacher == teacher_id
+        subjects << Subject.find_by(name: "Physical Education")
+      end
+
+      if self.work_study_teacher == teacher_id
+        subjects << Subject.find_by(name: "Work & Study Habits")
+      end
+    subjects
+  end
+
   def get_outcome_sets
     self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "language_arts").id, :level => self.language_arts_level).clone )
     self.outcome_sets.push( OutcomeSet.find_by(:subject => Subject.find_by(:subject_id => "math").id, :level => self.math_level).clone )

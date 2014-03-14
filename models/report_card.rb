@@ -14,7 +14,7 @@ class ReportCard
 		@template_path = template_path
 		report_card = File.read("#{template_path}report_card.haml")
 		haml_engine = Haml::Engine.new(report_card)
-		output = haml_engine.render(scope = self)#, locals = {})
+		output = haml_engine.render(scope = self)
 		File.open("#{output_path}REPORT_CARD_#{Student.find(@student_var.id).name}.html", 'w') { |f| f.write(output) }
 		#puts output
 	end

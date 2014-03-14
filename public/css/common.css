@@ -1,3 +1,16 @@
+.approval_container{
+	margin-left: 50px;
+	padding-left: 20px;
+	list-style-type: none;
+	background-color: red;	
+}
+ul.approval_list{
+	margin-left: 50px;
+	padding-left: 20px;
+	list-style-type: none;
+	/background-color: blue;	
+}
+
 .cmt {
 	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
 	font-size: 11pt;
@@ -20,6 +33,8 @@ textarea.comment {
 	height: 150px;
 	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
 	font-size: 11pt;
+	float: none;
+	margin-right: 20px;
 }
 .float {float:left; margin-left:40px; margin-bottom:60px;}
 .foot {clear: both;}
@@ -101,6 +116,19 @@ footer {
 .list_row:hover {
 	background-color: #aae6e8;
 }
+.list_row_highlight {
+	padding: 10px;
+	width: 1040px;
+	font-family: "menlo", "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+	font-size: 14pt;
+	list-style-type: none;
+}
+.list_row_highlight:hover {
+	background-color: #e2f6f7;
+}
+.la_prev_comments{
+	width: 900px;
+}
 
 #create_all_reports {
 	background-color: #8fc627;
@@ -137,7 +165,7 @@ footer {
 	border-radius: 3px;
 }
 .button:hover, .edit_link:hover {
-	background-color: #00b2e9;
+	background-color: #1BCE78;
 }
 
 .logoutbutton:hover {
@@ -290,6 +318,7 @@ table {
 }
 table.core, table.special {
 	border-top: none;
+	background-color: #ffffff;
 }
 table.core tr.o_g_c_set td.sweet-justice, table.special tr.o_g_c_set td.sweet-justice {
 	border-top: 1px solid #000;
