@@ -16,6 +16,7 @@
 %form{:action => "/admin/create_reports", :method => "POST"}
 	%input.button{:id => "create_all_reports", :type => "submit", :value => "RECREATE / CREATE ALL REPORTS", :title => "RECREATE / CREATE ALL REPORTS", :class => "button"}
 %br
+%a{:href => "/reports/output.pdf", :target => "blank"} Generated PDF
 %hr
 -Student.all.each do |student|
 	%form{:action => "/admin/create_report/#{student.id}", :method => "POST"}
