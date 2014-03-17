@@ -29,14 +29,17 @@ post "/admin/create_reports" do
 	Student.all.each do |stu|
 		if stu.skill_tracks.where(:grading_period_id => GradingPeriod.find(GradingPeriodPersist.all[0].grading_period.id.to_s)).exists?
 			student_var = StudentVar.new(stu.id)
-			report = ReportCard.new(student_var, template_dir, output_dir) 			
+			report = ReportCard.new(student_var, template_dir, output_dir) 	
+
 		end
 	end
 
-	`html2pdf --papersize=a4  #{output_dir}*html` 
+	# # on macbook: `html2pdf --papersize=a4  #{output_dir}*html` 
+	# # at work:
+	`wkhtmltopdf -s a4 -T 0 -B 0 -L 0 -R 0 #{output_dir}*.html #{output_dir}`
 	`rm #{output_dir}*html`
-	#timestamp = Time.now.stamp()
-	`pdfjam  --a3paper --nup 2x1 --landscape  #{output_dir}*pdf 4,1,2,3 --outfile #{output_dir}output.pdf`
-
+	# #timestamp = Time.now.stamp()
+	`pdfjam  --a3paper --nup 2x1 --landscape  #{output_dir}*pdf 4,1,2,3 --outfile #{output_dir}PDF/A3/output.pdf`
+	`mv #{output_dir}*pdf #{output_dir}PDF/A4/`
 	redirect to("/admin")
 end
