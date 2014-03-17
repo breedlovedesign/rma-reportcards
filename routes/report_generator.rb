@@ -30,13 +30,13 @@ post "/admin/create_reports" do
 		if stu.skill_tracks.where(:grading_period_id => GradingPeriod.find(GradingPeriodPersist.all[0].grading_period.id.to_s)).exists?
 			student_var = StudentVar.new(stu.id)
 			report = ReportCard.new(student_var, template_dir, output_dir) 	
-
+			`wkhtmltopdf -s a4 -T 0 -B 0 -L 0 -R 0 #{output_dir + report.name_of_file}.html #{output_dir + report.name_of_file}.pdf`
 		end
 	end
 
 	# # on macbook: `html2pdf --papersize=a4  #{output_dir}*html` 
 	# # at work:
-	`wkhtmltopdf -s a4 -T 0 -B 0 -L 0 -R 0 #{output_dir}*.html #{output_dir}`
+	
 	`rm #{output_dir}*html`
 	# #timestamp = Time.now.stamp()
 	`pdfjam  --a3paper --nup 2x1 --landscape  #{output_dir}*pdf 4,1,2,3 --outfile #{output_dir}PDF/A3/output.pdf`
