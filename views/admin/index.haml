@@ -12,13 +12,19 @@
 %br
 %hr
 %br
+%p
+	%a{:href=> "/admin/create_comment_hardcopy", :target => "blank"}
+		%img{:src=>"/images/pdf_icon.png"}
+		Create a PDF hardcopy of the comments
+	%p Double-spaced and ready for printing.
+%hr
 %p WARNING: The following commands will overwrite files in the output directory.
 %form{:action => "/admin/create_reports", :method => "POST"}
 	%input.button{:id => "create_all_reports", :type => "submit", :value => "RECREATE / CREATE ALL REPORTS", :title => "RECREATE / CREATE ALL REPORTS", :class => "button"}
 %br
-%a{:href => "/reports/output.pdf", :target => "blank"} Generated PDF
+%a{:href => "/reports/PDF/A3/output.pdf", :target => "blank"} Generated PDF
 %hr
 -Student.all.each do |student|
 	%form{:action => "/admin/create_report/#{student.id}", :method => "POST"}
 		%input.button{:type => "submit", :value => "Create #{student.name}'s Report Card", :title => "Create #{student.name}'s Report Card", :class => "button"}
-	%a{:href => "/reports/REPORT_CARD_#{student.name}.html", :target => "blank"} See output
+	%a{:href => "/reports/PDF/A4/REPORT_CARD_#{student.name.gsub(/\s/, "_")}.pdf", :target => "blank"} See output

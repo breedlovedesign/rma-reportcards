@@ -30,6 +30,15 @@ q:before,q:after{content:'';content:none;}
 margin: 0mm;
 }
 
+td.extend_height {
+	height: 7.4mm;
+}
+
+.spacer {
+	height: 2mm;
+	border: none;
+}
+
 .page-break {
 	display: block;
 	page-break-before: always;

@@ -1,5 +1,11 @@
 -# coding: utf-8
-%p list of pdf files here
-%p note about refreshing the page...
+%h3
+	%a{ :href => "#{@pdf_path}", :target => 'other_blank'}
+		%img{:src=>"/reports/comment_hardcopies/images/view_icon.png"}
+		View PDF
+%h3	
+	%a{ :href => "#{@pdf_path}", :download => "Comment_Hardcopy.pdf" } 
+		%img{:src=>"/reports/comment_hardcopies/images/dl_icon.png"}
+		Download PDF
 :markdown
 	#{@md}

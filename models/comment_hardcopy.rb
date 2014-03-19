@@ -12,6 +12,7 @@ class CommentHardcopy
 	end
 	
 	def initialize(data, template_path, output_path)
+		base_dir = "#{Dir.home}/development/rma-reportcards/"
 		@data = data
 		@template_path = template_path
 		comment_hardcopy = File.read("#{template_path}comment_hardcopy.haml")
@@ -20,8 +21,9 @@ class CommentHardcopy
 		html_path = "#{output_path}comment_hardcopy.html"
 		File.open(html_path, 'w') { |f| f.write(output) }
 		pdf_name = "comment_hardcopy_#{Time.now.stamp("2000-12-31 4:00PM")}.pdf".gsub(/\s/, '_')
-		@pdf_path = "reports/#{pdf_name}"
-		`wkhtmltopdf -s a4 -T 10 -B 10 -L 10 -R 10 #{html_path} #{output_path}#{pdf_name}`
-		puts "wkhtmltopdf -s a4 -T 10 -B 10 -L 10 -R 10 #{html_path} #{output_path}#{pdf_name}"
+		@pdf_path = "/reports/comment_hardcopies/#{pdf_name}"
+		
+		`#{base_dir}vendor/wkhtmltox/bin/wkhtmltopdf -s a4 -T 10 -B 10 -L 10 -R 10 #{html_path} #{output_path}#{pdf_name}`
+		
 	end
 end

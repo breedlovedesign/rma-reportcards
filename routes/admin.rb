@@ -197,9 +197,11 @@ get "/admin/create_comment_hardcopy" do
 	subjects.uniq!
 
 	doc = ""
+	count = 0
 	teachers.each do |teacher|
 		doc << "\n\n"
-		doc << '<div class="page-break"></div>'
+		doc << '<div class="page-break"></div>' if count !=0
+		count += 1
 		doc << "\n\n#{teacher}\n"
 		doc << "#{heading(teacher, 1)}\n\n"
 		subjects.each do |subject|
@@ -209,6 +211,7 @@ get "/admin/create_comment_hardcopy" do
 		doc << "#{heading(subject, 2)}\n" unless this_sub_this_teacher_only.compact.uniq.length == 0
 		doc << "\n"
 		sorted_by_subject.each {|d| doc << "\n\n**#{d[:student]} #{Subject.find_by(:subject_id => subject).name} #{d[:level]}**\n\n#{doublespacer(d[:comment])}" if (d[:teacher] == teacher) && (d[:subject] == subject)}
+	  	
 	  end
 	end
 
@@ -218,7 +221,7 @@ get "/admin/create_comment_hardcopy" do
 	#make it a little bit more portable
 	base_dir = "#{Dir.home}/development/rma-reportcards/"
 	template_dir = "#{base_dir}views/comment_status/"
-	output_dir = "#{base_dir}public/reports/"
+	output_dir = "#{base_dir}public/reports/comment_hardcopies/"
 	pdf_dir = "#{base_dir}output/pdf/"
 
 	comment = CommentHardcopy.new(doc, template_dir, output_dir)
@@ -226,6 +229,6 @@ get "/admin/create_comment_hardcopy" do
 	puts @pdf_path
 	#filename = "/home/johnbreedlove/Desktop/new_out.md"
 	#File.open(filename, 'w') {|f| f.write(doc)}
-	haml :"/admin/create_comment_hardcopy"
+	haml :"/admin/create_comment_hardcopy"#, :layout => :"comments/comment_hardcopy_layout"
 end
 

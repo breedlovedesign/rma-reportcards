@@ -19,6 +19,9 @@
 			%p(class="address") E-mail: rma@rose-marie.ac.th	 Phone: (662) 960-3663
 		%div{:class => "page-break"}
 %div{:class => "page"}
+	%table(class="spacer")
+		%tr 
+			%td 
 	%table(class="table_heading")
 		%tr
 			%td(class="subjects") Core Subjects
@@ -29,6 +32,9 @@
 	= render_file("#{@template_path}outcomes/", "science.html.haml")
 	%div{:class => "page-break"}
 %div{:class => "page"}
+	%table(class="spacer")
+		%tr 
+			%td 
 	%table(class="table_heading")
 		%tr
 			%td(class="subjects")  Special Subjects
@@ -38,74 +44,77 @@
 	= render_file("#{@template_path}outcomes/", "music.html.haml")
 	= render_file("#{@template_path}outcomes/", "pe.html.haml")
 	= render_file("#{@template_path}outcomes/", "thai.html.haml")
-	%div{:class => "page-break"}
-	%div{:class => "page"}
-		= render_file("#{@template_path}outcomes/", "work_study.html.haml")
-		= render_file("#{@template_path}outcomes/", "citizenship.html.haml")
-		%br
-		%p{:id => "assessed"} All students are assessed according to their individual learning ability.
-		%table{:id => "key"}
-			%tr
-				%td(class="d" colspan="3") Grading Code for Skills, Knowledge, Attainment
-			%tr
-				%td(class="a") A –
-				%td(class="b") Excellent
-				%td(class="c") D – Needs Improvement
-			%tr
-				%td(class="a") B –
-				%td(class="b") Good
-				%td(class="c") E – Unsatisfactory
-			%tr
-				%td(class="a") C –
-				%td(class="b") Satisfactory
-				%td(class="c") NA – Not Applicable
-		%table{ :id => "attendance" }
-			%tr
-				%td{ :class => "center", :colspan => 5 } Attendance
-			%tr
-				%td Quarter
-				%td 1
-				%td 2
-				%td 3
-				%td 4
-			%tr
-				%td{ :class => "lalign"} School Days
-				%td #{@student_var.q1days}
-				%td #{@student_var.q2days}
-				%td #{@student_var.q3days}
-				%td #{@student_var.q4days}
-			%tr
-				%td{ :class => "lalign"} Days Absent
-				%td #{@student_var.q1abs}
-				%td #{@student_var.q2abs}
-				%td #{@student_var.q3abs}
-				%td #{@student_var.q4abs}
-			%tr
-				%td{ :class => "lalign"} Days Tardy
-				%td #{@student_var.q1tards}
-				%td #{@student_var.q2tards}
-				%td #{@student_var.q3tards}
-				%td #{@student_var.q4tards}
-				
-		%table{ :id => "signing" }
-			%tr
-				%td{ :class => "signing_area"}
-					%hr
-					%p
-						Rose Marie Wanchupela,
-						%em Academic Director
-				%td{ :class => "date_area"}
-					%p #{@student_var.signing_date}
-			%tr
-				%td
-					%hr
-					%p
-						#{@student_var.classroom_t},
-						%em Classroom Teacher
-				%td{ :class => "date_area"}
-					%p #{@student_var.signing_date}
-				
-	<!--<script src="js/jquery-1.4.2.min.js"></script>-->
-	<script src="js/yui-min.js"></script>
-	-#<script src="js/sweet-justice.js"></script>
+%div{:class => "page-break"}
+%div{:class => "page"}
+	%table(class="spacer")
+	%tr 
+		%td 
+	= render_file("#{@template_path}outcomes/", "work_study.html.haml")
+	= render_file("#{@template_path}outcomes/", "citizenship.html.haml")
+	%br
+	%p{:id => "assessed"} All students are assessed according to their individual learning ability.
+	%table{:id => "key"}
+		%tr
+			%td(class="d" colspan="3") Grading Code for Skills, Knowledge, Attainment
+		%tr
+			%td(class="a") A –
+			%td(class="b") Excellent
+			%td(class="c") D – Needs Improvement
+		%tr
+			%td(class="a") B –
+			%td(class="b") Good
+			%td(class="c") E – Unsatisfactory
+		%tr
+			%td(class="a") C –
+			%td(class="b") Satisfactory
+			%td(class="c") NA – Not Applicable
+	%table{ :id => "attendance" }
+		%tr
+			%td{ :class => "center", :colspan => 5 } Attendance
+		%tr
+			%td Quarter
+			%td 1
+			%td 2
+			%td 3
+			%td 4
+		%tr
+			%td{ :class => "lalign"} School Days
+			%td #{@student_var.q1days}
+			%td #{@student_var.q2days}
+			%td #{@student_var.q3days}
+			%td #{@student_var.q4days}
+		%tr
+			%td{ :class => "lalign"} Days Absent
+			%td #{@student_var.q1abs}
+			%td #{@student_var.q2abs}
+			%td #{@student_var.q3abs}
+			%td #{@student_var.q4abs}
+		%tr
+			%td{ :class => "lalign"} Days Tardy
+			%td #{@student_var.q1tards}
+			%td #{@student_var.q2tards}
+			%td #{@student_var.q3tards}
+			%td #{@student_var.q4tards}
+			
+	%table{ :id => "signing" }
+		%tr
+			%td{ :class => "signing_area"}
+				%hr
+				%p
+					Rose Marie Wanchupela,
+					%em Academic Director
+			%td{ :class => "date_area"}
+				%p #{@student_var.signing_date}
+		%tr
+			%td
+				%hr
+				%p
+					#{@student_var.classroom_t},
+					%em Classroom Teacher
+			%td{ :class => "date_area"}
+				%p #{@student_var.signing_date}
+			
+<!--<script src="js/jquery-1.4.2.min.js"></script>-->
+<script src="js/yui-min.js"></script>
+-#<script src="js/sweet-justice.js"></script>
 
