@@ -17,7 +17,7 @@
    inkscape:export-filename="/home/johnbreedlove/.gvfs/SFTP on mainserver/home/serveradmin/development/rma-reportcards/public/reports/comment_hardcopies/images/dl_icon.png"
    inkscape:export-xdpi="16.529505"
    inkscape:export-ydpi="16.529505"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="icons.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -29,7 +29,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.6081081"
      inkscape:cx="223.41176"
-     inkscape:cy="775.71429"
+     inkscape:cy="576.72269"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -140,6 +140,45 @@
        id="path3815"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/johnbreedlove/.gvfs/SFTP on mainserver/home/serveradmin/development/rma-reportcards/public/reports/comment_hardcopies/images/view_icon.png"
+       inkscape:export-xdpi="18.804907"
+       inkscape:export-ydpi="18.804907" />
+    <path
+       sodipodi:nodetypes="cccccccccccccccc"
+       style="fill:#00b2e9;fill-opacity:1;stroke:none"
+       d="m 235.05698,409.99895 -60.31249,60.3125 0,140.78125 14.3125,0 0,-132.6875 55.93749,0 0,-55.96875 74.625,0 0,188.03125 13.0625,0 0,-200.46875 z m -1.25,19.28125 0,34.8125 -35.43749,0 z"
+       id="path3856"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/johnbreedlove/.gvfs/SFTP on mainserver/home/serveradmin/development/rma-reportcards/public/images/pdf_icon.png"
+       inkscape:export-xdpi="18.804907"
+       inkscape:export-ydpi="18.804907" />
+    <rect
+       style="color:#000000;fill:#00b2e9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:14.5;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3858"
+       width="99.495796"
+       height="16.168068"
+       x="207.07564"
+       y="495.80756"
+       inkscape:export-filename="/home/johnbreedlove/.gvfs/SFTP on mainserver/home/serveradmin/development/rma-reportcards/public/images/pdf_icon.png"
+       inkscape:export-xdpi="18.804907"
+       inkscape:export-ydpi="18.804907" />
+    <rect
+       y="532.49664"
+       x="207.07564"
+       height="16.168068"
+       width="99.495796"
+       id="rect3860"
+       style="color:#000000;fill:#00b2e9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:14.5;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       inkscape:export-filename="/home/johnbreedlove/.gvfs/SFTP on mainserver/home/serveradmin/development/rma-reportcards/public/images/pdf_icon.png"
+       inkscape:export-xdpi="18.804907"
+       inkscape:export-ydpi="18.804907" />
+    <rect
+       style="color:#000000;fill:#00b2e9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:14.5;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3862"
+       width="99.495796"
+       height="16.168068"
+       x="207.07564"
+       y="566.07648"
+       inkscape:export-filename="/home/johnbreedlove/.gvfs/SFTP on mainserver/home/serveradmin/development/rma-reportcards/public/images/pdf_icon.png"
        inkscape:export-xdpi="18.804907"
        inkscape:export-ydpi="18.804907" />
   </g>

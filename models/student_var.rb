@@ -8,8 +8,12 @@
 # Instances of the student class are created by
 # specifing the student by their id.
 class StudentVar
-
-
+    def doublespacer(comment)
+        doubled = Lingua::EN::Sentence.sentences(comment).join("&nbsp; ")
+        doubled
+    end
+require 'lingua'
+include Doublespacer
 #include Mongoid::Document
   attr_reader \
     :id,             :year,             :signing_date,     :birthdate,        :name,             :lev,                     \
@@ -28,10 +32,14 @@ class StudentVar
     :q1abs,          :q2abs,            :q3abs,            :q4abs,                                                                            \
     :q1tards,        :q2tards,          :q3tards,          :q4tards,                                                                          \
     :classroom_t
-  def initialize(id)
+  def initialize(id, options={})
+    defaults = {
+        :gp => GradingPeriodPersist.all[0].grading_period.id.to_s
+    }
+    options = defaults.merge(options)
     @id                        = id
     student                    = Student.find(id)
-    skill_track                = student.skill_tracks.find_by(:grading_period => GradingPeriodPersist.all[0].grading_period.id.to_s)
+    skill_track                = student.skill_tracks.find_by(:grading_period => options[:gp])
     grading_period             = GradingPeriodPersist.all[0].grading_period
     @year                      = grading_period.year
     @signing_date              = grading_period.signing_date.strftime("%B %e, %Y")
@@ -87,17 +95,17 @@ class StudentVar
     social_studies_c          = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "social_studies").id).commentos[-1]
     thai_c                    = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "thai").id).commentos[-1]
     work_study_c              = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "work_study").id).commentos[-1]
-    @art_c                     =  art_c                    ? art_c.texto              : "" 
-    @citizenship_c             =  citizenship_c            ? citizenship_c.texto      : "" 
-    @ict_c                     =  ict_c                    ? ict_c.texto              : "" 
-    @language_arts_c           =  language_arts_c          ? language_arts_c.texto    : "" 
-    @math_c                    =  math_c                   ? math_c.texto             : "" 
-    @music_c                   =  music_c                  ? music_c.texto            : "" 
-    @pe_c                      =  pe_c                     ? pe_c.texto               : "" 
-    @science_c                 =  science_c                ? science_c.texto          : "" 
-    @social_studies_c          =  social_studies_c         ? social_studies_c.texto   : "" 
-    @thai_c                    =  thai_c                   ? thai_c.texto             : "" 
-    @work_study_c              =  work_study_c             ? work_study_c.texto       : "" 
+    @art_c                     =  art_c                    ? doublespacer(art_c.texto)              : "" 
+    @citizenship_c             =  citizenship_c            ? doublespacer(citizenship_c.texto)      : "" 
+    @ict_c                     =  ict_c                    ? doublespacer(ict_c.texto)              : "" 
+    @language_arts_c           =  language_arts_c          ? doublespacer(language_arts_c.texto)    : "" 
+    @math_c                    =  math_c                   ? doublespacer(math_c.texto)             : "" 
+    @music_c                   =  music_c                  ? doublespacer(music_c.texto)            : "" 
+    @pe_c                      =  pe_c                     ? doublespacer(pe_c.texto)               : "" 
+    @science_c                 =  science_c                ? doublespacer(science_c.texto)          : "" 
+    @social_studies_c          =  social_studies_c         ? doublespacer(social_studies_c.texto)   : "" 
+    @thai_c                    =  thai_c                   ? doublespacer(thai_c.texto)             : "" 
+    @work_study_c              =  work_study_c             ? doublespacer(work_study_c.texto)       : "" 
     #
     #
     language_arts_outcome_set  = skill_track.outcome_sets.find_by(:subject_id => "#{Subject.find_by(:subject_id => "language_arts").id}")

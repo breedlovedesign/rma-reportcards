@@ -86,63 +86,103 @@ unless form["language_arts_comment"].nil?
 	language_arts_outcome_set.save
 end	
 
-unless form["math_comment"].nil?
+unless form["math_comment_comment"].nil?
 	math_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "math"))
-	math_outcome_set.commentos.create!(:texto => form["math_comment"])
+	raw_comment = form["math_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	math_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	math_outcome_set.save
 end	
 
-unless form["social_studies_comment"].nil?
+unless form["social_studies_comment_comment"].nil?
 	social_studies_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "social_studies"))
-	social_studies_outcome_set.commentos.create!(:texto => form["social_studies_comment"])
+	raw_comment = form["social_studies_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	social_studies_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	social_studies_outcome_set.save
 end	
 
-unless form["science_comment"].nil?
+unless form["science_comment_comment"].nil?
 	science_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "science"))
-	science_outcome_set.commentos.create!(:texto => form["science_comment"])
+	raw_comment = form["science_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	science_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	science_outcome_set.save
 end	
 
-unless form["work_study_comment"].nil?
+unless form["work_study_comment_comment"].nil?
 	work_study_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "work_study"))
-	work_study_outcome_set.commentos.create!(:texto => form["work_study_comment"])
+	raw_comment = form["work_study_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	work_study_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	work_study_outcome_set.save
 end	
 
-unless form["citizenship_comment"].nil?
+unless form["citizenship_comment_comment"].nil?
 	citizenship_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "citizenship"))
-	citizenship_outcome_set.commentos.create!(:texto => form["citizenship_comment"])
+	raw_comment = form["citizenship_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	citizenship_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	citizenship_outcome_set.save
 end	
 
-unless form["art_comment"].nil?
+unless form["art_comment_comment"].nil?
 	art_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "art"))
-	art_outcome_set.commentos.create!(:texto => form["art_comment"])
+	raw_comment = form["art_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	art_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	art_outcome_set.save
 end	
 
-unless form["ict_comment"].nil?
+unless form["ict_comment_comment"].nil?
 	ict_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "ict"))
-	ict_outcome_set.commentos.create!(:texto => form["ict_comment"])
+	raw_comment = form["ict_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	ict_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	ict_outcome_set.save
 end	
 
-unless form["music_comment"].nil?
+unless form["music_comment_comment"].nil?
 	music_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "music"))
-	music_outcome_set.commentos.create!(:texto => form["music_comment"])
+	raw_comment = form["music_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	music_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	music_outcome_set.save
 end	
 
-unless form["pe_comment"].nil?
+unless form["pe_comment_comment"].nil?
 	pe_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "pe"))
-	pe_outcome_set.commentos.create!(:texto => form["pe_comment"])
+	raw_comment = form["pe_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	pe_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	pe_outcome_set.save
 end	
 
-unless form["thai_comment"].nil?
+unless form["thai_comment_comment"].nil?
 	thai_outcome_set = skill_track.outcome_sets.find_by(:subject_id => Subject.find_by(:subject_id => "thai"))
-	thai_outcome_set.commentos.create!(:texto => form["thai_comment"])
+	raw_comment = form["thai_comment"]
+	processed_comment = raw_comment.paragraph_prep
+	doub = doublespacer(processed_comment)
+	doub.paragraph_reinsertion
+	thai_outcome_set.commentos.create!(:texto => doub, :editor => form["editor"])
 	thai_outcome_set.save
 end		
 
